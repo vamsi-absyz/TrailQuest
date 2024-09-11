@@ -16,7 +16,7 @@ export const Home = () => {
     >
       <Grid2 container spacing={2} className="m-auto h-full w-full">
       <Grid2 size={6} className="flex justify-center items-center">
-      {/* <div>
+      <div>
         {characterData.map((character) => (
           <div key={character.id}>
             <h3>{character.title}</h3> 
@@ -31,7 +31,7 @@ export const Home = () => {
             </Chip.Group>
           </div>
         ))}
-      </div> */}
+      </div>
     </Grid2>
         <Grid2 size={6}>
           <div>size=4</div>
