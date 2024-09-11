@@ -28,7 +28,6 @@ export const characterData = [
       "Faithful",
       "happy",
       "curious",
-      "adventurous",
       "inspiring",
       "joyful",
       "caring",
