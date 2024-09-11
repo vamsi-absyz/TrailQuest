@@ -44,7 +44,7 @@ export const Home = () => {
       <Grid container spacing={2} className="m-auto h-full w-full !my-[1rem]">
         {/* Make the Chip group responsive */}
         <Grid
-          xs={6} // Takes full width on extra small screens
+          xs={12} // Takes full width on extra small screens
           sm={8} // Takes full width on small screens
           md={8} // Takes 8 out of 12 columns on medium screens
           className="flex justify-start items-center flex-wrap"
@@ -80,7 +80,7 @@ export const Home = () => {
           sm={0.5} // Takes full width on small screens
           md={0.5} ></Grid>
         <Grid
-          xs={6} // Takes full width on extra small screens
+          xs={12} // Takes full width on extra small screens
           sm={3} // Takes full width on small screens
           md={3} // Takes 4 out of 12 columns on medium screens
           className="flex justify-end items-center"
