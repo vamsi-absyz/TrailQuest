@@ -67,7 +67,7 @@ export const CharcaterInfo = () => {
               </Grid>
               <Grid xs={12}>
                 <div>
-                  <span className="text-[1rem] font-medium capitalize">
+                  <span  className="text-[1.2rem] font-bold capitalize" style={{color:"#032d60"}}>
                     {generateWelcomeMessage(modalData)}
                   </span>
                 </div>
