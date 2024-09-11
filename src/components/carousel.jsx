@@ -1,27 +1,26 @@
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel'
-import { characterData } from '../utils/mock_data';
+import Slider from "react-slick";
+import { characterData } from "../utils/mock_data";
 
 export const Carousels = () => {
-    return (
-        <Carousel
-            axis="vertical"
-            showThumbs={false}
-            infiniteLoop={false}
-            stopOnHover={false}
-            autoPlay={true}
-            showArrows={false}
-            showIndicators={false}
-            showStatus={false}
-            swipeable={false}
-        >
-            {
-                characterData.map((img) => (
-                    <div key={img.id}>
-                        <img src={img.image} className=' !w-full !h-[375px] object-contain' />
-                    </div>
-                ))
-            }
-        </Carousel >
-    )
-}
+  const settings = {
+    infinite: true,
+    speed: 500,               // Transition speed
+    slidesToShow: 1,          // Show one slide at a time
+    slidesToScroll: 1,        // Scroll one slide at a time
+    vertical: true,           // Vertical scrolling
+    autoplay: true,           // Automatically play the carousel
+    autoplaySpeed: 2000,      // Speed of autoplay (2 seconds)
+    arrows: false,            // Hide navigation arrows
+    dots: false               // Hide navigation dots
+  };
+
+  return (
+    <Slider {...settings}>
+      {characterData.map((img) => (
+        <div key={img.id}>
+          <img src={img.image} className="!w-full !h-[375px] object-contain" />
+        </div>
+      ))}
+    </Slider>
+  );
+};
