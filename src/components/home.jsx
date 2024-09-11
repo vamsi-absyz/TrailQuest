@@ -1,7 +1,7 @@
 
 
 import { useState } from "react";
-import { Box, Grid, Grid2,useMediaQuery } from "@mui/material";
+import { Box, Grid, Grid2, useMediaQuery } from "@mui/material";
 import { Chip, Group } from "@mantine/core";
 import { characterData } from "../utils/mock_data";
 import CheckIcon from '@mui/icons-material/Check';
@@ -14,18 +14,19 @@ import { useNavigate } from "react-router-dom";
 export const Home = () => {
   const [selectedTag, setSelectedTag] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const[mobileView,setMobileView]=useState(false)
   const [selectedId, setSelectedId] = useState("");
   const isTabletOrLarger = useMediaQuery('(min-width: 768px)');
-const navigate=useNavigate();
+  const navigate = useNavigate();
+
   const handleClick = (tag, id) => {
     setSelectedId(id);
     setSelectedTag(tag);
-    if(isTabletOrLarger){
+    if (isTabletOrLarger) {
 
       setIsModalOpen(true); // Open the modal when a chip is clicked
-    }else{
-       navigate("/character")
+    } else {
+      navigate(`/character/${id}`
+      );
     }
   };
 
