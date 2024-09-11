@@ -97,14 +97,14 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag, selectedId }
 
                             <div className="pl-[1rem]">
                                 <Grid container spacing={2}>
-                                    <Grid xs={8}>
+                                    <Grid xs={7}>
                                         <div>
-                                            <span className="text-[1rem] font-medium capitalize">{generateWelcomeMessage(modalData)}</span>
+                                            <span className="text-[1.5rem] font-bold capitalize" style={{color:"#032d60"}}>{generateWelcomeMessage(modalData)}</span>
 
                                         </div>
                                     </Grid>
-                                    <Grid xs={4} className="flex justify-center items-center">
-                                        <img src={modalData.image} alt={modalData.title} className="!w-[160px] !h-[260px] object-contain" />
+                                    <Grid xs={5} className="flex justify-center items-center">
+                                        <img src={modalData.image} alt={modalData.title} className="!w-[180px] !h-[300px] object-contain" />
                                     </Grid>
                                 </Grid>
                             </div>

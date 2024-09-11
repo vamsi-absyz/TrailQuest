@@ -5,29 +5,29 @@ import { Grid, Grid2, IconButton, useMediaQuery } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export const CharcaterInfo = () => {
   let { id } = useParams();
-  console.log(id, "didiiid")
+  console.log(id, "didiiid");
 
   const [modalData, setModalData] = useState([]);
-  const isTabletOrLarger = useMediaQuery('(min-width: 768px)');
+  const isTabletOrLarger = useMediaQuery("(min-width: 768px)");
   const navigate = useNavigate();
   useEffect(() => {
     if (id) {
-      console.log(id, "insideuseedefffe")
+      console.log(id, "insideuseedefffe");
       const filterData = characterData.filter((item) => item.id === Number(id));
       console.log(filterData, "filterDAta");
       setModalData(filterData[0]);
     }
-
   }, [id]);
 
   useEffect(() => {
     if (isTabletOrLarger) {
-      navigate("/")
+      navigate("/");
     }
-  }, [isTabletOrLarger])
+  }, [isTabletOrLarger]);
 
   const generateWelcomeMessage = (character) => {
     let pronounMessage;
@@ -47,12 +47,16 @@ export const CharcaterInfo = () => {
     // const description = `Known for being ${character.tags.join(',')}, ${character.title} represents ${character.description}. Get ready for an unforgettable experience!`;
     return `${pronounMessage} `;
   };
-  console.log(modalData, "modaldata")
+  console.log(modalData, "modaldata");
   return (
     <>
       {modalData && (
         <div className="mt-10 p-5">
+          <span onClick={()=>navigate("/")} >
+            <ArrowBackIcon sx={{marginBottom:"20px"}} />
+          </span>
           <div className="pl-[1rem]">
+          
             <Grid container spacing={2}>
               <Grid xs={12} className="flex justify-center items-center">
                 <img
@@ -68,8 +72,6 @@ export const CharcaterInfo = () => {
                   </span>
                 </div>
               </Grid>
-
-              <button style={{ backgroundColor: "blueviolet", margin: "10px 0px" }} onClick={() => navigate("/")}>Back</button>
             </Grid>
           </div>
         </div>
