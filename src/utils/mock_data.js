@@ -75,7 +75,6 @@ export const characterData = [
       "sure-footed",
       "helpful",
       "confident",
-      "encouraging",
       "unique",
     ],
     description: "Representative of Salesforce Admins",
@@ -117,7 +116,7 @@ export const characterData = [
   },
   {
     id: 9,
-    tags: ["Resourceful", "reliable", "spirited", "playful", "kind", "adoring"],
+    tags: ["reliable", "spirited", "playful", "kind", "adoring"],
     description: "Representative of love and longevity",
     title: "Koa the Dog",
     image: Dog,
@@ -138,7 +137,7 @@ export const characterData = [
   },
   {
     id: 11,
-    tags: ["Motivated", "innovative", "entrepreneurial"],
+    tags: ["Motivated", "entrepreneurial"],
     description: "Representative of Partners",
     title: "Appy the Bobcat",
     image: Bobcat,
