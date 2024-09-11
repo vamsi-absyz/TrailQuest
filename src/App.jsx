@@ -2,6 +2,9 @@ import '@mantine/core/styles.css';
 import './App.css'
 import { Home } from './components/home';
 import { createTheme, MantineProvider } from '@mantine/core';
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import { CharcaterInfo } from './components/charcaterInfo';
+
 
 const theme = createTheme({
   /** Put your mantine theme override here */
@@ -11,8 +14,14 @@ const theme = createTheme({
 function App() {
   return (
     <MantineProvider theme={theme}>
-      <Home/>
-    </MantineProvider>
+      <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/character' element={<CharcaterInfo/>}/>
+      </Routes>
+
+      </BrowserRouter>
+     </MantineProvider>
   )
 }
 
