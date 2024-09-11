@@ -89,13 +89,13 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag, selectedId }
                                 // alignItems: 'center',
                             }}
                         >
-                            <div className="flex justify-end items-end w-full ">
+                            <div className="flex justify-end items-end w-full my-[10px]">
                                 <IconButton onClick={handleCloseModal}>
                                     <CloseIcon />
                                 </IconButton>
                             </div>
 
-                            <div>
+                            <div className="pl-[1rem]">
                                 <Grid container spacing={2}>
                                     <Grid xs={8}>
                                         <div>
