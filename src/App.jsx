@@ -1,13 +1,18 @@
-import { useState } from 'react'
+import '@mantine/core/styles.css';
 import './App.css'
+import { Home } from './components/home';
+import { createTheme, MantineProvider } from '@mantine/core';
+
+const theme = createTheme({
+  /** Put your mantine theme override here */
+});
+
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-    
-    </>
+    <MantineProvider theme={theme}>
+      <Home/>
+    </MantineProvider>
   )
 }
 
