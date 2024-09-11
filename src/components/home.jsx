@@ -4,6 +4,7 @@ import { Chip, Group } from "@mantine/core";
 import { characterData } from "../utils/mock_data";
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import CheckIcon from '@mui/icons-material/Check';
+import { Carousels } from "./carousel";
 
 export const Home = () => {
   const [selectedTag, setSelectedTag] = useState(null);
@@ -19,7 +20,7 @@ export const Home = () => {
       className="min-h-[100vh] p-[4rem] w-full flex justify-center items-center bg-[]"
     >
       <Grid2 container spacing={2} className="m-auto h-full w-full">
-        <Grid2 size={6} className="flex justify-center items-center">
+        <Grid2 size={6} className="flex justify-start items-center">
           <Chip.Group className="">
             <Group justify="center" gap={10}>
               {characterData.map((character) => (
@@ -38,8 +39,10 @@ export const Home = () => {
             </Group>
           </Chip.Group>
         </Grid2>
-        <Grid2 size={6}>
-          {/* <div>Selected Tag: {selectedTag}</div> */}
+        <Grid2 size={6} className="flex justify-end items-center">
+          <div className="carousel_img">
+            <Carousels />
+          </div>
         </Grid2>
       </Grid2>
     </Box>

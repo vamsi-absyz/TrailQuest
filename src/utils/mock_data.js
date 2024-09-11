@@ -1,15 +1,15 @@
-import Sassy from "../assets/images/Sassy.webp";
-import Astro from "../assets/images/Astro.webp";
-import Bobcat from "../assets/images/Bobcat.webp";
-import Brandy from "../assets/images/Brandy.webp";
-import Cloudy from "../assets/images/Cloudy.webp";
-import Codey from "../assets/images/Codey.webp";
-import Dog from "../assets/images/Dog.webp";
-import Einstein from "../assets/images/Einstien.webp";
-import Mule from "../assets/images/Max-the-mule.webp";
-import Elephant from "../assets/images/Ruth-Elephant.webp";
-import Squirrel from "../assets/images/squirrel.webp";
-import Zebra from "../assets/images/Zebra.webp";
+import Sassy from "../assets/images/Sassy.jpg";
+import Astro from "../assets/images/Astro.jpg";
+import Bobcat from "../assets/images/Bobcat.jpg";
+import Brandy from "../assets/images/Brandy.jpg";
+import Cloudy from "../assets/images/Cloudy.jpg";
+import Codey from "../assets/images/Codey.jpg";
+import Dog from "../assets/images/Dog.jpg";
+import Einstein from "../assets/images/Einstien.jpg";
+import Mule from "../assets/images/Max-the-mule.jpg";
+import Elephant from "../assets/images/Ruth-Elephant.jpg";
+import Squirrel from "../assets/images/squirrel.jpg";
+import Zebra from "../assets/images/Zebra.jpg";
 
 export const characterData = [
   {
