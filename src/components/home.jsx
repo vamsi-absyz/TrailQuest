@@ -19,16 +19,15 @@ export const Home = () => {
       <div>
         {characterData.map((character) => (
           <div key={character.id}>
-            <h3>{character.title}</h3> 
-            <Chip.Group>
-              <Group justify="center">
+            {/* <Chip.Group> */}
+              {/* <Group justify="center"> */}
                 {character.tags.map((tag, index) => (
                   <Chip key={index} value={tag}>
                     {tag}
                   </Chip>
                 ))}
-              </Group>
-            </Chip.Group>
+              {/* </Group> */}
+            {/* </Chip.Group> */}
           </div>
         ))}
       </div>
