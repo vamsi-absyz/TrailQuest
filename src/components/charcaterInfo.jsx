@@ -47,7 +47,7 @@ export const CharcaterInfo = () => {
   return (
     <>
       {modalData && (
-        <div className="mt-10 p-5">
+        <div className="p-[24px]">
           <span onClick={() => navigate("/")} >
             <ArrowBackIcon sx={{ marginBottom: "20px" }} />
           </span>

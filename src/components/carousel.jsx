@@ -1,7 +1,11 @@
 import Slider from "react-slick";
 import { characterData } from "../utils/mock_data";
 import "../App.css"
+import { useMediaQuery } from "@mui/material";
+
 export const Carousels = () => {
+  const isTabletOrLarger = useMediaQuery('(min-width: 768px)');
+  console.log(isTabletOrLarger, "isTabletOrLarger")
   const settings = {
     infinite: true,
     speed: 500,               // Transition speed
@@ -11,14 +15,16 @@ export const Carousels = () => {
     autoplay: true,           // Automatically play the carousel
     autoplaySpeed: 2000,      // Speed of autoplay (2 seconds)
     arrows: false,            // Hide navigation arrows
-    dots: false   ,            // Hide navigation dots
+    dots: false,            // Hide navigation dots
   };
 
   return (
     <Slider {...settings} >
       {characterData.map((img) => (
         <div key={img.id}>
-          <img src={img.image} className="!w-full !h-[215px] object-contain" />
+          {/* <img src={img.image} className="!w-full !h-[215px] object-contain" /> */}
+          <img src={img.image} className={isTabletOrLarger ? "!w - full !h-[215px] object-contain m-auto" : "!w-[250px] !h-[215px] object-contain m-auto"} />
+
         </div>
       ))}
     </Slider>

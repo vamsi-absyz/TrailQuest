@@ -48,22 +48,23 @@ export const Home = () => {
       <Grid container spacing={2} className="m-auto h-full w-full !my-[1rem]">
         {/* Make the Chip group responsive */}
         <Grid
-          xs={12} // Takes full width on extra small screens
+          xs={7} // Takes full width on extra small screens
           sm={8} // Takes full width on small screens
           md={8} // Takes 8 out of 12 columns on medium screens
           className="flex justify-start items-center flex-wrap"
           style={{ gap: "10px" }} // Adds spacing between chips for better mobile view
         >
           <Chip.Group className="">
-            <Group className="flex justify-center items-center px-[40px] pb-[40px] pt-[20px] sm:p-0" gap={10} style={{ flexWrap: "" }}>
+            <Group className="flex justify-center items-center px-[20px] pb-[40px] pt-[20px] sm:p-0" gap={10} style={{ flexWrap: "" }}>
               {characterData.map((character) => (
                 <div key={character.id} className="flex justify-center items-center !sm:flex-row flex-wrap w-full sm:w-auto flex-row">
                   {character.tags.map((tag, index) => (
                     <div key={index} className="m-[4px] sm:mx-[4px]">
                       <Chip
+                        size="xs"
                         icon={null}
                         checked={false}
-                        value={tag}
+                        // value={tag}
                         color="indigo"
                         variant="outline"
                         className="chips capitalize text-[#032d60] font-medium bg-[#fff]"
@@ -81,13 +82,14 @@ export const Home = () => {
 
         {/* Carousel section */}
         <Grid  // Takes full width on extra small screens
+          xs={0}
           sm={0.5} // Takes full width on small screens
           md={0.5} ></Grid>
         <Grid
-          xs={12} // Takes full width on extra small screens
+          xs={4} // Takes full width on extra small screens
           sm={3} // Takes full width on small screens
           md={3} // Takes 4 out of 12 columns on medium screens
-          className="flex justify-end items-center"
+          className="flex justify-end items-start"
         >
           <div className="carousel_img">
             <Carousels />
