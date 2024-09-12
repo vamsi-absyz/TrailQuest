@@ -9,16 +9,13 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export const CharcaterInfo = () => {
   let { id } = useParams();
-  console.log(id, "didiiid");
 
   const [modalData, setModalData] = useState([]);
   const isTabletOrLarger = useMediaQuery("(min-width: 768px)");
   const navigate = useNavigate();
   useEffect(() => {
     if (id) {
-      console.log(id, "insideuseedefffe");
       const filterData = characterData.filter((item) => item.id === Number(id));
-      console.log(filterData, "filterDAta");
       setModalData(filterData[0]);
     }
   }, [id]);
@@ -47,7 +44,6 @@ export const CharcaterInfo = () => {
     // const description = `Known for being ${character.tags.join(',')}, ${character.title} represents ${character.description}. Get ready for an unforgettable experience!`;
     return `${pronounMessage} `;
   };
-  console.log(modalData, "modaldata");
   return (
     <>
       {modalData && (

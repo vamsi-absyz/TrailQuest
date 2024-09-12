@@ -30,10 +30,8 @@ const modalVariants = {
 export const Modal = ({ isModalOpen, handleCloseModal, selectedTag, selectedId }) => {
     const [modalData, setModalData] = useState([]);
     useEffect(() => {
-        console.log(isModalOpen, handleCloseModal, selectedTag, selectedId, "prorpspspsss")
         if (selectedId && selectedTag) {
             const filterData = characterData.filter((item) => item.id === selectedId);
-            console.log(filterData[0], "filterDAta");
             setModalData(filterData[0])
         }
 
@@ -57,8 +55,6 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag, selectedId }
         // const description = `Known for being ${character.tags.join(',')}, ${character.title} represents ${character.description}. Get ready for an unforgettable experience!`;
         return `${pronounMessage} `;
     };
-
-    console.log(modalData, "modalData")
 
     return (
         <>
