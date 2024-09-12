@@ -47,10 +47,11 @@ export const Home = () => {
         <Grid container spacing={2} className="m-auto h-full w-full">
           {/* Make the Chip group responsive */}
           <Grid
+            item
             xs={7}
             sm={8}
             md={8}
-            className="flex justify-start items-center flex-wrap"
+            className="flex justify-start items-start flex-wrap"
             style={{ gap: "10px" }} // Adds spacing between chips for better mobile view
           >
             <Chip.Group className="">
@@ -80,9 +81,10 @@ export const Home = () => {
           </Grid>
 
           {/* Carousel section */}
-          <Grid  // Takes full width on extra small screens
+          <Grid
+            item
             xs={0}
-            sm={0.5} // Takes full width on small screens
+            sm={0.5}
             md={0.5} ></Grid>
           <Grid
             xs={4} // Takes full width on extra small screens
