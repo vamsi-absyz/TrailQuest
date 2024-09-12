@@ -1,9 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { characterData } from "../utils/mock_data";
-import { Grid, Grid2, IconButton } from "@mui/material";
+import { Grid, IconButton } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
-import { Link } from "react-router-dom";
 
 const backdropVariants = {
     hidden: { opacity: 0 },
@@ -17,11 +16,11 @@ const modalVariants = {
         opacity: 1,
         scale: 1,
         transition: {
-            type: 'spring', // Using spring for bounciness
-            stiffness: 300,
-            damping: 20,
-            duration: 0.5,
-            ease: [0.6, 0.05, -0.01, 0.9], // Custom ease for smoother animation
+            // type: 'spring', // Using spring for bounciness
+            // stiffness: 300,
+            // damping: 20,
+            // duration: 0.5,
+            // ease: [0.6, 0.05, -0.01, 0.9], // Custom ease for smoother animation
         },
     },
     exit: { opacity: 0, scale: 0.5, transition: { duration: 0.3 } },

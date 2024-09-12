@@ -22,8 +22,7 @@ export const Carousels = () => {
     <Slider {...settings} >
       {characterData.map((img) => (
         <div key={img.id}>
-          {/* <img src={img.image} className="!w-full !h-[215px] object-contain" /> */}
-          <img src={img.image} className={isTabletOrLarger ? "!w - full !h-[215px] object-contain m-auto" : "!w-[250px] !h-[215px] object-contain m-auto"} />
+          <img src={img.image} className={isTabletOrLarger ? "!h-[250px]" : ""} />
 
         </div>
       ))}
