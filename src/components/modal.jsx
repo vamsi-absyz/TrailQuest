@@ -51,7 +51,6 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag, selectedId }
             default:
                 pronounMessage = `${character.title} has arrived, and the excitement just went through the roof!`;
         }
-        // const description = `Known for being ${character.tags.join(',')}, ${character.title} represents ${character.description}. Get ready for an unforgettable experience!`;
         return `${pronounMessage} `;
     };
 

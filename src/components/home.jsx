@@ -43,7 +43,7 @@ export const Home = () => {
       <div className="flex justify-start items-center w-full pl-[10px] pb-[10px] bg-[#032d6017]">
         <img src={Logo} alt="logo" className="w-[110px] " />
       </div>
-      <div className="sm:px-[2rem] md:px-[4rem] sm:pb-[2rem] md:pb-[4rem] pt-[10px] mt-0 sm:mt-[1rem] md:mt-4">
+      <div className="sm:px-[2rem] md:px-[4rem] sm:pb-[2rem] md:pb-[4rem] pt-[10px] mt-5 sm:mt-[1rem] md:mt-4">
         <Grid container spacing={2} className="m-auto h-full w-full">
           {/* Make the Chip group responsive */}
           <Grid
