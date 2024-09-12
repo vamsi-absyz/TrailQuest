@@ -42,7 +42,7 @@ export const Home = () => {
       className="min-h-[100vh] sm:px-[4rem] sm:pb-[4rem] w-full flex flex-col justify-center items-center"
     >
 
-      <div className="flex justify-start items-center w-full">
+      <div className="flex justify-start items-center w-full pl-[10px] sm:pl-0">
         <img src={Logo} alt="logo" className="w-[110px] " />
       </div>
       <Grid container spacing={2} className="m-auto h-full w-full !my-[1rem]">
