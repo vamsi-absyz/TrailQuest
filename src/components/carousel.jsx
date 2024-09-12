@@ -23,7 +23,6 @@ export const Carousels = () => {
       {characterData.map((img) => (
         <div key={img.id}>
           <img src={img.image} className={isTabletOrLarger ? "!h-[250px]" : ""} />
-
         </div>
       ))}
     </Slider>
