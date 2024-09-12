@@ -16,6 +16,8 @@ export const Carousels = () => {
     autoplaySpeed: 2000,      // Speed of autoplay (2 seconds)
     arrows: false,            // Hide navigation arrows
     dots: false,            // Hide navigation dots
+    pauseOnHover: false,
+    pauseOnDotsHover: false
   };
 
   return (
