@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { characterData } from "../utils/mock_data";
 import { Grid, Grid2, IconButton } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
+import { Link } from "react-router-dom";
 
 const backdropVariants = {
     hidden: { opacity: 0 },
@@ -57,6 +58,8 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag, selectedId }
         return `${pronounMessage} `;
     };
 
+    console.log(modalData, "modalData")
+
     return (
         <>
             {modalData && (
@@ -81,8 +84,8 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag, selectedId }
                         <div
                             className="bg-white px-6 rounded-lg shadow-lg relative"
                             style={{
-                                width: '600px',
-                                // height: '400px',
+                                width: '700px',
+                                height: '400px',
                                 // display: 'flex',
                                 // flexDirection: 'column',
                                 // justifyContent: 'center',
@@ -99,8 +102,15 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag, selectedId }
                                 <Grid container spacing={2}>
                                     <Grid xs={7}>
                                         <div>
-                                            <span className="text-[1.5rem] font-bold capitalize" style={{color:"#032d60"}}>{generateWelcomeMessage(modalData)}</span>
+                                            <span className="text-[1.5rem] font-bold capitalize" style={{ color: "#032d60" }}>{generateWelcomeMessage(modalData)}</span>
 
+                                            <div className="mt-[8px]">
+                                                <span>{modalData.description}</span>
+
+                                                <div className="my-[8px]">
+                                                    <span>Favorite Trailhead badge : <a href={modalData.trailheadBadge} target="_blank" className="text-[#032d60] hover:underline hover:text-[#032d60]">{modalData.trailheadText}</a></span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </Grid>
                                     <Grid xs={5} className="flex justify-center items-center">

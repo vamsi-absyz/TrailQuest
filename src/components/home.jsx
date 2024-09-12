@@ -9,7 +9,7 @@ import { Carousels } from "./carousel";
 import { Modal } from "./modal";
 import { CharcaterInfo } from "./charcaterInfo";
 import { useNavigate } from "react-router-dom";
-
+import Logo from '../assets/images/absyz-logo-big.png'
 
 export const Home = () => {
   const [selectedTag, setSelectedTag] = useState(null);
@@ -39,8 +39,12 @@ export const Home = () => {
   return (
     <Box
       sx={{ flexGrow: 1 }}
-      className="min-h-[100vh] sm:p-[4rem] w-full flex justify-center items-center"
+      className="min-h-[100vh] sm:px-[4rem] sm:pb-[4rem] w-full flex flex-col justify-center items-center"
     >
+
+      <div className="flex justify-start items-center w-full">
+        <img src={Logo} alt="logo" className="w-[110px] " />
+      </div>
       <Grid container spacing={2} className="m-auto h-full w-full !my-[1rem]">
         {/* Make the Chip group responsive */}
         <Grid
@@ -51,21 +55,21 @@ export const Home = () => {
           style={{ gap: "10px" }} // Adds spacing between chips for better mobile view
         >
           <Chip.Group className="">
-            <Group className="flex justify-center items-center p-[40px] sm:p-0" gap={10} style={{ flexWrap: "" }}>
+            <Group className="flex justify-center items-center px-[40px] pb-[40px] pt-[20px] sm:p-0" gap={10} style={{ flexWrap: "" }}>
               {characterData.map((character) => (
                 <div key={character.id} className="flex justify-center items-center !sm:flex-row flex-wrap w-full sm:w-auto flex-row">
                   {character.tags.map((tag, index) => (
                     <div key={index} className="m-[4px] sm:mx-[4px]">
                       <Chip
-                        icon={selectedTag === tag && isModalOpen ? <CheckIcon className="!w-[16px] !h-[16px]" /> : null}
-                        
+                        icon={null}
+                        checked={false}
                         value={tag}
                         color="indigo"
                         variant="outline"
-                        className="chips capitalize font-medium bg-[#fff]"
+                        className="chips capitalize text-[#032d60] font-medium bg-[#fff]"
                         onClick={() => handleClick(tag, character.id)}
                       >
-                        {tag}
+                        #{tag}
                       </Chip>
                     </div>
                   ))}

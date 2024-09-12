@@ -19,6 +19,7 @@ export const characterData = [
     title: "SaaSy",
     image: Sassy,
     pronoun: "They/Them",
+    trailheadText: "Salesforce Culture and Values",
     trailheadBadge:
       "https://trailhead.salesforce.com/content/learn/modules/roles-and-responsibilities-for-marketing-teams?trail_id=personalize_customer_journeys_marketing_cloud?&utm_source=salesforce&utm_medium=blog-360&utm_campaign=trailblazer_blog&utm_content=tbc_apr24_salesforcecharacters&icid=SFBLOG:tbc-blog:7010M0000025ltGQAQ&_ga=2.232064219.536382854.1726036616-890700713.1724145521",
   },
@@ -37,6 +38,7 @@ export const characterData = [
     title: "Astro Nomical",
     image: Astro,
     pronoun: "They/Them",
+    trailheadText: "Get Started with Trailhead",
     trailheadBadge:
       "https://trailhead.salesforce.com/content/learn/modules/roles-and-responsibilities-for-marketing-teams?trail_id=personalize_customer_journeys_marketing_cloud?&utm_source=salesforce&utm_medium=blog-360&utm_campaign=trailblazer_blog&utm_content=tbc_apr24_salesforcecharacters&icid=SFBLOG:tbc-blog:7010M0000025ltGQAQ&_ga=2.232064219.536382854.1726036616-890700713.1724145521",
   },
@@ -54,6 +56,7 @@ export const characterData = [
     title: "Einstein",
     image: Einstein,
     pronoun: "He/Him",
+    trailheadText: "Get Smart with Salesforce Einstein",
     trailheadBadge:
       "https://trailhead.salesforce.com/content/learn/modules/roles-and-responsibilities-for-marketing-teams?trail_id=personalize_customer_journeys_marketing_cloud?&utm_source=salesforce&utm_medium=blog-360&utm_campaign=trailblazer_blog&utm_content=tbc_apr24_salesforcecharacters&icid=SFBLOG:tbc-blog:7010M0000025ltGQAQ&_ga=2.232064219.536382854.1726036616-890700713.1724145521",
   },
@@ -64,6 +67,7 @@ export const characterData = [
     title: "Codey the Bear",
     image: Codey,
     pronoun: "He/Him",
+    trailheadText: "Develop Apps for Slack",
     trailheadBadge:
       "https://trailhead.salesforce.com/content/learn/modules/roles-and-responsibilities-for-marketing-teams?trail_id=personalize_customer_journeys_marketing_cloud?&utm_source=salesforce&utm_medium=blog-360&utm_campaign=trailblazer_blog&utm_content=tbc_apr24_salesforcecharacters&icid=SFBLOG:tbc-blog:7010M0000025ltGQAQ&_ga=2.232064219.536382854.1726036616-890700713.1724145521",
   },
@@ -80,6 +84,7 @@ export const characterData = [
     title: "Cloudy the Goat",
     image: Cloudy,
     pronoun: "She/Her",
+    trailheadText: "Flow Builder Logic",
     trailheadBadge:
       "https://trailhead.salesforce.com/content/learn/modules/roles-and-responsibilities-for-marketing-teams?trail_id=personalize_customer_journeys_marketing_cloud?&utm_source=salesforce&utm_medium=blog-360&utm_campaign=trailblazer_blog&utm_content=tbc_apr24_salesforcecharacters&icid=SFBLOG:tbc-blog:7010M0000025ltGQAQ&_ga=2.232064219.536382854.1726036616-890700713.1724145521",
   },
@@ -90,6 +95,7 @@ export const characterData = [
     title: "Brandy the Fox",
     image: Brandy,
     pronoun: "She/Her",
+    trailheadText: "Roles and Responsibilities for Marketing Teams",
     trailheadBadge:
       "https://trailhead.salesforce.com/content/learn/modules/roles-and-responsibilities-for-marketing-teams?trail_id=personalize_customer_journeys_marketing_cloud?&utm_source=salesforce&utm_medium=blog-360&utm_campaign=trailblazer_blog&utm_content=tbc_apr24_salesforcecharacters&icid=SFBLOG:tbc-blog:7010M0000025ltGQAQ&_ga=2.232064219.536382854.1726036616-890700713.1724145521",
   },
@@ -100,6 +106,7 @@ export const characterData = [
     title: "Ruth the Elephant",
     image: Elephant,
     pronoun: "They/Them",
+    trailheadText: "Advanced Apex Specialist",
     trailheadBadge:
       "https://trailhead.salesforce.com/content/learn/modules/roles-and-responsibilities-for-marketing-teams?trail_id=personalize_customer_journeys_marketing_cloud?&utm_source=salesforce&utm_medium=blog-360&utm_campaign=trailblazer_blog&utm_content=tbc_apr24_salesforcecharacters&icid=SFBLOG:tbc-blog:7010M0000025ltGQAQ&_ga=2.232064219.536382854.1726036616-890700713.1724145521",
   },
@@ -110,6 +117,7 @@ export const characterData = [
     title: "Zig the Zebra",
     image: Zebra,
     pronoun: "She/Her",
+    trailheadText: "Sales Cloud Basics",
     trailheadBadge:
       "https://trailhead.salesforce.com/content/learn/modules/roles-and-responsibilities-for-marketing-teams?trail_id=personalize_customer_journeys_marketing_cloud?&utm_source=salesforce&utm_medium=blog-360&utm_campaign=trailblazer_blog&utm_content=tbc_apr24_salesforcecharacters&icid=SFBLOG:tbc-blog:7010M0000025ltGQAQ&_ga=2.232064219.536382854.1726036616-890700713.1724145521",
   },
@@ -120,6 +128,7 @@ export const characterData = [
     title: "Koa the Dog",
     image: Dog,
     pronoun: "He/Him",
+    trailheadText: "Salesforce Essentials for Small Business",
     trailheadBadge:
       "https://trailhead.salesforce.com/content/learn/modules/roles-and-responsibilities-for-marketing-teams?trail_id=personalize_customer_journeys_marketing_cloud?&utm_source=salesforce&utm_medium=blog-360&utm_campaign=trailblazer_blog&utm_content=tbc_apr24_salesforcecharacters&icid=SFBLOG:tbc-blog:7010M0000025ltGQAQ&_ga=2.232064219.536382854.1726036616-890700713.1724145521",
   },
@@ -131,6 +140,7 @@ export const characterData = [
     title: "Flo the Flying Squirrel",
     image: Squirrel,
     pronoun: "He/Him",
+    trailheadText: "Learn More About Salesforce Flow",
     trailheadBadge:
       "https://trailhead.salesforce.com/content/learn/modules/roles-and-responsibilities-for-marketing-teams?trail_id=personalize_customer_journeys_marketing_cloud?&utm_source=salesforce&utm_medium=blog-360&utm_campaign=trailblazer_blog&utm_content=tbc_apr24_salesforcecharacters&icid=SFBLOG:tbc-blog:7010M0000025ltGQAQ&_ga=2.232064219.536382854.1726036616-890700713.1724145521",
   },
@@ -141,6 +151,7 @@ export const characterData = [
     title: "Appy the Bobcat",
     image: Bobcat,
     pronoun: "She/her",
+    trailheadText: "Salesforce Partner Community",
     trailheadBadge:
       "https://trailhead.salesforce.com/content/learn/modules/roles-and-responsibilities-for-marketing-teams?trail_id=personalize_customer_journeys_marketing_cloud?&utm_source=salesforce&utm_medium=blog-360&utm_campaign=trailblazer_blog&utm_content=tbc_apr24_salesforcecharacters&icid=SFBLOG:tbc-blog:7010M0000025ltGQAQ&_ga=2.232064219.536382854.1726036616-890700713.1724145521",
   },
@@ -151,6 +162,7 @@ export const characterData = [
     title: "Max the Mule",
     image: Mule,
     pronoun: "He/Him",
+    trailheadText: "Data Integration Specialist",
     trailheadBadge:
       "https://trailhead.salesforce.com/content/learn/modules/roles-and-responsibilities-for-marketing-teams?trail_id=personalize_customer_journeys_marketing_cloud?&utm_source=salesforce&utm_medium=blog-360&utm_campaign=trailblazer_blog&utm_content=tbc_apr24_salesforcecharacters&icid=SFBLOG:tbc-blog:7010M0000025ltGQAQ&_ga=2.232064219.536382854.1726036616-890700713.1724145521",
   },

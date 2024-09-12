@@ -52,11 +52,11 @@ export const CharcaterInfo = () => {
     <>
       {modalData && (
         <div className="mt-10 p-5">
-          <span onClick={()=>navigate("/")} >
-            <ArrowBackIcon sx={{marginBottom:"20px"}} />
+          <span onClick={() => navigate("/")} >
+            <ArrowBackIcon sx={{ marginBottom: "20px" }} />
           </span>
           <div className="pl-[1rem]">
-          
+
             <Grid container spacing={2}>
               <Grid xs={12} className="flex justify-center items-center">
                 <img
@@ -67,9 +67,17 @@ export const CharcaterInfo = () => {
               </Grid>
               <Grid xs={12}>
                 <div>
-                  <span  className="text-[1.2rem] font-bold capitalize" style={{color:"#032d60"}}>
+                  <span className="text-[1.2rem] font-bold capitalize" style={{ color: "#032d60" }}>
                     {generateWelcomeMessage(modalData)}
                   </span>
+
+                  <div className="mt-[8px]">
+                    <span>{modalData.description}</span>
+
+                    <div className="my-[8px]">
+                      <span>Favorite Trailhead badge : <a href={modalData.trailheadBadge} target="_blank" className="text-[#032d60] hover:underline hover:text-[#032d60]">{modalData.trailheadText}</a></span>
+                    </div>
+                  </div>
                 </div>
               </Grid>
             </Grid>
