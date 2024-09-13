@@ -29,6 +29,7 @@ const modalVariants = {
 export const Modal = ({ isModalOpen, handleCloseModal, selectedTag, selectedId }) => {
     const [modalData, setModalData] = useState([]);
     useEffect(() => {
+        //find which id is repeating then use taht id for fiter the data.
         if (selectedId && selectedTag) {
             const filterData = characterData.filter((item) => item.id === selectedId);
             setModalData(filterData[0])
