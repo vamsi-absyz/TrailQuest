@@ -31,22 +31,53 @@ const modalVariants = {
 
 export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
   const [modalData, setModalData] = useState(null);
+  const [playConfetti, setPlayConfetti] = useState(false);
+  const [confettiKey, setConfettiKey] = useState(0);
+
+  const handleDoItAgain = () => {
+    setPlayConfetti(false); // Reset confetti animation
+    setTimeout(() => {
+      setPlayConfetti(true); // Trigger animation again after reset
+    }, 100); // Small delay to ensure reset
+  };
   const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (isModalOpen) {
+      setPlayConfetti(true); // Trigger confetti animation
+    }
+  }, [isModalOpen]);
+  console.log(selectedTag, "tagselected")
   useEffect(() => {
     if (selectedTag && selectedTag.length > 0) {
       // Collect IDs from selectedTag and filter data based on the IDs
-      const ids = selectedTag.map((item) => item.id);
+      function getHighestFrequencyId(array) {
+        // Step 1: Create a frequency map for the IDs
+        const idFrequencyMap = array.reduce((acc, obj) => {
+          const id = obj.id;
+          acc[id] = (acc[id] || 0) + 1;
+          return acc;
+        }, {});
 
-      // Filter characterData for matching IDs
-      const filteredData = characterData.filter((item) =>
-        ids.includes(item.id)
-      );
+        // Step 2: Find the ID with the highest frequency
+        const highestFrequencyId = Object.keys(idFrequencyMap)
+          .map(Number) // Convert keys to numbers for comparison
+          .reduce((highestId, currentId) => {
+            // Compare frequencies
+            if (idFrequencyMap[currentId] > (idFrequencyMap[highestId] || 0)) {
+              return currentId;
+            }
+            return highestId;
+          }, -1); // Initial value is -1
 
-      // If data is found, set it for modal
-      if (filteredData.length > 0) {
-        // Assuming you want to display the first matching entry, or apply some logic here
-        setModalData(filteredData[0]);
+        return highestFrequencyId;
       }
+      const data = getHighestFrequencyId(selectedTag);
+
+      const filterData = characterData.filter((arr) => arr.id === data);
+      console.log(filterData, "filterdata");
+      setModalData(filterData);
+      console.log(data, "dddddddddddd");
     }
   }, [selectedTag]);
 
@@ -75,7 +106,8 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
       {modalData && (
         <AnimatePresence>
           <motion.div
-            className="fixed inset-0 z-40 bg-black bg-opacity-50 backdrop-blur-sm"
+            className="fixed inset-0 z-40 "
+            style={{ backgroundColor: "rgba(242, 243, 243, 0.9)" }}
             variants={backdropVariants}
             initial="hidden"
             animate="visible"
@@ -102,20 +134,18 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                   onClick={handleCloseModal}
                   sx={{
                     backgroundColor: "#1776E5",
-                    '&:hover': {
-                      backgroundColor: "#1776E5" // Optional: Change color on hover 
-                    }
+                    padding:"6px",
+                    "&:hover": {
+                      backgroundColor: "#1776E5", // Optional: Change color on hover
+                    },
                   }}
                 >
-                  <CloseIcon sx={{ fill: "white", fontSize: "0.8rem" }} />
+                  <CloseIcon sx={{ fill: "#ffffff", fontSize: "0.8rem" }} />
                 </IconButton>
-
               </div>
 
-              <div className="flex px-6 flex-col justify-center items-center text-center ">
-                <ConfettiBackground containerRef={containerRef} />
-                <div ref={containerRef} className="relative z-10">
-
+              <div className="flex flex-col justify-center items-center text-center px-[18px]">
+                <div>
                   <h1
                     style={{
                       color: "#1776E5",
@@ -133,18 +163,27 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                   <span className="text-[1rem]" style={{ color: "#17233A" }}>
                     {generateWelcomeMessage(modalData)}
                   </span>
-                </div> */}
-                <Grid className="flex justify-center items-center mt-4">
-
+                </div>*/}
+                <Grid
+                  className="flex justify-center items-center mt-4 relative z-10"
+                  ref={containerRef}
+                >
+                  {playConfetti && (
+                    <ConfettiBackground
+                      key={confettiKey}
+                      containerRef={containerRef}
+                    />
+                  )}
                   <img
-                    src={modalData.image}
-                    alt={modalData.title}
+                    src={modalData[0].image}
+                    alt={modalData[0].title}
                     className="!w-[180px] !h-[200px] object-contain"
                   />
                 </Grid>
 
                 <Grid className="flex gap-2 mt-4">
                   <button
+                    onClick={handleDoItAgain}
                     style={{
                       backgroundColor: "#1776E5",
                       borderRadius: "5px",

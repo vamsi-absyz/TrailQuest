@@ -13,12 +13,18 @@ export const WpShare = ({ modalData }) => {
         if (modalData) {
             setShareData({
                 ...shareData,
-                image: modalData?.image
+                image: modalData[0].image
             });
         }
     }, [modalData]);
 
-    const title = `${shareData.title}! \n\n${shareData.content} - ${modalData.title}
+    console.log(shareData, "shareDatashareDatashareData")
+    console.log(modalData, "modalDatamodalDatamodalDatamodalData")
+
+
+    const validUrl = shareData.image || "https://picsum.photos/536/354";
+
+    const title = `${shareData.title}! \n\n${shareData.content} - ${modalData[0].title}
     \n\n ${shareData.image}`;
 
     return (
@@ -35,7 +41,7 @@ export const WpShare = ({ modalData }) => {
             endIcon={<WhatsappIcon size={20} round />}
         >
             <WhatsappShareButton
-                url={shareData.image}
+                url={modalData[0].image}
                 title={title}
                 separator=""
                 className="Demo__some-network__share-button"

@@ -23,7 +23,11 @@
     "react-lottie": "^1.2.4",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.26.2",
+<<<<<<< HEAD
     "react-share": "^5.1.0",
+=======
+    "react-share-social": "^0.1.60",
+>>>>>>> new-layout
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1"
   },
