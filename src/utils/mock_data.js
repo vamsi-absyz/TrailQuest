@@ -1,15 +1,15 @@
-import Sassy from "../assets/images/Sassy.jpg";
-import Astro from "../assets/images/Astro.jpg";
-import Bobcat from "../assets/images/Bobcat.jpg";
-import Brandy from "../assets/images/Brandy.jpg";
-import Cloudy from "../assets/images/Cloudy.jpg";
-import Codey from "../assets/images/Codey.jpg";
-import Dog from "../assets/images/Dog.jpg";
-import Einstein from "../assets/images/Einstien.jpg";
-import Mule from "../assets/images/Max-the-mule.jpg";
-import Elephant from "../assets/images/Ruth-Elephant.jpg";
-import Squirrel from "../assets/images/squirrel.jpg";
-import Zebra from "../assets/images/Zebra.jpg";
+// import Sassy from "../assets/images/Sassy.jpg";
+// import Astro from "../assets/images/Astro.jpg";
+// import Bobcat from "../assets/images/Bobcat.jpg";
+// import Brandy from "../assets/images/Brandy.jpg";
+// import Cloudy from "../assets/images/Cloudy.jpg";
+// import Codey from "../assets/images/Codey.jpg";
+// import Dog from "../assets/images/Dog.jpg";
+// import Einstein from "../assets/images/Einstien.jpg";
+// import Mule from "../assets/images/Max-the-mule.jpg";
+// import Elephant from "../assets/images/Ruth-Elephant.jpg";
+// import Squirrel from "../assets/images/squirrel.jpg";
+// import Zebra from "../assets/images/Zebra.jpg";
 
 export const characterData = [
   {
@@ -17,7 +17,7 @@ export const characterData = [
     tags: ["social", "extroverted", "encouraging", "rebellious", "independent"],
     description: "Representative of The End of Software",
     title: "SaaSy",
-    image: Sassy,
+    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Sassy.png",
     pronoun: "They/Them",
     trailheadText: "Salesforce Culture and Values",
     trailheadBadge:
@@ -36,7 +36,7 @@ export const characterData = [
     ],
     description: "Representative of community and inclusion",
     title: "Astro Nomical",
-    image: Astro,
+    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Astro.png",
     pronoun: "They/Them",
     trailheadText: "Get Started with Trailhead",
     trailheadBadge:
@@ -54,7 +54,7 @@ export const characterData = [
     description:
       "Representative of Einstein Product and AI Innovation at Salesforce",
     title: "Einstein",
-    image: Einstein,
+    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Einstien.png",
     pronoun: "He/Him",
     trailheadText: "Get Smart with Salesforce Einstein",
     trailheadBadge:
@@ -65,7 +65,7 @@ export const characterData = [
     tags: ["charming", "outgoing", "bold", "fearless", "unexpected"],
     description: "Representative of Salesforce Developers",
     title: "Codey the Bear",
-    image: Codey,
+    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Codey.png",
     pronoun: "He/Him",
     trailheadText: "Develop Apps for Slack",
     trailheadBadge:
@@ -82,7 +82,7 @@ export const characterData = [
     ],
     description: "Representative of Salesforce Admins",
     title: "Cloudy the Goat",
-    image: Cloudy,
+    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrationsCloudy.png",
     pronoun: "She/Her",
     trailheadText: "Flow Builder Logic",
     trailheadBadge:
@@ -93,7 +93,7 @@ export const characterData = [
     tags: ["Adaptable", "analytical", "adventurous", "approachable"],
     description: "Representative of Salesforce Marketers",
     title: "Brandy the Fox",
-    image: Brandy,
+    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Brandy.png",
     pronoun: "She/Her",
     trailheadText: "Roles and Responsibilities for Marketing Teams",
     trailheadBadge:
@@ -104,7 +104,7 @@ export const characterData = [
     tags: ["Responsible", "universal", "technical", "humble"],
     description: "Representative of Salesforce Architects",
     title: "Ruth the Elephant",
-    image: Elephant,
+    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Ruth.png",
     pronoun: "They/Them",
     trailheadText: "Advanced Apex Specialist",
     trailheadBadge:
@@ -115,7 +115,7 @@ export const characterData = [
     tags: ["Brave", "resilient", "strategic"],
     description: "Representative of the Salesblazer Community",
     title: "Zig the Zebra",
-    image: Zebra,
+    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2023/05/2023-05-360Blog-ContextualDriver-Zig-567x844-1.png",
     pronoun: "She/Her",
     trailheadText: "Sales Cloud Basics",
     trailheadBadge:
@@ -126,7 +126,7 @@ export const characterData = [
     tags: ["reliable", "spirited", "playful", "kind", "adoring"],
     description: "Representative of love and longevity",
     title: "Koa the Dog",
-    image: Dog,
+    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Koa.png",
     pronoun: "He/Him",
     trailheadText: "Salesforce Essentials for Small Business",
     trailheadBadge:
@@ -138,7 +138,7 @@ export const characterData = [
     description:
       "Representative of Salesforce Flow and its passionate fanbase of Flownatics, automation, agility, and community",
     title: "Flo the Flying Squirrel",
-    image: Squirrel,
+    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2023/03/2023-03-360Blog-Flo-567-844.png",
     pronoun: "He/Him",
     trailheadText: "Learn More About Salesforce Flow",
     trailheadBadge:
@@ -149,7 +149,7 @@ export const characterData = [
     tags: ["Motivated", "entrepreneurial"],
     description: "Representative of Partners",
     title: "Appy the Bobcat",
-    image: Bobcat,
+    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Appy.png",
     pronoun: "She/her",
     trailheadText: "Salesforce Partner Community",
     trailheadBadge:
@@ -160,7 +160,7 @@ export const characterData = [
     tags: ["Fun", "resourceful"],
     description: "Representative of all things MuleSoft",
     title: "Max the Mule",
-    image: Mule,
+    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Max.png",
     pronoun: "He/Him",
     trailheadText: "Data Integration Specialist",
     trailheadBadge:

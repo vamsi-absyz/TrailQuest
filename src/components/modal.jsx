@@ -4,6 +4,7 @@ import { characterData } from "../utils/mock_data"; // Assuming this is your dat
 import { Grid, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { ConfettiBackground } from "./ConfettiBackground";
+import { EmailShare, WpShare } from "./share";
 
 
 const backdropVariants = {
@@ -49,25 +50,25 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
     }
   }, [selectedTag]);
 
-  const generateWelcomeMessage = (character) => {
-    if (!character) return "";
+  // const generateWelcomeMessage = (character) => {
+  //   if (!character) return "";
 
-    let pronounMessage;
-    switch (character.pronoun) {
-      case "He/Him":
-        pronounMessage = `Say hello to the one and only, the unstoppable force, the legend himself - ${character.title}!`;
-        break;
-      case "She/Her":
-        pronounMessage = `Here comes the queen of awesomeness, the brilliant and bold ${character.title}!`;
-        break;
-      case "They/Them":
-        pronounMessage = `${character.title} is here, and trust me, you’re in for an inclusive, adventurous ride with them!`;
-        break;
-      default:
-        pronounMessage = `${character.title} has arrived, and the excitement just went through the roof!`;
-    }
-    return `${pronounMessage}`;
-  };
+  //   let pronounMessage;
+  //   switch (character.pronoun) {
+  //     case "He/Him":
+  //       pronounMessage = `Say hello to the one and only, the unstoppable force, the legend himself - ${character.title}!`;
+  //       break;
+  //     case "She/Her":
+  //       pronounMessage = `Here comes the queen of awesomeness, the brilliant and bold ${character.title}!`;
+  //       break;
+  //     case "They/Them":
+  //       pronounMessage = `${character.title} is here, and trust me, you’re in for an inclusive, adventurous ride with them!`;
+  //       break;
+  //     default:
+  //       pronounMessage = `${character.title} has arrived, and the excitement just went through the roof!`;
+  //   }
+  //   return `${pronounMessage}`;
+  // };
   console.log(modalData, "modaldata");
   return (
     <>
@@ -90,49 +91,51 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
             className="fixed inset-0 z-50 flex justify-center items-center"
           >
             <div
-              className="bg-white px-6 rounded-lg shadow-lg relative"
+              className="bg-white rounded-lg shadow-lg relative"
               style={{
                 width: "430px",
                 height: "430px",
               }}
             >
-              <div className="flex justify-end items-end w-full my-[10px]">
-              <IconButton 
-  onClick={handleCloseModal} 
-  sx={{ 
-    backgroundColor: "#1776E5", 
-    '&:hover': { 
-      backgroundColor: "#1776E5" // Optional: Change color on hover 
-    }
-  }}
->
-  <CloseIcon sx={{ color: "white" }} />
-</IconButton>
+              <div className="flex justify-end items-end w-full my-[10px] px-[10px]">
+                <IconButton
+                  onClick={handleCloseModal}
+                  sx={{
+                    backgroundColor: "#1776E5",
+                    '&:hover': {
+                      backgroundColor: "#1776E5" // Optional: Change color on hover 
+                    }
+                  }}
+                >
+                  <CloseIcon sx={{ fill: "white", fontSize: "0.8rem" }} />
+                </IconButton>
 
               </div>
 
-              <div className="flex flex-col justify-center items-center text-center ">
-              <ConfettiBackground containerRef={containerRef} />
-              <div ref={containerRef} className="relative z-10">
+              <div className="flex px-6 flex-col justify-center items-center text-center ">
+                <ConfettiBackground containerRef={containerRef} />
+                <div ref={containerRef} className="relative z-10">
 
                   <h1
                     style={{
                       color: "#1776E5",
                       fontSize: "30px",
                       fontWeight: "bold",
+                      margin: "0 0 4px 0"
                     }}
                   >
                     Congratulations
                   </h1>
+                  <span className="text-[14px] text-[#17233A]">You’ve chosen your top traits, and we’ve found the perfect mascot to match</span>
                 </div>
 
-                <div className="flex justify-center text-center ">
+                {/* <div className="flex justify-center text-center ">
                   <span className="text-[1rem]" style={{ color: "#17233A" }}>
                     {generateWelcomeMessage(modalData)}
                   </span>
-                </div>
+                </div> */}
                 <Grid className="flex justify-center items-center mt-4">
-                
+
                   <img
                     src={modalData.image}
                     alt={modalData.title}
@@ -146,29 +149,21 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                       backgroundColor: "#1776E5",
                       borderRadius: "5px",
                       color: "white",
-                      height: "35px",
                       width: "120px",
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
+                      padding: "4px 14px"
+
                     }}
                   >
                     Do it again
                   </button>
 
-                  <button
-                    style={{
-                      backgroundColor: "#30335C",
-                      borderRadius: "5px",
-                      color: "white",
-                      height: "35px",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    Share
-                  </button>
+                  {/* <Share modalData={modalData} /> */}
+                  <WpShare modalData={modalData} />
+
+                  {/* <EmailShare modalData={modalData} /> */}
                 </Grid>
               </div>
             </div>
