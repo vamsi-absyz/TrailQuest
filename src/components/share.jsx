@@ -18,10 +18,6 @@ export const WpShare = ({ modalData }) => {
         }
     }, [modalData]);
 
-    console.log(shareData, "shareDatashareDatashareData")
-    console.log(modalData, "modalDatamodalDatamodalDatamodalData")
-
-
     const validUrl = shareData.image || "https://picsum.photos/536/354";
 
     const title = `${shareData.title}! \n\n${shareData.content} - ${modalData[0].title}

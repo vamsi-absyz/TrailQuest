@@ -19,11 +19,6 @@ const modalVariants = {
     opacity: 1,
     scale: 1,
     transition: {
-      // type: 'spring',
-      // stiffness: 300,
-      // damping: 20,
-      // duration: 0.5,
-      // ease: [0.6, 0.05, -0.01, 0.9],
     },
   },
   exit: { opacity: 0, scale: 0.5, transition: { duration: 0.3 } },
@@ -47,7 +42,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
       setPlayConfetti(true); // Trigger confetti animation
     }
   }, [isModalOpen]);
-  console.log(selectedTag, "tagselected")
+
   useEffect(() => {
     if (selectedTag && selectedTag.length > 0) {
       // Collect IDs from selectedTag and filter data based on the IDs
@@ -75,9 +70,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
       const data = getHighestFrequencyId(selectedTag);
 
       const filterData = characterData.filter((arr) => arr.id === data);
-      console.log(filterData, "filterdata");
       setModalData(filterData);
-      console.log(data, "dddddddddddd");
     }
   }, [selectedTag]);
 
@@ -100,7 +93,6 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
   //   }
   //   return `${pronounMessage}`;
   // };
-  console.log(modalData, "modaldata");
   return (
     <>
       {modalData && (
@@ -134,7 +126,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                   onClick={handleCloseModal}
                   sx={{
                     backgroundColor: "#1776E5",
-                    padding:"6px",
+                    padding: "6px",
                     "&:hover": {
                       backgroundColor: "#1776E5", // Optional: Change color on hover
                     },
@@ -164,21 +156,27 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                     {generateWelcomeMessage(modalData)}
                   </span>
                 </div>*/}
+
                 <Grid
                   className="flex justify-center items-center mt-4 relative z-10"
                   ref={containerRef}
                 >
-                  {playConfetti && (
-                    <ConfettiBackground
-                      key={confettiKey}
-                      containerRef={containerRef}
+                  <div className="animation z-[10]">
+                    {playConfetti && (
+                      <ConfettiBackground
+                        key={confettiKey}
+                        containerRef={containerRef}
+                      />
+                    )}
+                  </div>
+
+                  <div className="img z-[50]">
+                    <img
+                      src={modalData[0].image}
+                      alt={modalData[0].title}
+                      className="!w-[180px] !h-[200px] object-contain"
                     />
-                  )}
-                  <img
-                    src={modalData[0].image}
-                    alt={modalData[0].title}
-                    className="!w-[180px] !h-[200px] object-contain"
-                  />
+                  </div>
                 </Grid>
 
                 <Grid className="flex gap-2 mt-4">
@@ -188,7 +186,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                       backgroundColor: "#1776E5",
                       borderRadius: "5px",
                       color: "white",
-                      width: "120px",
+                      fontSize: "14px",
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
@@ -199,7 +197,6 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                     Do it again
                   </button>
 
-                  {/* <Share modalData={modalData} /> */}
                   <WpShare modalData={modalData} />
 
                   {/* <EmailShare modalData={modalData} /> */}

@@ -5,6 +5,7 @@ import { createTheme, MantineProvider } from '@mantine/core';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CharcaterInfo } from './components/charcaterInfo';
 import SignIn from './pages/signin';
+import ProtectedRoute from './components/ProtectedRoutes';
 
 
 const theme = createTheme({
@@ -18,8 +19,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<SignIn />} />
-          <Route path='/home' element={<Home />} />
-          <Route path='/character/:id' element={<CharcaterInfo />} />
+          <Route element={<ProtectedRoute allowedRoles="USER" />}>
+            <Route path='/home' element={<Home />} />
+            <Route path='/character/:id' element={<CharcaterInfo />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </MantineProvider>

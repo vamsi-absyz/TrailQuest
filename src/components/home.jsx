@@ -30,7 +30,7 @@ export const Home = () => {
   const handleClick = (tag, id) => {
     // Create a tag object
     const tagObject = { tag, id };
-  
+
     // Check if the tag is already selected
     if (selectedTag.some(t => t.tag === tag)) {
       // Remove the tag object from the array
@@ -41,27 +41,23 @@ export const Home = () => {
       const newSelectedTags = [...selectedTag, tagObject];
       setSelectedTag(newSelectedTags);
     }
-  
+
     // Open the modal if exactly 6 tags are selected
     if (selectedTag.length === 5 && !selectedTag.some(t => t.tag === tag)) {
       setIsModalOpen(true);
     }
-  
+
     // Navigate if not on tablet or larger screen
-    else if (!isTabletOrLarger) {
+    if (!isTabletOrLarger && selectedTag.length === 5) {
       navigate(`/character/${id}`);
     }
   };
-  
-
-
-
-  console.log(selectedTag, "selectedTagselectedTag");
 
   const handleCloseModal = () => {
     setSelectedId("");
     setIsModalOpen(false);
     setSelectedTag([]);
+    window.location.reload();
   };
 
   return (
@@ -93,7 +89,8 @@ export const Home = () => {
                       <Chip
                         size="xs"
                         icon={null}
-                        checked={selectedTag.includes(item.tag)} // Check if the tag is selected
+                        checked={selectedTag.some(t => t.tag === item.tag)}
+                        // checked={selectedTag.includes(item.tag)} // Check if the tag is selected
                         value={item.tag}
                         className={`chips capitalize text-[#032d60] font-medium bg-[#fff] ${selectedTag.includes(item.tag) ? 'bg-teal-500 text-white' : ''
                           }`}

@@ -1,10 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Checkbox from '@mui/material/Checkbox';
-import CssBaseline from '@mui/material/CssBaseline';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Divider from '@mui/material/Divider';
 import FormLabel from '@mui/material/FormLabel';
 import FormControl from '@mui/material/FormControl';
 import Link from '@mui/material/Link';
@@ -13,8 +9,8 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
-// import { SitemarkIcon } from './CustomIcons';
-// import AppTheme from '../shared-theme/AppTheme';
+import { useNavigate } from 'react-router';
+import Cookies from 'js-cookie';
 
 const Card = styled(MuiCard)(({ theme }) => ({
     display: 'flex',
@@ -55,32 +51,33 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
 }));
 
 export default function SignIn(props) {
+    const navigate = useNavigate();
     const [emailError, setEmailError] = React.useState(false);
     const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
-    const [passwordError, setPasswordError] = React.useState(false);
-    const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
-    const [open, setOpen] = React.useState(false);
+    const [companyError, setcompanyError] = React.useState(false);
+    const [companyErrorMessage, setcompanyErrorMessage] = React.useState('');
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
+        if (validateInputs()) {
+            const data = new FormData(event.currentTarget);
+
+            await storeCookies(data)
+            navigate("/home")
+        } else {
+            console.error("Validation failed");
+        }
     };
+
+    const storeCookies = (data) => {
+        Cookies.set('email', data.get('email'))
+        Cookies.set('company', data.get('company'))
+    }
+
 
     const validateInputs = () => {
         const email = document.getElementById('email');
-        const password = document.getElementById('password');
+        const company = document.getElementById('company');
 
         let isValid = true;
 
@@ -93,13 +90,13 @@ export default function SignIn(props) {
             setEmailErrorMessage('');
         }
 
-        if (!password.value || password.value.length < 6) {
-            setPasswordError(true);
-            setPasswordErrorMessage('Password must be at least 6 characters long.');
+        if (!company.value || company.value.length < 2) {
+            setcompanyError(true);
+            setcompanyErrorMessage('Company must be at least 6 characters long.');
             isValid = false;
         } else {
-            setPasswordError(false);
-            setPasswordErrorMessage('');
+            setcompanyError(false);
+            setcompanyErrorMessage('');
         }
 
         return isValid;
@@ -108,7 +105,7 @@ export default function SignIn(props) {
     return (
 
         <>
-            <CssBaseline enableColorScheme />
+            {/* <CssBaseline enableColorScheme /> */}
             <SignInContainer direction="column" justifyContent="space-between">
                 {/* <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} /> */}
                 <Card variant="outlined">
@@ -116,7 +113,7 @@ export default function SignIn(props) {
                     <Typography
                         component="h1"
                         variant="h4"
-                        sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
+                        sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)', margin: "0 0 10px 0" }}
                     >
                         Sign in
                     </Typography>
@@ -150,57 +147,30 @@ export default function SignIn(props) {
                             />
                         </FormControl>
                         <FormControl>
-                            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <FormLabel htmlFor="password">Password</FormLabel>
-                                <Link
-                                    component="button"
-                                    onClick={handleClickOpen}
-                                    variant="body2"
-                                    sx={{ alignSelf: 'baseline' }}
-                                >
-                                    Forgot your password?
-                                </Link>
-                            </Box>
+                            <FormLabel htmlFor="company">Company</FormLabel>
                             <TextField
-                                error={passwordError}
-                                helperText={passwordErrorMessage}
-                                name="password"
-                                placeholder="••••••"
-                                type="password"
-                                id="password"
-                                autoComplete="current-password"
+                                error={companyError}
+                                helperText={companyErrorMessage}
+                                name="company"
+                                placeholder="company"
+                                type="text"
+                                id="company"
                                 autoFocus
                                 required
                                 fullWidth
                                 variant="outlined"
-                                color={passwordError ? 'error' : 'primary'}
+                                color={companyError ? 'error' : 'primary'}
                             />
                         </FormControl>
-                        <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
-                        />
-                        {/* <ForgotPassword open={open} handleClose={handleClose} /> */}
                         <Button
                             type="submit"
                             fullWidth
                             variant="contained"
                             onClick={validateInputs}
+                            className='!mt-[1rem]'
                         >
                             Sign in
                         </Button>
-                        <Typography sx={{ textAlign: 'center' }}>
-                            Don&apos;t have an account?{' '}
-                            <span>
-                                <Link
-                                    href="/material-ui/getting-started/templates/sign-in/"
-                                    variant="body2"
-                                    sx={{ alignSelf: 'center' }}
-                                >
-                                    Sign up
-                                </Link>
-                            </span>
-                        </Typography>
                     </Box>
                 </Card>
             </SignInContainer>

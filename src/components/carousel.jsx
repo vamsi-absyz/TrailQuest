@@ -5,7 +5,6 @@ import { useMediaQuery } from "@mui/material";
 
 export const Carousels = () => {
   const isTabletOrLarger = useMediaQuery('(min-width: 768px)');
-  console.log(isTabletOrLarger, "isTabletOrLarger")
   const settings = {
     infinite: true,
     speed: 500,               // Transition speed
