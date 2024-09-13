@@ -27,67 +27,32 @@ export const Home = () => {
     }
   }, []);
 
-  // const handleClick = (tag, id) => {
-  //   // If the tag is already selected, remove it; otherwise, add it
-  //   const newSelectedTags = selectedTag.includes(tag)
-  //     ? selectedTag.filter((t) => t !== tag) // Deselect the tag if it's already selected
-  //     : [...selectedTag, tag]; // Otherwise, add it
-
-  //   // Allow deselection or selection if the current number of selected tags is less than 6
-  //   if (newSelectedTags.length <= 6) {
-  //     setSelectedTag(newSelectedTags);
-  //   }
-
-  //   // Your existing logic
-  //   if (isTabletOrLarger) {
-  //     setIsModalOpen(true);
-  //   } else {
-  //     navigate(`/character/${id}`);
-  //   }
-  // };
-
-  // const handleClick = (tag, id) => {
-  //   // If the tag is already selected, allow deselecting it
-  //   if (selectedTag.includes(tag)) {
-  //     const newSelectedTags = selectedTag.filter((t) => t !== tag);
-  //     setSelectedTag(newSelectedTags);
-  //   }
-  //   // Otherwise, only add the tag if there are less than 6 selected
-  //   else if (selectedTag.length < 6) {
-  //     const newSelectedTags = [...selectedTag, tag];
-  //     setSelectedTag(newSelectedTags);
-  //   }
-
-  //   // Your existing logic for modal or navigation
-  //   if (isTabletOrLarger) {
-  //     setIsModalOpen(true);
-  //   } else {
-  //     navigate(`/character/${id}`);
-  //   }
-  // };
-
   const handleClick = (tag, id) => {
-    // If the tag is already selected, allow deselecting it
-    if (selectedTag.includes(tag)) {
-      const newSelectedTags = selectedTag.filter((t) => t !== tag);
+    // Create a tag object
+    const tagObject = { tag, id };
+  
+    // Check if the tag is already selected
+    if (selectedTag.some(t => t.tag === tag)) {
+      // Remove the tag object from the array
+      const newSelectedTags = selectedTag.filter(t => t.tag !== tag);
+      setSelectedTag(newSelectedTags);
+    } else if (selectedTag.length < 6) {
+      // Add the tag object to the array
+      const newSelectedTags = [...selectedTag, tagObject];
       setSelectedTag(newSelectedTags);
     }
-    // Otherwise, only add the tag if there are less than 6 selected
-    else if (selectedTag.length < 6) {
-      const newSelectedTags = [...selectedTag, tag];
-      setSelectedTag(newSelectedTags);
-    }
-
+  
     // Open the modal if exactly 6 tags are selected
-    if (selectedTag.length === 5 && !selectedTag.includes(tag)) {
-      // This ensures the modal opens when the 6th tag is added
+    if (selectedTag.length === 5 && !selectedTag.some(t => t.tag === tag)) {
       setIsModalOpen(true);
     }
+  
     // Navigate if not on tablet or larger screen
     else if (!isTabletOrLarger) {
       navigate(`/character/${id}`);
     }
   };
+  
 
 
 
