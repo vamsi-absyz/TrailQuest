@@ -4,6 +4,7 @@ import { Home } from './components/home';
 import { createTheme, MantineProvider } from '@mantine/core';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CharcaterInfo } from './components/charcaterInfo';
+import SignIn from './pages/signin';
 
 
 const theme = createTheme({
@@ -16,7 +17,8 @@ function App() {
     <MantineProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<SignIn />} />
+          <Route path='/home' element={<Home />} />
           <Route path='/character/:id' element={<CharcaterInfo />} />
         </Routes>
       </BrowserRouter>

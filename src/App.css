@@ -7,25 +7,51 @@
 }
 
 .chips {
-  box-shadow: rgba(107, 130, 205, 0.2) 0px 2px 8px 0px;
+  /* box-shadow: rgba(107, 130, 205, 0.2) 0px 2px 8px 0px; */
+  border: 1px solid #c0c0c0;
   border-radius: 20px;
 }
 
+.chips .mantine-Chip-iconWrapper {
+  display: none;
+}
+
 .chips label {
-  border: none !important;
-  color: #032d60;
+  padding: 0.9rem 1rem;
+  background-color: #ffffff !important;
+}
+
+.chips label:where([data-checked]) {
+  background-color: #30335c !important;
 }
 
 .chips label span {
-  color: #215ca9;
+  color: #17233a;
+}
+.chips label:where([data-checked]) span {
+  color: #ffffff;
 }
 
 .carousel_img {
-  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
   /* padding: 1rem; */
+  background-color: #ffffff !important;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
   width: 100%;
+  border-radius: 40px !important;
 }
 
 .slick-list {
-  height: 80vh !important;
+  border-radius: 40px !important;
+}
+
+.slick-slide {
+  border-radius: 40px !important;
+}
+
+.bg-img {
+  background-image: url("../src/assets/images/bg.png");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
