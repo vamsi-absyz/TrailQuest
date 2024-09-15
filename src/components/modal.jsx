@@ -98,7 +98,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
             <div
               className="bg-white rounded-lg shadow-lg relative"
               style={{
-                width: "430px",
+                width: "450px",
               }}
             >
               <div className="flex justify-end items-end w-full my-[10px] px-[10px]">

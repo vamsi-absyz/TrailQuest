@@ -23,7 +23,7 @@ export const Carousels = () => {
     <Slider {...settings} className="!rounded-[40px]">
       {characterData.map((img) => (
         <div key={img.id} className="!rounded-[40px]">
-          <img src={img.image} className={isTabletOrLarger ? "!object-contain !rounded-[40px]" : "!object-contain !rounded-[40px] "} />
+          <img src={img.image} className={isTabletOrLarger ? "!object-contain !rounded-[40px]" : "!object-contain !rounded-[40px]"} />
         </div>
       ))}
     </Slider>

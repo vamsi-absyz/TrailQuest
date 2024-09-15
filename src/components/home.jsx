@@ -5,7 +5,7 @@ import { characterData } from "../utils/mock_data";
 import { Carousels } from "./carousel";
 import { useNavigate } from "react-router-dom";
 import { Modal } from "./modal";
-
+import Logo from '../assets/images/logo.png'
 
 export const Home = () => {
   const [selectedTag, setSelectedTag] = useState([]); // Manages selected tags
@@ -66,7 +66,7 @@ export const Home = () => {
       className="bg-[#F2F3F3] bg-img w-full flex flex-col justify-start items-center bg-cover md:bg-contain"
     >
       <div className="m-auto sm:px-[2rem] md:px-[2rem] sm:pb-[2rem] md:pb-1 pt-[10px] ">
-        <Grid container spacing={2} className="m-auto h-full w-full flex justify-evenly">
+        <Grid container spacing={2} className="m-auto h-full w-full flex justify-evenly !mt-[1rem]">
           {/* Chip Group */}
           <Grid
             item
@@ -110,9 +110,12 @@ export const Home = () => {
             xs={4}
             sm={3}
             md={3}
-            className="flex justify-end items-center h-[100vh] md:h-auto " >
+            className="flex justify-center !flex-col items-center h-[100vh] md:h-[100vh]" >
             <div className="carousel_img">
               <Carousels />
+            </div>
+            <div className="flex justify-center items-center w-full pt-[20px]">
+              <img src={Logo} alt="logo" className="w-[110px] " />
             </div>
           </Grid>
         </Grid>
