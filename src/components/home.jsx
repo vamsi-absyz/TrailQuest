@@ -63,7 +63,7 @@ export const Home = () => {
   return (
     <Box
       sx={{ flexGrow: 1 }}
-      className="bg-[#F2F3F3] bg-img w-full flex flex-col justify-start items-center"
+      className="bg-[#F2F3F3] bg-img w-full flex flex-col justify-start items-center bg-cover md:bg-contain"
     >
       <div className="m-auto sm:px-[2rem] md:px-[2rem] sm:pb-[2rem] md:pb-1 pt-[10px] ">
         <Grid container spacing={2} className="m-auto h-full w-full flex justify-evenly">
@@ -110,8 +110,7 @@ export const Home = () => {
             xs={4}
             sm={3}
             md={3}
-            className="flex justify-end items-start"
-          >
+            className="flex justify-end items-center h-[100vh] md:h-auto " >
             <div className="carousel_img">
               <Carousels />
             </div>

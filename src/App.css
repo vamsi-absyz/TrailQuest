@@ -53,7 +53,7 @@
   background-image: url("../src/assets/images/bg.png");
   background-position: right;
   background-repeat: no-repeat;
-  background-size: contain;
+  /* background-size: contain; */
   min-height: 100vh;
 }
 

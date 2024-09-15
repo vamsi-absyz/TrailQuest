@@ -197,11 +197,8 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                       </div>
                     </div>
                   }
-
-
-
                 </Grid>
-
+                
                 <Grid className="flex gap-2 mt-4">
                   <button
                     onClick={handleDoItAgain}
