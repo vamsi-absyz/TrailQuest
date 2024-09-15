@@ -3,7 +3,7 @@ export const characterData = [
     id: 1,
     tags: ["social", "extroverted", "encouraging", "rebellious", "independent"],
     position: "right",
-    bgColor: "#fff",
+    bgColor: "#ffffff",
     description: "Representative of The End of Software",
     title: "SaaSy",
     image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Sassy.png",
