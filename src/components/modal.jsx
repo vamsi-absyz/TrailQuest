@@ -157,8 +157,8 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                           Mascot
                         </span>
 
-                        <span className="text-[20px] font-[900] ">{modalData[0].title.split(" ", 1).join('')}</span>
-                        <p className="text-[14px] font-medium text-start leading-[4px]">
+                        <span className="text-[26px] font-[900] ">{modalData[0].title.split(" ", 1).join('')}</span>
+                        <p className="text-[14px] font-medium text-start leading-[4px] text-nowrap">
                           {modalData[0].title.split(" ").slice(1).join(" ")}
                         </p>
                       </div>
@@ -190,15 +190,15 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                           Mascot
                         </span>
 
-                        <span className="text-[20px] font-[900] ">{modalData[0].title.split(" ", 1).join('')}</span>
-                        <p className="text-[14px] font-medium text-start leading-[4px]">
+                        <span className="text-[26px] font-[900] ">{modalData[0].title.split(" ", 1).join('')}</span>
+                        <p className="text-[14px] font-medium text-start leading-[4px] text-nowrap">
                           {modalData[0].title.split(" ").slice(1).join(" ")}
                         </p>
                       </div>
                     </div>
                   }
                 </Grid>
-                
+
                 <Grid className="flex gap-2 mt-4">
                   <button
                     onClick={handleDoItAgain}
