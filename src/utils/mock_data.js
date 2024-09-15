@@ -1,20 +1,9 @@
-// import Sassy from "../assets/images/Sassy.jpg";
-// import Astro from "../assets/images/Astro.jpg";
-// import Bobcat from "../assets/images/Bobcat.jpg";
-// import Brandy from "../assets/images/Brandy.jpg";
-// import Cloudy from "../assets/images/Cloudy.jpg";
-// import Codey from "../assets/images/Codey.jpg";
-// import Dog from "../assets/images/Dog.jpg";
-// import Einstein from "../assets/images/Einstien.jpg";
-// import Mule from "../assets/images/Max-the-mule.jpg";
-// import Elephant from "../assets/images/Ruth-Elephant.jpg";
-// import Squirrel from "../assets/images/squirrel.jpg";
-// import Zebra from "../assets/images/Zebra.jpg";
-
 export const characterData = [
   {
     id: 1,
     tags: ["social", "extroverted", "encouraging", "rebellious", "independent"],
+    position: "right",
+    bgColor: "#fff",
     description: "Representative of The End of Software",
     title: "SaaSy",
     image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Sassy.png",
@@ -34,6 +23,8 @@ export const characterData = [
       "caring",
       "versatile",
     ],
+    position: "left",
+    bgColor: "#C5CDFC",
     description: "Representative of community and inclusion",
     title: "Astro Nomical",
     image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Astro.png",
@@ -51,6 +42,8 @@ export const characterData = [
       "knowledgeable",
       "forward-thinking",
     ],
+    position: "left",
+    bgColor: "#C2E3FF",
     description:
       "Representative of Einstein Product and AI Innovation at Salesforce",
     title: "Einstein",
@@ -64,6 +57,8 @@ export const characterData = [
     id: 4,
     tags: ["charming", "outgoing", "bold", "fearless", "unexpected"],
     description: "Representative of Salesforce Developers",
+    bgColor: "#7483D8",
+    position: "right",
     title: "Codey the Bear",
     image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Codey.png",
     pronoun: "He/Him",
@@ -82,6 +77,8 @@ export const characterData = [
     ],
     description: "Representative of Salesforce Admins",
     title: "Cloudy the Goat",
+    bgColor: "#8DE0DD",
+    position: "left",
     image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrationsCloudy.png",
     pronoun: "She/Her",
     trailheadText: "Flow Builder Logic",
@@ -93,6 +90,8 @@ export const characterData = [
     tags: ["Adaptable", "analytical", "adventurous", "approachable"],
     description: "Representative of Salesforce Marketers",
     title: "Brandy the Fox",
+    bgColor: "#FF92BE",
+    position: "right",
     image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Brandy.png",
     pronoun: "She/Her",
     trailheadText: "Roles and Responsibilities for Marketing Teams",
@@ -104,6 +103,8 @@ export const characterData = [
     tags: ["Responsible", "universal", "technical", "humble"],
     description: "Representative of Salesforce Architects",
     title: "Ruth the Elephant",
+    bgColor: "#C5CDFC",
+    position: "left",
     image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Ruth.png",
     pronoun: "They/Them",
     trailheadText: "Advanced Apex Specialist",
@@ -115,6 +116,8 @@ export const characterData = [
     tags: ["Brave", "resilient", "strategic"],
     description: "Representative of the Salesblazer Community",
     title: "Zig the Zebra",
+    bgColor: "#8DE0DD",
+    position: "right",
     image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2023/05/2023-05-360Blog-ContextualDriver-Zig-567x844-1.png",
     pronoun: "She/Her",
     trailheadText: "Sales Cloud Basics",
@@ -126,6 +129,8 @@ export const characterData = [
     tags: ["reliable", "spirited", "playful", "kind", "adoring"],
     description: "Representative of love and longevity",
     title: "Koa the Dog",
+    bgColor: "#FFB5D3",
+    position: "left",
     image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Koa.png",
     pronoun: "He/Him",
     trailheadText: "Salesforce Essentials for Small Business",
@@ -138,6 +143,8 @@ export const characterData = [
     description:
       "Representative of Salesforce Flow and its passionate fanbase of Flownatics, automation, agility, and community",
     title: "Flo the Flying Squirrel",
+    bgColor: "#BEC7F6",
+    position: "right",
     image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2023/03/2023-03-360Blog-Flo-567-844.png",
     pronoun: "He/Him",
     trailheadText: "Learn More About Salesforce Flow",
@@ -149,6 +156,8 @@ export const characterData = [
     tags: ["Motivated", "entrepreneurial"],
     description: "Representative of Partners",
     title: "Appy the Bobcat",
+    bgColor: "#7BD1F8",
+    position: "left",
     image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Appy.png",
     pronoun: "She/her",
     trailheadText: "Salesforce Partner Community",
@@ -160,6 +169,8 @@ export const characterData = [
     tags: ["Fun", "resourceful"],
     description: "Representative of all things MuleSoft",
     title: "Max the Mule",
+    bgColor: "#06A59A",
+    position: "left",
     image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Max.png",
     pronoun: "He/Him",
     trailheadText: "Data Integration Specialist",

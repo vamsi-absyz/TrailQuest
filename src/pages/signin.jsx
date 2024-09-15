@@ -102,6 +102,15 @@ export default function SignIn(props) {
         return isValid;
     };
 
+    React.useEffect(() => {
+        const email = Cookies.get('email');
+        const company = Cookies.get('company');
+
+        if (email !== undefined && company !== undefined) {
+            navigate('/home')
+        }
+    }, [])
+
     return (
 
         <>

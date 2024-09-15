@@ -74,25 +74,6 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
     }
   }, [selectedTag]);
 
-  // const generateWelcomeMessage = (character) => {
-  //   if (!character) return "";
-
-  //   let pronounMessage;
-  //   switch (character.pronoun) {
-  //     case "He/Him":
-  //       pronounMessage = `Say hello to the one and only, the unstoppable force, the legend himself - ${character.title}!`;
-  //       break;
-  //     case "She/Her":
-  //       pronounMessage = `Here comes the queen of awesomeness, the brilliant and bold ${character.title}!`;
-  //       break;
-  //     case "They/Them":
-  //       pronounMessage = `${character.title} is here, and trust me, you’re in for an inclusive, adventurous ride with them!`;
-  //       break;
-  //     default:
-  //       pronounMessage = `${character.title} has arrived, and the excitement just went through the roof!`;
-  //   }
-  //   return `${pronounMessage}`;
-  // };
   return (
     <>
       {modalData && (
@@ -118,7 +99,6 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
               className="bg-white rounded-lg shadow-lg relative"
               style={{
                 width: "430px",
-                height: "430px",
               }}
             >
               <div className="flex justify-end items-end w-full my-[10px] px-[10px]">
@@ -136,7 +116,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                 </IconButton>
               </div>
 
-              <div className="flex flex-col justify-center items-center text-center px-[18px]">
+              <div className="flex flex-col justify-center items-center text-center px-[18px] pb-[24px]">
                 <div>
                   <h1
                     style={{
@@ -151,14 +131,8 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                   <span className="text-[14px] text-[#17233A]">You’ve chosen your top traits, and we’ve found the perfect mascot to match</span>
                 </div>
 
-                {/* <div className="flex justify-center text-center ">
-                  <span className="text-[1rem]" style={{ color: "#17233A" }}>
-                    {generateWelcomeMessage(modalData)}
-                  </span>
-                </div>*/}
-
                 <Grid
-                  className="flex justify-center items-center mt-4 relative z-10"
+                  className="flex justify-center items-center relative z-10 py-[20px]"
                   ref={containerRef}
                 >
                   <div className="animation z-[10]">
@@ -170,13 +144,62 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                     )}
                   </div>
 
-                  <div className="img z-[50]">
-                    <img
-                      src={modalData[0].image}
-                      alt={modalData[0].title}
-                      className="!w-[180px] !h-[200px] object-contain"
-                    />
-                  </div>
+                  {modalData[0].position === "right" ?
+                    <div className="z-[50] w-[180px] h-[180px] rounded-[50%] flex justify-center" style={{ backgroundColor: modalData[0].bgColor }}>
+                      <div className="flex flex-col items-end relative left-[1.5rem] top-[2rem]">
+                        <span className="text-[13px] font-medium">
+                          Meet
+                        </span>
+                        <span className="text-[13px] font-medium leading-[10px]">
+                          Your
+                        </span>
+                        <span className="text-[13px] font-medium">
+                          Mascot
+                        </span>
+
+                        <span className="text-[20px] font-[900] ">{modalData[0].title.split(" ", 1).join('')}</span>
+                        <p className="text-[14px] font-medium text-start leading-[4px]">
+                          {modalData[0].title.split(" ").slice(1).join(" ")}
+                        </p>
+                      </div>
+                      <div className="img relative left-[1.5rem]">
+                        <img
+                          src={modalData[0].image}
+                          alt={modalData[0].title}
+                          className="object-contain !w-[120px] !max-w-[120px]"
+                        />
+                      </div>
+                    </div>
+                    :
+                    <div className="z-[50] w-[180px] h-[180px] rounded-[50%] flex justify-center" style={{ backgroundColor: modalData[0].bgColor }}>
+                      <div className="img relative right-[1.5rem]">
+                        <img
+                          src={modalData[0].image}
+                          alt={modalData[0].title}
+                          className="object-contain !w-[120px] !max-w-[120px]"
+                        />
+                      </div>
+                      <div className="flex flex-col items-start relative right-[1.5rem] top-[2rem]">
+                        <span className="text-[13px] font-medium">
+                          Meet
+                        </span>
+                        <span className="text-[13px] font-medium leading-[10px]">
+                          Your
+                        </span>
+                        <span className="text-[13px] font-medium">
+                          Mascot
+                        </span>
+
+                        <span className="text-[20px] font-[900] ">{modalData[0].title.split(" ", 1).join('')}</span>
+                        <p className="text-[14px] font-medium text-start leading-[4px]">
+                          {modalData[0].title.split(" ").slice(1).join(" ")}
+                        </p>
+                      </div>
+                    </div>
+                  }
+
+
+
                 </Grid>
 
                 <Grid className="flex gap-2 mt-4">
@@ -199,7 +222,6 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
 
                   <WpShare modalData={modalData} />
 
-                  {/* <EmailShare modalData={modalData} /> */}
                 </Grid>
               </div>
             </div>

@@ -21,7 +21,7 @@ function App() {
           <Route path='/' element={<SignIn />} />
           <Route element={<ProtectedRoute allowedRoles="USER" />}>
             <Route path='/home' element={<Home />} />
-            <Route path='/character/:id' element={<CharcaterInfo />} />
+            <Route path='/character/' element={<CharcaterInfo />} />
           </Route>
         </Routes>
       </BrowserRouter>

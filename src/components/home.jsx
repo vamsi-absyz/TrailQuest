@@ -49,7 +49,7 @@ export const Home = () => {
 
     // Navigate if not on tablet or larger screen
     if (!isTabletOrLarger && selectedTag.length === 5) {
-      navigate(`/character/${id}`);
+      navigate(`/character/`, { state: selectedTag });
     }
   };
 
@@ -63,7 +63,7 @@ export const Home = () => {
   return (
     <Box
       sx={{ flexGrow: 1 }}
-      className="min-h-[100vh] bg-[#F2F3F3] bg-img w-full flex flex-col justify-start items-center"
+      className="bg-[#F2F3F3] bg-img w-full flex flex-col justify-start items-center"
     >
       <div className="m-auto sm:px-[2rem] md:px-[2rem] sm:pb-[2rem] md:pb-1 pt-[10px] ">
         <Grid container spacing={2} className="m-auto h-full w-full flex justify-evenly">
@@ -82,7 +82,7 @@ export const Home = () => {
               </span>
             </div>
             <Chip.Group className="" multiple>
-              <Group className="flex justify-center items-center px-[20px] pb-[40px] pt-[20px] sm:p-0" gap={10}>
+              <Group className="flex justify-center items-center p-0 pt-0 md:px-[20px] pb-[40px] md:pt-[20px] sm:p-0" gap={10}>
                 <div className="flex justify-start items-center !sm:flex-row flex-wrap w-full sm:w-auto flex-row">
                   {tagData.map((item, index) => (
                     <div key={index} className="m-[4px] sm:mx-[4px]">
