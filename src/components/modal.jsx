@@ -144,59 +144,28 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                     )}
                   </div>
 
-                  {modalData[0].position === "right" ?
-                    <div className="z-[50] w-[180px] h-[180px] rounded-[50%] flex justify-center" style={{ backgroundColor: modalData[0].bgColor }}>
-                      <div className="flex flex-col items-end relative left-[1.5rem] top-[2rem]">
-                        <span className="text-[13px] font-medium">
-                          Meet
-                        </span>
-                        <span className="text-[13px] font-medium leading-[10px]">
-                          Your
-                        </span>
-                        <span className="text-[13px] font-medium">
-                          Mascot
-                        </span>
-
-                        <span className="text-[26px] font-[900] ">{modalData[0].title.split(" ", 1).join('')}</span>
-                        <p className="text-[14px] font-medium text-start leading-[4px] text-nowrap">
-                          {modalData[0].title.split(" ").slice(1).join(" ")}
-                        </p>
-                      </div>
-                      <div className="img relative left-[1.5rem]">
-                        <img
-                          src={modalData[0].image}
-                          alt={modalData[0].title}
-                          className="object-contain !w-[120px] !max-w-[120px]"
-                        />
-                      </div>
+                  <div className="relative">
+                    <div>
+                      <img src={modalData[0].congratsImg} alt="conratulations" className="!w-[260px] !h-[260px] object-scale-down" />
                     </div>
-                    :
-                    <div className="z-[50] w-[180px] h-[180px] rounded-[50%] flex justify-center" style={{ backgroundColor: modalData[0].bgColor }}>
-                      <div className="img relative right-[1.5rem]">
-                        <img
-                          src={modalData[0].image}
-                          alt={modalData[0].title}
-                          className="object-contain !w-[120px] !max-w-[120px]"
-                        />
-                      </div>
-                      <div className="flex flex-col items-start relative right-[1.5rem] top-[2rem]">
-                        <span className="text-[13px] font-medium">
-                          Meet
-                        </span>
-                        <span className="text-[13px] font-medium leading-[10px]">
-                          Your
-                        </span>
-                        <span className="text-[13px] font-medium">
-                          Mascot
-                        </span>
 
-                        <span className="text-[26px] font-[900] ">{modalData[0].title.split(" ", 1).join('')}</span>
-                        <p className="text-[14px] font-medium text-start leading-[4px] text-nowrap">
-                          {modalData[0].title.split(" ").slice(1).join(" ")}
-                        </p>
-                      </div>
+                    <div className="flex flex-col items-start absolute top-[4rem] left-[9.5rem]">
+                      <p className="text-[14px] font-medium">
+                        Meet
+                      </p>
+                      <p className="text-[14px] font-medium leading-[10px]">
+                        Your
+                      </p>
+                      <p className="text-[14px] font-medium">
+                        Mascot
+                      </p>
+
+                      <span className="text-[26px] font-[900] ">{modalData[0].title.split(" ", 1).join('')}</span>
+                      <p className="text-[14px] font-medium text-start leading-[4px] text-nowrap">
+                        {modalData[0].title.split(" ").slice(1).join(" ")}
+                      </p>
                     </div>
-                  }
+                  </div>
                 </Grid>
 
                 <Grid className="flex gap-2 mt-4">
