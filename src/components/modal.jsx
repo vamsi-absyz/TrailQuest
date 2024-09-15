@@ -146,7 +146,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
 
                   {modalData[0].position === "right" ?
                     <div className="z-[50] w-[180px] h-[180px] rounded-[50%] flex justify-center" style={{ backgroundColor: modalData[0].bgColor }}>
-                      <div className="flex flex-col items-end relative left-[1.5rem] top-[2rem] pr-[10px]">
+                      <div className="flex flex-col items-end relative left-[1.5rem] top-[2rem]">
                         <span className="text-[13px] font-medium">
                           Meet
                         </span>
@@ -162,7 +162,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                           {modalData[0].title.split(" ").slice(1).join(" ")}
                         </p>
                       </div>
-                      <div className="img relative left-[1.6rem]">
+                      <div className="img relative left-[1.5rem]">
                         <img
                           src={modalData[0].image}
                           alt={modalData[0].title}
@@ -198,7 +198,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                     </div>
                   }
                 </Grid>
-
+                
                 <Grid className="flex gap-2 mt-4">
                   <button
                     onClick={handleDoItAgain}
