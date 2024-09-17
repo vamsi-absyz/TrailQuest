@@ -64,13 +64,13 @@ export const Home = () => {
   return (
     <Box
       sx={{ flexGrow: 1 }}
-      className="bg-[#F2F3F3] bg-img w-full flex flex-col justify-start items-center bg-cover md:bg-contain pb-[1rem]"
+      className="bg-[#F2F3F3] bg-img w-full flex flex-col justify-start items-center bg-cover md:bg-contain"
     >
       <div className="m-auto sm:px-[2rem] md:px-[2rem] sm:pb-[2rem] md:pb-1 pt-[10px] ">
         <Grid
           container
           spacing={2}
-          className="m-auto h-full w-full flex justify-evenly !mt-[1rem]"
+          className="m-auto h-full w-full flex justify-evenly"
         >
           {/* Chip Group */}
           <Grid
@@ -78,10 +78,10 @@ export const Home = () => {
             xs={7}
             sm={8}
             md={7}
-            className="flex justify-start items-start flex-wrap !flex-col"
+            className="flex justify-center items-start flex-wrap !flex-col"
             style={{ gap: "10px" }}
           >
-            <div className="mb-[20px]">
+            <div className="mb-[8px]">
               <span className="font-medium text-[22px] text-[#17233A]">
                 Select 6 Characteristics That Best Describe You
               </span>
@@ -100,11 +100,10 @@ export const Home = () => {
                         checked={selectedTag.some((t) => t.tag === item.tag)}
                         // checked={selectedTag.includes(item.tag)} // Check if the tag is selected
                         value={item.tag}
-                        className={`chips capitalize text-[#032d60] font-medium bg-[#fff] ${
-                          selectedTag.includes(item.tag)
-                            ? "bg-teal-500 text-white"
-                            : ""
-                        }`}
+                        className={`chips capitalize text-[#032d60] font-medium bg-[#fff] ${selectedTag.includes(item.tag)
+                          ? "bg-teal-500 text-white"
+                          : ""
+                          }`}
                         onClick={() => handleClick(item.tag, item.id)}
                       >
                         {item.tag}
@@ -121,7 +120,7 @@ export const Home = () => {
             xs={4}
             sm={3}
             md={3}
-            className="flex justify-center !flex-col items-center h-[100vh] md:h-[100vh]"
+            className="flex justify-end !flex-col items-center h-[100vh] md:h-[100vh]"
           >
             <div className="carousel_img">
               {/* <Carousels /> */}

@@ -62,12 +62,15 @@ export default function SignIn(props) {
   const [companyError, setCompanyError] = React.useState(false);
   const [companyErrorMessage, setCompanyErrorMessage] = React.useState("");
   const [nameError, setNameError] = React.useState(false);
+  // const [name, setName] = React.useState("");
+  // 
   const [nameErrorMessage, setNameErrorMessage] = React.useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (validateInputs()) {
       const data = new FormData(event.currentTarget);
+      // setName(data.get("name"))
       await storeCookies(data);
       navigate("/home");
     } else {
@@ -76,39 +79,39 @@ export default function SignIn(props) {
   };
 
   const storeCookies = (data) => {
-    Cookies.set("email", data.get("email"));
-    Cookies.set("company", data.get("company"));
+    console.log(data.get("email"), "chekcing")
+    Cookies.set("email", data.get("email") !== "" ? data.get("email") : "test");
+    Cookies.set("company", data.get("company") !== "" ? data.get("company") : "test");
     Cookies.set("name", data.get("name"));
   };
 
   const validateInputs = () => {
-    const email = document.getElementById("email");
-    const company = document.getElementById("company");
+    // const email = document.getElementById("email");
+    // const company = document.getElementById("company");
     const name = document.getElementById("name");
 
     let isValid = true;
 
-    if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
-      setEmailError(true);
-      setEmailErrorMessage("Please enter a valid email address.");
-      isValid = false;
-    } else {
-      setEmailError(false);
-      setEmailErrorMessage("");
-    }
+    // if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
+    //   setEmailError(true);
+    //   setEmailErrorMessage("Please enter a valid email address.");
+    //   isValid = false;
+    // } else {
+    //   setEmailError(false);
+    //   setEmailErrorMessage("");
+    // }
 
-    if (!company.value || company.value.length < 6) {
-      setCompanyError(true);
-      setCompanyErrorMessage("Company must be at least 6 characters long.");
-      isValid = false;
-    } else {
-      setCompanyError(false);
-      setCompanyErrorMessage("");
-    }
+    // if (!company.value || company.value.length < 6) {
+    //   setCompanyError(true);
+    //   setCompanyErrorMessage("Company must be at least 6 characters long.");
+    //   isValid = false;
+    // } else {
+    //   setCompanyError(false);
+    //   setCompanyErrorMessage("");
+    // }
 
-    if (!name.value || name.value.length < 6) {
+    if (!name.value) {
       setNameError(true);
-      setNameErrorMessage("Name must be at least 6 characters long.");
       isValid = false;
     } else {
       setNameError(false);
@@ -118,15 +121,15 @@ export default function SignIn(props) {
     return isValid;
   };
 
-  React.useEffect(() => {
-    const email = Cookies.get("email");
-    const company = Cookies.get("company");
-    const name = Cookies.get("name");
+  // console.log(name, "singiin")
+  // React.useEffect(() => {
+  //   // const email = Cookies.get("email");
+  //   // const company = Cookies.get("company");
 
-    if (email !== undefined && company !== undefined && name !== undefined) {
-      navigate("/home");
-    }
-  }, []);
+  //   if (name !== undefined) {
+  //     navigate("/home");
+  //   }
+  // }, []);
 
   return (
     <FloatingFormContainer>

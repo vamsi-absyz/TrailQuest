@@ -132,8 +132,8 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                   >
                     Congratulations
                   </h1>
-                  <span className="text-[14px] text-[#17233A]">
-                    Hey {name}, we’ve found the perfect mascot to match
+                  <span className="text-[14px] text-[#17233A] !pt-[8px]">
+                    Hey <b className="text-[14px] text-[#17233A]">{name}</b>, we’ve found the perfect mascot to match
                   </span>
                 </div>
 
@@ -150,7 +150,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                     )}
                   </div>
 
-                  <div className="relative">
+                  <div className="relative z-[50]">
                     <div>
                       <img
                         src={modalData[0].congratsImg}

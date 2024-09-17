@@ -7,7 +7,7 @@ export const characterData = [
     position: "right",
     bgColor: "#06A59A",
     description: "Representative of The End of Software",
-    congratsImg: ElephantCongrats,
+    congratsImg: "https://i.postimg.cc/3YPg8K7z/ele-congrats.png?dl=1",
     title: "SaaSy",
     image:
       "https://i.ibb.co/SwmvjpY/2021-12-360-Blog-2-D-Individual-Illustrations-Sassy.png",
@@ -29,7 +29,7 @@ export const characterData = [
       "versatile",
     ],
     position: "left",
-    congratsImg: ElephantCongrats,
+    congratsImg: "https://i.postimg.cc/3YPg8K7z/ele-congrats.png?dl=1",
     bgColor: "#C5CDFC",
     description: "Representative of community and inclusion",
     title: "Astro Nomical",
@@ -51,7 +51,7 @@ export const characterData = [
       "forward-thinking",
     ],
     position: "left",
-    congratsImg: ElephantCongrats,
+    congratsImg: "https://i.postimg.cc/3YPg8K7z/ele-congrats.png?dl=1",
     bgColor: "#C2E3FF",
     description:
       "Representative of Einstein Product and AI Innovation at Salesforce",
@@ -69,7 +69,7 @@ export const characterData = [
     tags: ["charming", "outgoing", "bold", "fearless", "unexpected"],
     description: "Representative of Salesforce Developers",
     bgColor: "#7483D8",
-    congratsImg: ElephantCongrats,
+    congratsImg: "https://i.postimg.cc/3YPg8K7z/ele-congrats.png?dl=1",
     position: "right",
     title: "Codey the Bear",
     image:
@@ -85,7 +85,7 @@ export const characterData = [
     tags: ["Trustworthy", "sure-footed", "helpful", "confident", "unique"],
     description: "Representative of Salesforce Admins",
     title: "Cloudy the Goat",
-    congratsImg: ElephantCongrats,
+    congratsImg: "https://i.postimg.cc/3YPg8K7z/ele-congrats.png?dl=1",
     bgColor: "#8DE0DD",
     position: "left",
     image:
@@ -101,7 +101,7 @@ export const characterData = [
     tags: ["Adaptable", "analytical", "adventurous", "approachable"],
     description: "Representative of Salesforce Marketers",
     title: "Brandy the Fox",
-    congratsImg: ElephantCongrats,
+    congratsImg: "https://i.postimg.cc/3YPg8K7z/ele-congrats.png?dl=1",
     bgColor: "#FF92BE",
     position: "right",
     image:
@@ -117,7 +117,7 @@ export const characterData = [
     tags: ["Responsible", "universal", "technical", "humble"],
     description: "Representative of Salesforce Architects",
     title: "Ruth the Elephant",
-    congratsImg: ElephantCongrats,
+    congratsImg: "https://i.postimg.cc/3YPg8K7z/ele-congrats.png?dl=1",
     bgColor: "#C5CDFC",
     position: "left",
     image:
@@ -133,7 +133,7 @@ export const characterData = [
     tags: ["Brave", "resilient", "strategic"],
     description: "Representative of the Salesblazer Community",
     title: "Zig the Zebra",
-    congratsImg: ElephantCongrats,
+    congratsImg: "https://i.postimg.cc/3YPg8K7z/ele-congrats.png?dl=1",
     bgColor: "#8DE0DD",
     position: "right",
     image:
@@ -149,7 +149,7 @@ export const characterData = [
     tags: ["reliable", "spirited", "playful", "kind", "adoring"],
     description: "Representative of love and longevity",
     title: "Koa the Dog",
-    congratsImg: ElephantCongrats,
+    congratsImg: "https://i.postimg.cc/3YPg8K7z/ele-congrats.png?dl=1",
     bgColor: "#FFB5D3",
     position: "left",
     image:
@@ -167,7 +167,7 @@ export const characterData = [
       "Representative of Salesforce Flow and its passionate fanbase of Flownatics, automation, agility, and community",
     title: "Flo the Flying Squirrel",
     bgColor: "#BEC7F6",
-    congratsImg: ElephantCongrats,
+    congratsImg: "https://i.postimg.cc/3YPg8K7z/ele-congrats.png?dl=1",
     position: "right",
     image: "https://i.ibb.co/ZYW6RBV/2023-03-360-Blog-Flo-567-844.png",
     image_name: "Blog_Flo.png",
@@ -181,7 +181,7 @@ export const characterData = [
     tags: ["Motivated", "entrepreneurial"],
     description: "Representative of Partners",
     title: "Appy the Bobcat",
-    congratsImg: ElephantCongrats,
+    congratsImg: "https://i.postimg.cc/3YPg8K7z/ele-congrats.png?dl=1",
     bgColor: "#7BD1F8",
     position: "left",
     image:
@@ -195,7 +195,7 @@ export const characterData = [
   {
     id: 12,
     tags: ["Fun", "resourceful"],
-    congratsImg: ElephantCongrats,
+    congratsImg: "https://i.postimg.cc/3YPg8K7z/ele-congrats.png?dl=1",
     description: "Representative of all things MuleSoft",
     title: "Max the Mule",
     bgColor: "#06A59A",
