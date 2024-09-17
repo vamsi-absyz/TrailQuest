@@ -81,7 +81,7 @@ export default function SignIn(props) {
   const storeCookies = (data) => {
     console.log(data.get("email"), "chekcing")
     Cookies.set("email", data.get("email") !== "" ? data.get("email") : "test");
-    Cookies.set("company", data.get("company") !== "" ? data.get("company") : "test");
+    Cookies.set("company", data.get("company") !== "" ? data.get("email") : "test");
     Cookies.set("name", data.get("name"));
   };
 
@@ -91,24 +91,6 @@ export default function SignIn(props) {
     const name = document.getElementById("name");
 
     let isValid = true;
-
-    // if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
-    //   setEmailError(true);
-    //   setEmailErrorMessage("Please enter a valid email address.");
-    //   isValid = false;
-    // } else {
-    //   setEmailError(false);
-    //   setEmailErrorMessage("");
-    // }
-
-    // if (!company.value || company.value.length < 6) {
-    //   setCompanyError(true);
-    //   setCompanyErrorMessage("Company must be at least 6 characters long.");
-    //   isValid = false;
-    // } else {
-    //   setCompanyError(false);
-    //   setCompanyErrorMessage("");
-    // }
 
     if (!name.value) {
       setNameError(true);
