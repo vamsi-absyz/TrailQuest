@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./Slider.css"; // Import the CSS for animations
+import "./slider.css"; // Import the CSS for animations
 // import Sassy from "../assets/images/Sassy.jpg";
 import Astro from "../assets/images/Astro.jpg";
 import Bobcat from "../assets/images/Bobcat.jpg";
