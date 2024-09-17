@@ -1,0 +1,86 @@
+* {
+  /* background-color: #fff; */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #000;
+}
+
+.chips {
+  /* box-shadow: rgba(107, 130, 205, 0.2) 0px 2px 8px 0px; */
+  border: 1px solid #c0c0c0;
+  border-radius: 20px;
+}
+
+.chips .mantine-Chip-iconWrapper {
+  display: none;
+}
+
+.chips label {
+  padding: 0.9rem 1rem;
+  background-color: #ffffff !important;
+}
+
+.chips label:where([data-checked]) {
+  background-color: #30335c !important;
+}
+
+.chips label span {
+  color: #17233a;
+}
+.chips label:where([data-checked]) span {
+  color: #ffffff;
+}
+
+.carousel_img {
+  background-color: #ffffff !important;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  width: 100%;
+  border-radius: 30px !important;
+}
+
+.slick-list {
+  border-radius: 40px !important;
+}
+
+.slick-slide {
+  border-radius: 40px !important;
+}
+
+.bg-img {
+  background-image: url("../src/assets/images/bg.png");
+  background-position: right;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+button:focus {
+  outline: none !important;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  background-color: transparent !important;
+  color: #000000 !important;
+  box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0) inset !important;
+  -webkit-text-fill-color: #000000 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input {
+  color: #000 !important;
+}
+
+/* Remove arrows in Chrome, Safari, Edge, and Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Remove arrows in Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
