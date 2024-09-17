@@ -1,4 +1,4 @@
-import ElephantCongrats from '../assets/images/ele_congrats.png';
+import ElephantCongrats from "../assets/images/ele_congrats.png";
 
 export const characterData = [
   {
@@ -9,7 +9,9 @@ export const characterData = [
     description: "Representative of The End of Software",
     congratsImg: ElephantCongrats,
     title: "SaaSy",
-    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Sassy.png",
+    image:
+      "https://i.ibb.co/SwmvjpY/2021-12-360-Blog-2-D-Individual-Illustrations-Sassy.png",
+    image_name: "Sassy_image.png",
     pronoun: "They/Them",
     trailheadText: "Salesforce Culture and Values",
     trailheadBadge:
@@ -31,7 +33,9 @@ export const characterData = [
     bgColor: "#C5CDFC",
     description: "Representative of community and inclusion",
     title: "Astro Nomical",
-    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Astro.png",
+    image:
+      "https://i.ibb.co/ft4RtK2/2021-12-360-Blog-2-D-Individual-Illustrations-Astro.webp",
+    image_name: "astro_image.webp",
     pronoun: "They/Them",
     trailheadText: "Get Started with Trailhead",
     trailheadBadge:
@@ -52,7 +56,9 @@ export const characterData = [
     description:
       "Representative of Einstein Product and AI Innovation at Salesforce",
     title: "Einstein",
-    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Einstien.png",
+    image:
+      "https://i.ibb.co/g6dSggH/2021-12-360-Blog-2-D-Individual-Illustrations-Einstien.png",
+    image_name: "Einstien_image.png",
     pronoun: "He/Him",
     trailheadText: "Get Smart with Salesforce Einstein",
     trailheadBadge:
@@ -66,7 +72,9 @@ export const characterData = [
     congratsImg: ElephantCongrats,
     position: "right",
     title: "Codey the Bear",
-    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Codey.png",
+    image:
+      "https://i.ibb.co/pbtpZdV/2021-12-360-Blog-2-D-Individual-Illustrations-Codey.png",
+    image_name: "IndividualIllustrations-Codey.png",
     pronoun: "He/Him",
     trailheadText: "Develop Apps for Slack",
     trailheadBadge:
@@ -74,19 +82,15 @@ export const characterData = [
   },
   {
     id: 5,
-    tags: [
-      "Trustworthy",
-      "sure-footed",
-      "helpful",
-      "confident",
-      "unique",
-    ],
+    tags: ["Trustworthy", "sure-footed", "helpful", "confident", "unique"],
     description: "Representative of Salesforce Admins",
     title: "Cloudy the Goat",
     congratsImg: ElephantCongrats,
     bgColor: "#8DE0DD",
     position: "left",
-    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrationsCloudy.png",
+    image:
+      "https://i.ibb.co/xjbbG5K/2021-12-360-Blog-2-D-Individual-Illustrations-Cloudy.png",
+    image_name: "Individual-Illustrations-Cloudy.png",
     pronoun: "She/Her",
     trailheadText: "Flow Builder Logic",
     trailheadBadge:
@@ -100,7 +104,9 @@ export const characterData = [
     congratsImg: ElephantCongrats,
     bgColor: "#FF92BE",
     position: "right",
-    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Brandy.png",
+    image:
+      "https://i.ibb.co/tsKphw0/2021-12-360-Blog-2-D-Individual-Illustrations-Brandy.png",
+    image_name: "Individual-Illustrations-Brandy.png",
     pronoun: "She/Her",
     trailheadText: "Roles and Responsibilities for Marketing Teams",
     trailheadBadge:
@@ -114,7 +120,9 @@ export const characterData = [
     congratsImg: ElephantCongrats,
     bgColor: "#C5CDFC",
     position: "left",
-    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Ruth.png",
+    image:
+      "https://i.ibb.co/F3x8347/2021-12-360-Blog-2-D-Individual-Illustrations-Ruth.png",
+    image_name: "Individual-Illustrations-Ruth.png",
     pronoun: "They/Them",
     trailheadText: "Advanced Apex Specialist",
     trailheadBadge:
@@ -128,7 +136,9 @@ export const characterData = [
     congratsImg: ElephantCongrats,
     bgColor: "#8DE0DD",
     position: "right",
-    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2023/05/2023-05-360Blog-ContextualDriver-Zig-567x844-1.png",
+    image:
+      "https://i.ibb.co/kVn5MFQ/2023-05-360-Blog-Contextual-Driver-Zig-567x844-1.png",
+    image_name: "Contextual-Driver.png",
     pronoun: "She/Her",
     trailheadText: "Sales Cloud Basics",
     trailheadBadge:
@@ -142,7 +152,9 @@ export const characterData = [
     congratsImg: ElephantCongrats,
     bgColor: "#FFB5D3",
     position: "left",
-    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Koa.png",
+    image:
+      "https://i.ibb.co/drg64wS/2021-12-360-Blog-2-D-Individual-Illustrations-Koa.png",
+    image_name: "Individual-Illustrations-Koa.png",
     pronoun: "He/Him",
     trailheadText: "Salesforce Essentials for Small Business",
     trailheadBadge:
@@ -157,7 +169,8 @@ export const characterData = [
     bgColor: "#BEC7F6",
     congratsImg: ElephantCongrats,
     position: "right",
-    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2023/03/2023-03-360Blog-Flo-567-844.png",
+    image: "https://i.ibb.co/ZYW6RBV/2023-03-360-Blog-Flo-567-844.png",
+    image_name: "Blog_Flo.png",
     pronoun: "He/Him",
     trailheadText: "Learn More About Salesforce Flow",
     trailheadBadge:
@@ -171,7 +184,9 @@ export const characterData = [
     congratsImg: ElephantCongrats,
     bgColor: "#7BD1F8",
     position: "left",
-    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Appy.png",
+    image:
+      "https://i.ibb.co/89719wR/2021-12-360-Blog-2-D-Individual-Illustrations-Appy.png",
+    image_name: "Individual-Illustrations-Appy.png",
     pronoun: "She/her",
     trailheadText: "Salesforce Partner Community",
     trailheadBadge:
@@ -185,7 +200,9 @@ export const characterData = [
     title: "Max the Mule",
     bgColor: "#06A59A",
     position: "left",
-    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Max.png",
+    image:
+      "https://i.ibb.co/GJSpHrK/2021-12-360-Blog-2-D-Individual-Illustrations-Max.png",
+    image_name: "Individual-Illustrations-Max.png",
     pronoun: "He/Him",
     trailheadText: "Data Integration Specialist",
     trailheadBadge:

@@ -1,186 +1,248 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import FormLabel from '@mui/material/FormLabel';
-import FormControl from '@mui/material/FormControl';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-import Stack from '@mui/material/Stack';
-import MuiCard from '@mui/material/Card';
-import { styled } from '@mui/material/styles';
-import { useNavigate } from 'react-router';
-import Cookies from 'js-cookie';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import FormLabel from "@mui/material/FormLabel";
+import FormControl from "@mui/material/FormControl";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
+import { styled } from "@mui/material/styles";
+import { useNavigate } from "react-router";
+import Cookies from "js-cookie";
 
-const Card = styled(MuiCard)(({ theme }) => ({
-    display: 'flex',
-    flexDirection: 'column',
-    alignSelf: 'center',
-    width: '100%',
-    padding: theme.spacing(4),
-    gap: theme.spacing(2),
-    margin: 'auto',
-    [theme.breakpoints.up('sm')]: {
-        maxWidth: '450px',
-    },
-    boxShadow:
-        'hsla(220, 30%, 5%, 0.05) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.05) 0px 15px 35px -5px',
-    ...theme.applyStyles('dark', {
-        boxShadow:
-            'hsla(220, 30%, 5%, 0.5) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.08) 0px 15px 35px -5px',
-    }),
+const FloatingFormContainer = styled(Box)(({ theme }) => ({
+  position: "relative",
+  width: "100%",
+  height: "100vh",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  overflow: "hidden",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: "10%",
+    left: "-30%",
+    width: "500px",
+    height: "500px",
+    backgroundColor: "#f1c40f",
+    borderRadius: "50%",
+    zIndex: -1,
+    opacity: 0.3,
+  },
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    bottom: "-20%",
+    right: "-40%",
+    width: "600px",
+    height: "600px",
+    backgroundColor: "#3498db",
+    borderRadius: "50%",
+    zIndex: -1,
+    opacity: 0.2,
+  },
 }));
 
-const SignInContainer = styled(Stack)(({ theme }) => ({
-    padding: 20,
-    marginTop: '10vh',
-    '&::before': {
-        content: '""',
-        display: 'block',
-        position: 'absolute',
-        zIndex: -1,
-        inset: 0,
-        backgroundImage:
-            'radial-gradient(ellipse at 50% 50%, hsl(210, 100%, 97%), hsl(0, 0%, 100%))',
-        backgroundRepeat: 'no-repeat',
-        ...theme.applyStyles('dark', {
-            backgroundImage:
-                'radial-gradient(at 50% 50%, hsla(210, 100%, 16%, 0.5), hsl(220, 30%, 5%))',
-        }),
-    },
+const FloatingCard = styled(Box)(({ theme }) => ({
+  width: "100%",
+  maxWidth: "500px",
+  backgroundColor: "#fff",
+  padding: theme.spacing(4),
+  borderRadius: "15px",
+  boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.1)", // Smooth shadow
+  zIndex: 1, // Make it float over background elements
+  transform: "translateY(-30px)",
 }));
 
 export default function SignIn(props) {
-    const navigate = useNavigate();
-    const [emailError, setEmailError] = React.useState(false);
-    const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
-    const [companyError, setcompanyError] = React.useState(false);
-    const [companyErrorMessage, setcompanyErrorMessage] = React.useState('');
+  const navigate = useNavigate();
+  const [emailError, setEmailError] = React.useState(false);
+  const [emailErrorMessage, setEmailErrorMessage] = React.useState("");
+  const [companyError, setCompanyError] = React.useState(false);
+  const [companyErrorMessage, setCompanyErrorMessage] = React.useState("");
+  const [nameError, setNameError] = React.useState(false);
+  const [nameErrorMessage, setNameErrorMessage] = React.useState("");
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        if (validateInputs()) {
-            const data = new FormData(event.currentTarget);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (validateInputs()) {
+      const data = new FormData(event.currentTarget);
+      await storeCookies(data);
+      navigate("/home");
+    } else {
+      console.error("Validation failed");
+    }
+  };
 
-            await storeCookies(data)
-            navigate("/home")
-        } else {
-            console.error("Validation failed");
-        }
-    };
+  const storeCookies = (data) => {
+    Cookies.set("email", data.get("email"));
+    Cookies.set("company", data.get("company"));
+    Cookies.set("name", data.get("name"));
+  };
 
-    const storeCookies = (data) => {
-        Cookies.set('email', data.get('email'))
-        Cookies.set('company', data.get('company'))
+  const validateInputs = () => {
+    const email = document.getElementById("email");
+    const company = document.getElementById("company");
+    const name = document.getElementById("name");
+
+    let isValid = true;
+
+    if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
+      setEmailError(true);
+      setEmailErrorMessage("Please enter a valid email address.");
+      isValid = false;
+    } else {
+      setEmailError(false);
+      setEmailErrorMessage("");
     }
 
+    if (!company.value || company.value.length < 6) {
+      setCompanyError(true);
+      setCompanyErrorMessage("Company must be at least 6 characters long.");
+      isValid = false;
+    } else {
+      setCompanyError(false);
+      setCompanyErrorMessage("");
+    }
 
-    const validateInputs = () => {
-        const email = document.getElementById('email');
-        const company = document.getElementById('company');
+    if (!name.value || name.value.length < 6) {
+      setNameError(true);
+      setNameErrorMessage("Name must be at least 6 characters long.");
+      isValid = false;
+    } else {
+      setNameError(false);
+      setNameErrorMessage("");
+    }
 
-        let isValid = true;
+    return isValid;
+  };
 
-        if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
-            setEmailError(true);
-            setEmailErrorMessage('Please enter a valid email address.');
-            isValid = false;
-        } else {
-            setEmailError(false);
-            setEmailErrorMessage('');
-        }
+  React.useEffect(() => {
+    const email = Cookies.get("email");
+    const company = Cookies.get("company");
+    const name = Cookies.get("name");
 
-        if (!company.value || company.value.length < 2) {
-            setcompanyError(true);
-            setcompanyErrorMessage('Company must be at least 6 characters long.');
-            isValid = false;
-        } else {
-            setcompanyError(false);
-            setcompanyErrorMessage('');
-        }
+    if (email !== undefined && company !== undefined && name !== undefined) {
+      navigate("/home");
+    }
+  }, []);
 
-        return isValid;
-    };
-
-    React.useEffect(() => {
-        const email = Cookies.get('email');
-        const company = Cookies.get('company');
-
-        if (email !== undefined && company !== undefined) {
-            navigate('/home')
-        }
-    }, [])
-
-    return (
-        <>
-            {/* <CssBaseline enableColorScheme /> */}
-            <SignInContainer direction="column" justifyContent="space-between">
-                {/* <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} /> */}
-                <Card variant="outlined">
-                    {/* <SitemarkIcon /> */}
-                    <Typography
-                        component="h1"
-                        variant="h4"
-                        sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)', margin: "0 0 10px 0" }}
-                    >
-                        Sign in
-                    </Typography>
-                    <Box
-                        component="form"
-                        onSubmit={handleSubmit}
-                        noValidate
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            width: '100%',
-                            gap: 2,
-                        }}
-                    >
-                        <FormControl>
-                            <FormLabel htmlFor="email">Email</FormLabel>
-                            <TextField
-                                error={emailError}
-                                helperText={emailErrorMessage}
-                                id="email"
-                                type="email"
-                                name="email"
-                                placeholder="your@email.com"
-                                autoComplete="email"
-                                autoFocus
-                                required
-                                fullWidth
-                                variant="outlined"
-                                color={emailError ? 'error' : 'primary'}
-                                sx={{ ariaLabel: 'email' }}
-                            />
-                        </FormControl>
-                        <FormControl>
-                            <FormLabel htmlFor="company">Company</FormLabel>
-                            <TextField
-                                error={companyError}
-                                helperText={companyErrorMessage}
-                                name="company"
-                                placeholder="company"
-                                type="text"
-                                id="company"
-                                autoFocus
-                                required
-                                fullWidth
-                                variant="outlined"
-                                color={companyError ? 'error' : 'primary'}
-                            />
-                        </FormControl>
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            onClick={validateInputs}
-                            className='!mt-[1rem]'
-                        >
-                            Sign in
-                        </Button>
-                    </Box>
-                </Card>
-            </SignInContainer>
-        </>
-    );
+  return (
+    <FloatingFormContainer>
+      <FloatingCard>
+        <Typography
+          component="h1"
+          variant="h4"
+          sx={{
+            width: "100%",
+            fontSize: "clamp(2rem, 10vw, 2.15rem)",
+            margin: "0 0 10px 0",
+            color: "#333",
+            textAlign: "center",
+          }}
+        >
+          Absyz
+        </Typography>
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          noValidate
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+            gap: 2,
+          }}
+        >
+          <FormControl>
+            <FormLabel
+              htmlFor="email"
+              sx={{ fontSize: "1.2rem", color: "#666" }}
+            >
+              Email
+            </FormLabel>
+            <TextField
+              error={emailError}
+              helperText={emailErrorMessage}
+              id="email"
+              type="email"
+              name="email"
+              placeholder="your@email.com"
+              autoComplete="email"
+              required
+              fullWidth
+              variant="outlined"
+              sx={{
+                borderRadius: "10px",
+                backgroundColor: "#fff",
+              }}
+            />
+          </FormControl>
+          <FormControl>
+            <FormLabel
+              htmlFor="name"
+              sx={{ fontSize: "1.2rem", color: "#666" }}
+            >
+              Name
+            </FormLabel>
+            <TextField
+              error={nameError}
+              helperText={nameErrorMessage}
+              id="name"
+              type="text"
+              name="name"
+              placeholder="Name"
+              required
+              fullWidth
+              variant="outlined"
+              sx={{
+                borderRadius: "10px",
+                backgroundColor: "#fff",
+              }}
+            />
+          </FormControl>
+          <FormControl>
+            <FormLabel
+              htmlFor="company"
+              sx={{ fontSize: "1.2rem", color: "#666" }}
+            >
+              Company
+            </FormLabel>
+            <TextField
+              error={companyError}
+              helperText={companyErrorMessage}
+              name="company"
+              placeholder="Company"
+              type="text"
+              id="company"
+              required
+              fullWidth
+              variant="outlined"
+              sx={{
+                borderRadius: "10px",
+                backgroundColor: "#fff",
+              }}
+            />
+          </FormControl>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{
+              backgroundColor: "#3498db",
+              color: "#fff",
+              borderRadius: "30px",
+              padding: "12px",
+              "&:hover": {
+                backgroundColor: "#2980b9",
+              },
+            }}
+          >
+            Let&apos;s Get Started
+          </Button>
+        </Box>
+      </FloatingCard>
+    </FloatingFormContainer>
+  );
 }

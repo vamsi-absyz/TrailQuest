@@ -5,7 +5,7 @@ import { Grid, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { ConfettiBackground } from "./ConfettiBackground";
 import { EmailShare, WpShare } from "./share";
-
+import Cookies from "js-cookie";
 
 const backdropVariants = {
   hidden: { opacity: 0 },
@@ -18,8 +18,7 @@ const modalVariants = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: {
-    },
+    transition: {},
   },
   exit: { opacity: 0, scale: 0.5, transition: { duration: 0.3 } },
 };
@@ -28,6 +27,11 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
   const [modalData, setModalData] = useState(null);
   const [playConfetti, setPlayConfetti] = useState(false);
   const [confettiKey, setConfettiKey] = useState(0);
+
+  const capitalizeFirstLetter = (name) =>
+    name ? name.charAt(0).toUpperCase() + name.slice(1) : "";
+
+  const name = capitalizeFirstLetter(Cookies.get("name"));
 
   const handleDoItAgain = () => {
     setPlayConfetti(false); // Reset confetti animation
@@ -123,12 +127,14 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                       color: "#1776E5",
                       fontSize: "30px",
                       fontWeight: "bold",
-                      margin: "0 0 4px 0"
+                      margin: "0 0 4px 0",
                     }}
                   >
                     Congratulations
                   </h1>
-                  <span className="text-[14px] text-[#17233A]">You’ve chosen your top traits, and we’ve found the perfect mascot to match</span>
+                  <span className="text-[14px] text-[#17233A]">
+                    Hey {name}, we’ve found the perfect mascot to match
+                  </span>
                 </div>
 
                 <Grid
@@ -146,21 +152,23 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
 
                   <div className="relative">
                     <div>
-                      <img src={modalData[0].congratsImg} alt="conratulations" className="!w-[260px] !h-[260px] object-scale-down" />
+                      <img
+                        src={modalData[0].congratsImg}
+                        alt="conratulations"
+                        className="!w-[260px] !h-[260px] object-scale-down"
+                      />
                     </div>
 
                     <div className="flex flex-col items-start absolute top-[4rem] left-[9.5rem]">
-                      <p className="text-[14px] font-medium">
-                        Meet
-                      </p>
+                      <p className="text-[14px] font-medium">Meet</p>
                       <p className="text-[14px] font-medium leading-[10px]">
                         Your
                       </p>
-                      <p className="text-[14px] font-medium">
-                        Mascot
-                      </p>
+                      <p className="text-[14px] font-medium">Mascot</p>
 
-                      <span className="text-[26px] font-[900] ">{modalData[0].title.split(" ", 1).join('')}</span>
+                      <span className="text-[26px] font-[900] ">
+                        {modalData[0].title.split(" ", 1).join("")}
+                      </span>
                       <p className="text-[14px] font-medium text-start leading-[4px] text-nowrap">
                         {modalData[0].title.split(" ").slice(1).join(" ")}
                       </p>
@@ -179,15 +187,13 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
-                      padding: "4px 14px"
-
+                      padding: "4px 14px",
                     }}
                   >
                     Do it again
                   </button>
 
-                  <WpShare modalData={modalData} />
-
+                  {modalData && <WpShare modalData={modalData} />}
                 </Grid>
               </div>
             </div>

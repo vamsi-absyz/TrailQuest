@@ -6,9 +6,10 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { WpShare } from "./share";
 import { ConfettiBackground } from "./ConfettiBackground";
+import Cookies from "js-cookie";
 
 export const CharcaterInfo = () => {
   // let { id } = useParams();
@@ -22,11 +23,13 @@ export const CharcaterInfo = () => {
   const isTabletOrLarger = useMediaQuery("(min-width: 768px)");
   const navigate = useNavigate();
   const containerRef = useRef(null);
+  const capitalizeFirstLetter = (name) =>
+    name ? name.charAt(0).toUpperCase() + name.slice(1) : "";
 
+  const name = capitalizeFirstLetter(Cookies.get("name"));
 
   useEffect(() => {
     if (selectedTag && selectedTag.length > 0) {
-
       // Collect IDs from selectedTag and filter data based on the IDs
       function getHighestFrequencyId(array) {
         // Step 1: Create a frequency map for the IDs
@@ -75,12 +78,11 @@ export const CharcaterInfo = () => {
     }, 100); // Small delay to ensure reset
   };
 
-
   return (
     <>
       {modalData.length > 0 && (
         <div className="p-[24px]">
-          <span onClick={() => navigate("/")} >
+          <span onClick={() => navigate("/")}>
             <ArrowBackIcon sx={{ marginBottom: "20px" }} />
           </span>
           <div className="flex flex-col justify-center items-center text-center px-[18px] pb-[24px]">
@@ -90,12 +92,14 @@ export const CharcaterInfo = () => {
                   color: "#1776E5",
                   fontSize: "30px",
                   fontWeight: "bold",
-                  margin: "0 0 4px 0"
+                  margin: "0 0 4px 0",
                 }}
               >
                 Congratulations
               </h1>
-              <span className="text-[14px] text-[#17233A]">You’ve chosen your top traits, and we’ve found the perfect mascot to match</span>
+              <span className="text-[14px] text-[#17233A]">
+                Hey {name}, we’ve found the perfect mascot to match
+              </span>
             </div>
 
             <Grid
@@ -111,20 +115,21 @@ export const CharcaterInfo = () => {
                 )}
               </div>
 
-              {modalData[0].position === "right" ?
-                <div className="z-[50] w-[180px] h-[180px] rounded-[50%] flex justify-center" style={{ backgroundColor: modalData[0].bgColor }}>
+              {modalData[0].position === "right" ? (
+                <div
+                  className="z-[50] w-[180px] h-[180px] rounded-[50%] flex justify-center"
+                  style={{ backgroundColor: modalData[0].bgColor }}
+                >
                   <div className="flex flex-col items-end relative left-[1.5rem] top-[2rem]">
-                    <span className="text-[13px] font-medium">
-                      Meet
-                    </span>
+                    <span className="text-[13px] font-medium">Meet</span>
                     <span className="text-[13px] font-medium leading-[10px]">
                       Your
                     </span>
-                    <span className="text-[13px] font-medium">
-                      Mascot
-                    </span>
+                    <span className="text-[13px] font-medium">Mascot</span>
 
-                    <span className="text-[20px] font-[900] ">{modalData[0].title.split(" ", 1).join('')}</span>
+                    <span className="text-[20px] font-[900] ">
+                      {modalData[0].title.split(" ", 1).join("")}
+                    </span>
                     <p className="text-[14px] font-medium text-start leading-[4px]">
                       {modalData[0].title.split(" ").slice(1).join(" ")}
                     </p>
@@ -137,8 +142,11 @@ export const CharcaterInfo = () => {
                     />
                   </div>
                 </div>
-                :
-                <div className="z-[50] w-[180px] h-[180px] rounded-[50%] flex justify-center" style={{ backgroundColor: modalData[0].bgColor }}>
+              ) : (
+                <div
+                  className="z-[50] w-[180px] h-[180px] rounded-[50%] flex justify-center"
+                  style={{ backgroundColor: modalData[0].bgColor }}
+                >
                   <div className="img relative right-[1.5rem]">
                     <img
                       src={modalData[0].image}
@@ -147,26 +155,21 @@ export const CharcaterInfo = () => {
                     />
                   </div>
                   <div className="flex flex-col items-start relative right-[1.5rem] top-[2rem]">
-                    <span className="text-[13px] font-medium">
-                      Meet
-                    </span>
+                    <span className="text-[13px] font-medium">Meet</span>
                     <span className="text-[13px] font-medium leading-[10px]">
                       Your
                     </span>
-                    <span className="text-[13px] font-medium">
-                      Mascot
-                    </span>
+                    <span className="text-[13px] font-medium">Mascot</span>
 
-                    <span className="text-[20px] font-[900] ">{modalData[0].title.split(" ", 1).join('')}</span>
+                    <span className="text-[20px] font-[900] ">
+                      {modalData[0].title.split(" ", 1).join("")}
+                    </span>
                     <p className="text-[14px] font-medium text-start leading-[4px]">
                       {modalData[0].title.split(" ").slice(1).join(" ")}
                     </p>
                   </div>
                 </div>
-              }
-
-
-
+              )}
             </Grid>
 
             <Grid className="flex gap-2 mt-4">
@@ -180,15 +183,13 @@ export const CharcaterInfo = () => {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  padding: "4px 14px"
-
+                  padding: "4px 14px",
                 }}
               >
                 Do it again
               </button>
 
               <WpShare modalData={modalData} />
-
             </Grid>
           </div>
         </div>
