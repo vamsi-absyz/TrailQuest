@@ -6,6 +6,7 @@ import {
 } from "react-share";
 import Button from "@mui/material/Button";
 import Cookies from "js-cookie";
+import ShareButton from "./sharebotton";
 
 export const WpShare = ({ modalData }) => {
     const [whatsAppUrl, setWhatsAppUrl] = useState("");
@@ -107,28 +108,29 @@ export const WpShare = ({ modalData }) => {
     console.log(modalData, whatsAppUrl, "model data in the share component");
 
     return (
-        <Button
-            style={{
-                backgroundColor: "#30335C",
-                borderRadius: "5px",
-                color: "#fff",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                padding: "4px 14px",
-            }}
-            endIcon={<WhatsappIcon size={20} round />}
-        //   onClick={generateDownloadableLink}
-        >
-            <WhatsappShareButton
-                url={modalData[0]?.congratsImg}
-                title={title}
-                separator=""
-                className="Demo__some-network__share-button"
-            >
-                Share
-            </WhatsappShareButton>
-        </Button>
+        <ShareButton />
+        // <Button
+        //     style={{
+        //         backgroundColor: "#30335C",
+        //         borderRadius: "5px",
+        //         color: "#fff",
+        //         display: "flex",
+        //         justifyContent: "center",
+        //         alignItems: "center",
+        //         padding: "4px 14px",
+        //     }}
+        //     endIcon={<WhatsappIcon size={20} round />}
+        // //   onClick={generateDownloadableLink}
+        // >
+        //     <WhatsappShareButton
+        //         url={modalData[0]?.congratsImg}
+        //         title={title}
+        //         separator=""
+        //         className="Demo__some-network__share-button"
+        //     >
+        //         Share
+        //     </WhatsappShareButton>
+        // </Button>
     );
 };
 
