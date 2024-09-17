@@ -62,6 +62,7 @@ import Dog from "../assets/images/Dog.jpg";
 import Einstien from "../assets/images/Einstien.jpg";
 import MaxTheMule from "../assets/images/Max-the-mule.jpg";
 
+
 const images = [
   { id: 1, pos: "left", img: Sassy },
   { id: 2, pos: "right", img: Astro },
@@ -75,6 +76,7 @@ const images = [
   { id: 10, pos: "left", img: Squirrel },
   { id: 11, pos: "left", img: Bobcat },
   { id: 12, pos: "left", img: MaxTheMule }
+ 
 ];
 
 const Slider = () => {
@@ -83,7 +85,7 @@ const Slider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 2000); // Change image every 2 seconds
+    }, 1000); // Change image every 2 seconds
 
     return () => clearInterval(interval); // Clean up on component unmount
   }, []);
