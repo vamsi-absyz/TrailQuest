@@ -1,81 +1,32 @@
-// import { useEffect, useState } from "react";
-// import "./Slider.css"; // Import the CSS for animations
-// import Astro from "../assets/images/Astro.jpg";
-// import Bobcat from "../assets/images/Bobcat.jpg";
-// import Brandy from "../assets/images/Brandy.jpg";
-// import Cloudy from "../assets/images/Cloudy.jpg";
-// import Codey from "../assets/images/Codey.jpg";
-// import Dog from "../assets/images/Dog.jpg";
-// import Einstien from "../assets/images/Einstien.jpg";
-// import MaxTheMule from "../assets/images/Max-the-mule.jpg";
-
-// const images = [
-//   Astro,
-//   Bobcat,
-//   Brandy,
-//   Cloudy,
-//   Codey,
-//   Dog,
-//   Einstien,
-//   MaxTheMule,
-// ];
-
-// const Slider = () => {
-//   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-//     }, 1200); // Change image every 1.2 milli seconds
-
-//     return () => clearInterval(interval); // Clean up on component unmount
-//   }, []);
-
-//   return (
-//     <div className="slider-container">
-//       {images.map((image, index) => (
-//         <div
-//           key={index}
-//           className={`image-box ${currentImageIndex === index ? "active" : ""}`}
-//         >
-//           <img src={image} alt={`Slide ${index}`} className="slider-image" />
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default Slider;
-
 import { useEffect, useState } from "react";
 import "./Slider.css"; // Import the CSS for animations
-import Sassy from "../assets/images/Sassy.jpg";
+// import Sassy from "../assets/images/Sassy.jpg";
 import Astro from "../assets/images/Astro.jpg";
 import Bobcat from "../assets/images/Bobcat.jpg";
 import Elephant from "../assets/images/Ruth-Elephant.jpg";
-import Brandy from "../assets/images/Brandy.jpg";
-import Cloudy from "../assets/images/Cloudy.jpg";
-import Codey from "../assets/images/Codey.jpg";
-import Zebra from "../assets/images/Zebra.jpg";
+// import Brandy from "../assets/images/Brandy.jpg";
+// import Cloudy from "../assets/images/Cloudy.jpg";
+// import Codey from "../assets/images/Codey.jpg";
+// import Zebra from "../assets/images/Zebra.jpg";
 import Squirrel from '../assets/images/squirrel.jpg'
-import Dog from "../assets/images/Dog.jpg";
+// import Dog from "../assets/images/Dog.jpg";
 import Einstien from "../assets/images/Einstien.jpg";
-import MaxTheMule from "../assets/images/Max-the-mule.jpg";
+// import MaxTheMule from "../assets/images/Max-the-mule.jpg";
 
 
 const images = [
-  { id: 1, pos: "left", img: Sassy },
-  { id: 2, pos: "right", img: Astro },
-  { id: 3, pos: "right", img: Einstien },
-  { id: 4, pos: "left", img: Codey },
-  { id: 5, pos: "right", img: Cloudy },
-  { id: 6, pos: "left", img: Brandy },
-  { id: 7, pos: "right", img: Elephant },
-  { id: 8, pos: "left", img: Zebra },
-  { id: 9, pos: "right", img: Dog },
-  { id: 10, pos: "left", img: Squirrel },
-  { id: 11, pos: "left", img: Bobcat },
-  { id: 12, pos: "left", img: MaxTheMule }
+  // { id: 1, pos: "left", img: Sassy },
+  { id: 1, pos: "left", img: Astro },
+  { id: 2, pos: "right", img: Einstien },
+  // { id: 4, pos: "left", img: Codey },
+  // { id: 5, pos: "right", img: Cloudy },
+  // { id: 6, pos: "left", img: Brandy },
+  { id: 3, pos: "left", img: Elephant },
+  // { id: 8, pos: "left", img: Zebra },
+  // { id: 9, pos: "right", img: Dog },
+  { id: 4, pos: "right", img: Squirrel },
+  { id: 5, pos: "left", img: Bobcat },
+  // { id: 12, pos: "left", img: MaxTheMule }
  
 ];
 
@@ -91,7 +42,7 @@ const Slider = () => {
   }, []);
 
   return (
-    <div className="slider-container">
+    <div className="slider-container w-[100%] h-[275px] sm:h-[325px]  lg:w-[100%] lg:h-[400px]">
       {images.map((image, index) => (
         <div
           key={index}
@@ -109,7 +60,7 @@ const Slider = () => {
             }`}
           style={{ justifyContent: image.pos === "right" ? "end" : "start" }}
         >
-          <img src={image.img} alt={`Slide ${index}`} className="slider-image" />
+          <img src={image.img} alt={`Slide ${index}`} className="slider-image w-[100%] lg:w-[250px] lg:h-[350px] " />
         </div>
       ))}
     </div>

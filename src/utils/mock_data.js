@@ -1,4 +1,3 @@
-import ElephantCongrats from "../assets/images/ele_congrats.png";
 
 export const characterData = [
   

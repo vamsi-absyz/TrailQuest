@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Box, Grid, useMediaQuery } from "@mui/material";
 import { Chip, Group } from "@mantine/core";
 import { characterData } from "../utils/mock_data";
-import { Carousels } from "./carousel";
+// import { Carousels } from "./carousel";
 import { useNavigate } from "react-router-dom";
 import { Modal } from "./modal";
 import Logo from "../assets/images/logo.png";
@@ -81,7 +81,7 @@ export const Home = () => {
             sm={8}
             md={7}
             className="flex justify-start items-start flex-wrap !flex-col "
-            style={{ gap: "10px"}}
+            style={{ gap: "10px",marginTop:"60px"}}
           >
             <div className="mb-[8px]">
               <span className="font-medium text-[22px] text-[#17233A]">
