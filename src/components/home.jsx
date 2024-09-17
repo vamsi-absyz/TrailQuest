@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Box, Grid, useMediaQuery } from "@mui/material";
 import { Chip, Group } from "@mantine/core";
 import { characterData } from "../utils/mock_data";
-import { Carousels } from "./carousel";
+// import { Carousels } from "./carousel";
 import { useNavigate } from "react-router-dom";
 import { Modal } from "./modal";
 import Logo from "../assets/images/logo.png";
@@ -27,6 +27,8 @@ export const Home = () => {
       setTagData(allTagsWithId);
     }
   }, []);
+
+  console.log(tagData,"tagdata");
 
   const handleClick = (tag, id) => {
     // Create a tag object
@@ -78,8 +80,8 @@ export const Home = () => {
             xs={7}
             sm={8}
             md={7}
-            className="flex justify-center items-start flex-wrap !flex-col"
-            style={{ gap: "10px" }}
+            className="flex justify-start items-start flex-wrap !flex-col "
+            style={{ gap: "10px",marginTop:"60px"}}
           >
             <div className="mb-[8px]">
               <span className="font-medium text-[22px] text-[#17233A]">
@@ -88,10 +90,10 @@ export const Home = () => {
             </div>
             <Chip.Group className="" multiple>
               <Group
-                className="flex justify-center items-center p-0 pt-0 md:px-[20px] pb-[40px] md:pt-[20px] sm:p-0"
+                className="flex justify-center items-center p-0 pt-0 md:pr-[20px] pb-[40px] md:pt-[20px] sm:p-0"
                 gap={10}
               >
-                <div className="flex justify-start items-center !sm:flex-row flex-wrap w-full sm:w-auto flex-row">
+                <div className="flex justify-start items-center !sm:flex-row flex-wrap w-full sm:w-auto flex-row" style={{gap:12}}>
                   {tagData.map((item, index) => (
                     <div key={index} className="m-[4px] sm:mx-[4px]">
                       <Chip
