@@ -133,16 +133,6 @@ export const Home = () => {
         </Grid>
       </div>
 
-      {/* Modal */}
-      {/* {(isModalOpen && isTabletOrLarger) && (
-        <Modal
-          selectedTag={selectedTag}
-          handleCloseModal={handleCloseModal}
-          isModalOpen={isModalOpen}
-          selectedId={selectedId}
-        />
-      )} */}
-
       {isModalOpen && isTabletOrLarger && (
         <Modal
           selectedTag={selectedTag}

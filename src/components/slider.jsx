@@ -14,7 +14,7 @@ import Einstien from "../assets/images/Einstien.jpg";
 import MaxTheMule from "../assets/images/Max-the-mule.jpg";
 
 const images = [
-  { id: 1, pos: "left", img: Sassy },
+  // { id: 1, pos: "left", img: Sassy },
   { id: 2, pos: "right", img: Astro },
   { id: 3, pos: "right", img: Einstien },
   { id: 4, pos: "left", img: Codey },
