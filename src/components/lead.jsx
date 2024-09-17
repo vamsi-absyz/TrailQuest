@@ -20,7 +20,7 @@ export const Lead = () => {
         { name: "name", placeholder: "Full name", type: "text", required: true },
         { name: "number", placeholder: "Phone number", type: "number", required: false },
         { name: "email", placeholder: "Email address", type: "email", required: false },
-        { name: "company", placeholder: "Your company name", type: "text", required: false },
+        { name: "company", placeholder: "Your company name", type: "text", required: true },
     ];
 
     const handleFormSubmit = (data) => {
@@ -46,7 +46,7 @@ export const Lead = () => {
                         item
                         xs={5}
                         sm={5}
-                        md={4.5}
+                        md={4}
                         className="flex justify-start items-start flex-wrap !flex-col "
                         style={{ gap: "10px", marginTop: "60px" }}
                     >
@@ -63,7 +63,7 @@ export const Lead = () => {
                         </div>
                     </Grid>
 
-                    <Grid item xs={2}></Grid>
+                    {/* <Grid item xs={0} md={3}></Grid> */}
 
                     {/* Carousel section */}
                     <Grid

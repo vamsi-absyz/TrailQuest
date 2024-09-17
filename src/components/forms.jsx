@@ -117,13 +117,14 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
                         type="submit"
                         fullWidth
                         variant="contained"
-                        className="!w-max !mt-[1rem]"
+                        className="!w-max !mt-[0.5rem]"
                         sx={{
                             backgroundColor: "#0470EF",
                             color: "#fff",
                             borderRadius: "30px",
                             textTransform: "capitalize",
-                            padding: "12px 25px",
+                            padding: "10px 25px",
+                            lineHeight:"1rem !important",
                             "&:hover": {
                                 backgroundColor: "#0470EF",
                             },
