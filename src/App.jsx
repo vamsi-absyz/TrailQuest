@@ -1,14 +1,30 @@
-import { useState } from 'react'
-import './App.css'
+import "@mantine/core/styles.css";
+import "./App.css";
+import { Home } from "./components/home";
+import { createTheme, MantineProvider } from "@mantine/core";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CharcaterInfo } from "./components/charcaterInfo";
+import SignIn from "./pages/signin";
+import ProtectedRoute from "./components/ProtectedRoutes";
+
+const theme = createTheme({
+  /** Put your mantine theme override here */
+});
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <h1>Trail Quest</h1>
-    </>
-  )
+    <MantineProvider theme={theme}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<SignIn />} />
+          <Route element={<ProtectedRoute allowedRoles="USER" />}>
+            <Route path="/home" element={<Home />} />
+            <Route path="/character/" element={<CharcaterInfo />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </MantineProvider>
+  );
 }
 
-export default App
+export default App;
