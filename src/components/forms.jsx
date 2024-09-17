@@ -52,7 +52,7 @@ const FormField = ({
         htmlFor={id}
         className="text-[0.9rem] mb-[2px] text-[#17233A] font-normal"
       >
-        <span style={{ color: "red" }}>*</span> {label}
+       {(name==="name" || name==="company" || name==="confirm") &&  <span style={{ color: "red" }}>*</span>}  {label}
       </label>
     )}
 
@@ -147,29 +147,43 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-console.log(data,"datass")
+    
+    // Validate the inputs
     const isValid = validateInputs(data);
-   console.log(isValid,"valid")
+  
+    console.log(isValid, "isValid");
+  
+    // Proceed only if validation is successful
     if (isValid) {
-      onSubmit(data);
-      navigate("/home");
+      onSubmit(data);  // Trigger the form submission logic (assuming it's defined)
+      navigate("/home");  // Redirect to /home after successful submission
     } else {
       console.error("Validation failed");
     }
   };
+  
 
   const validateInputs = (data) => {
-    console.log(data.get("confirm"),"data")
     let errors = {};
-    fields.forEach((field) => {
-      if (field.required && !data.get(field.name)) {
-        errors[field.name] = `${field.placeholder} is required`;
+  
+    const fieldsToValidate = ["name", "company","confirm"];
+  
+    fieldsToValidate.forEach((field) => {
+      if (!data.get(field)) {
+        errors[field] = `${fields.find(f => f.name === field)?.placeholder} is required`;
       }
     });
-    
+  
+    // Handle radio button validation for 'confirm'
+    const confirmValue = data.get("confirm");
+    if (!confirmValue) {
+      errors["confirm"] = "Confirmation is required";
+    }
+  
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
+  
 
   return (
     <FloatingFormContainer>

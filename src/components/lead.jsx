@@ -37,13 +37,11 @@ export const Lead = () => {
 
 
     const handleFormSubmit = (data) => {
-        console.log(data,"data");
         Cookies.set("name", data.get("name") !== "" ? data.get("name") : "user");
         Cookies.set("number", data.get("number") !== "" ? data.get("number") : "XYZ");
         Cookies.set("email", data.get("email") !== "" ? data.get("email") : "user@gmail.com");
-        Cookies.set("company", data.get("company") !== "" ? data.get("email") : "XYZ");
-        Cookies.set("isChecked",data.get("confirm") !=="" ? data.get("confirm") : "")
-
+        Cookies.set("company", data.get("company") !== "" ? data.get("company") : "XYZ");  
+        Cookies.set("isChecked", data.get("confirm") !== "" ? data.get("confirm") : "");
     };
 
     return (

@@ -3,15 +3,15 @@ import "./slider.css";
 import Astro from "../assets/images/Astro.jpg";
 import Bobcat from "../assets/images/Bobcat.jpg";
 import Elephant from "../assets/images/Ruth-Elephant.jpg";
-import Squirrel from '../assets/images/squirrel.jpg'
 import Einstien from "../assets/images/Einstien.jpg";
+import Dog from "../assets/images/Dog.jpg"
 
 
 const images = [
   { id: 1, pos: "right", img: Astro },
   { id: 2, pos: "right", img: Einstien },
   { id: 3, pos: "right", img: Elephant },
-  { id: 4, pos: "left", img: Squirrel },
+  { id: 4, pos: "right", img: Dog },
   { id: 5, pos: "left", img: Bobcat },
 ];
 
