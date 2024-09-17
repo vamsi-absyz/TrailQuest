@@ -57,10 +57,11 @@ export const Home = () => {
   };
 
   const handleCloseModal = () => {
-    setSelectedId("");
-    setIsModalOpen(false);
-    setSelectedTag([]);
-    window.location.reload();
+    // setSelectedId("");
+    // setIsModalOpen(false);
+    // setSelectedTag([]);
+    // window.location.reload();
+    navigate("/")
   };
 
   return (
@@ -126,7 +127,7 @@ export const Home = () => {
           >
             <div className="carousel_img">
               {/* <Carousels /> */}
-              <Slider />
+              <Slider isModalOpen={isModalOpen} />
             </div>
             <div className="flex justify-center items-center w-full pt-[20px]">
               <img src={Logo} alt="logo" className="w-[110px] " />

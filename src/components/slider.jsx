@@ -15,16 +15,18 @@ const images = [
   { id: 5, pos: "left", img: Bobcat },
 ];
 
-const Slider = () => {
+const Slider = ({isModalOpen}) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 1000);
+    if (!isModalOpen) {
+      const interval = setInterval(() => {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }, 1000);
 
-    return () => clearInterval(interval);
-  }, []);
+      return () => clearInterval(interval);
+    }
+  }, [isModalOpen]);
 
   return (
     <div className="slider-container w-[100%] h-[275px] sm:h-[325px]  lg:w-[100%] lg:h-[400px] bg-[#f1efef] rounded-[30px]">
