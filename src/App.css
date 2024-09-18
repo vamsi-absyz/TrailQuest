@@ -33,11 +33,23 @@
 }
 
 .carousel_img {
-  background-color: #ffffff !important;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  /* background-color: #ffffff !important; */
+  box-shadow: -30px 24px 34px 0px #FFFFFF inset;
+  border: 2px solid #FFFFFF;
   width: 100%;
   border-radius: 30px !important;
+  margin-top:40px;
+  background: #F1EFEF;
+
+}
+.carousel_img_lead{
+  /* background-color: #ffffff !important; */
+  box-shadow: -30px 24px 34px 0px #FFFFFF inset;
+  border: 2px solid #FFFFFF;
+  width: 100%;
+  border-radius: 30px !important;
+  background: #F1EFEF;
+
 }
 
 .slick-list {
@@ -71,6 +83,12 @@ select:-webkit-autofill {
 
 input {
   color: #000 !important;
+}
+
+input[type=radio] {
+  border: 0px;
+  width: 18px;
+  height: 2em;
 }
 
 /* Remove arrows in Chrome, Safari, Edge, and Opera */

@@ -1,51 +1,105 @@
-import { useState, useEffect } from 'react';
-import Cookies from "js-cookie";
-import axios from 'axios';
-
-
-const ShareButton = () => {
+import React, { useState, useEffect, useRef } from 'react';
+import Astro from '../../public/Astro.jpg'
+import Bobcat from "../../public/Bobcat.jpg"
+import Dog from "../../public/Dog.jpg"
+import Einstien from "../../public/Einstien.jpg"
+import Elephant from "../../public/Ruth-Elephant.jpg"
+const ShareButton = ({modalData}) => {
   const [isShareSupported, setIsShareSupported] = useState(false);
+  const clipboardItemRef = useRef(null);
+
+  console.log(modalData,"modaldata")
+  const imageMapping = {
+    Astro,
+    Bobcat,
+    Dog,
+    Einstien,
+    Elephant
+  };
 
   useEffect(() => {
     // Check if Web Share API is supported when the component mounts
+    axiosSend();
     setIsShareSupported(!!navigator.share);
   }, []);
 
-  const shareContent = () => {
-    const formData = {
-      name: Cookies.get("name"),
-      email: Cookies.get("email"),
-      phone: Cookies.get("number"),
-      company: Cookies.get("company"),
-    }
-    console.log(formData, "checking the data")
+
+  function getImg(imgName) {
+    return imageMapping[imgName] || null;
+  }
+
+  // Function to download the image from the public folder and prepare it for sharing
+  async function axiosSend() {
+    // The image must be in the public directory
+    console.log(modalData,"ddd")
+    const imgName= modalData[0].name;
+
+    const imageUrl = getImg(imgName);
+    console.log(imgName,"imgName") // Ensure it's in public/assets/images
 
     try {
-      if (formData) {
-        try {
-          const url = "http://localhost:5000/submit-form"
-          axios
-            .post(url, formData)
-            .then((response) => console.log(response))
-            .catch((error) => console.error(error));
-        } catch (err) {
-          console.error(err, "err")
-        }
+      // Fetch the image from the correct URL
+      const response = await fetch(imageUrl);
+      console.log('Image not found', imageUrl);
+
+      if (!response.ok) {
+        throw new Error('Image not found', imageUrl);
       }
-    } catch (err) {
-      console.error(err)
+
+      const blob = await response.blob(); // Convert the response into a blob
+      clipboardItemRef.current = blob; // Save the blob to the clipboard item reference
+      console.log('Image fetched and prepared:', response);
+    } catch (error) {
+      console.error('Error fetching image:', error);
     }
-  };
+  }
+
+  // Function to share the image
+  async function copyAndSend() {
+    if (!clipboardItemRef.current) {
+      console.error('No image blob available');
+      return;
+    }
+
+    const title = modalData[0]?.title;
+    const filesArray = [
+      new File([clipboardItemRef.current], `${title}.jpg`, {
+        type: 'image/jpeg',
+        lastModified: new Date().getTime(),
+      }),
+    ];
+
+    const shareData = {
+      files: filesArray,
+      content:[modalData[0]?.description]
+    };
+
+    // Check if the browser can share the file
+    if (navigator.canShare && navigator.canShare(shareData)) {
+      try {
+        await navigator.share(shareData);
+        alert('Shared successfully!');
+      } catch (error) {
+        console.error('Sharing failed:', error);
+      }
+    } else {
+      console.error('Sharing not supported');
+    }
+  }
 
   return (
     <div>
-      {/* <h1>Share Content</h1> */}
       {isShareSupported ? (
-        <button
-          style={{ color: 'white' }}
-          onClick={shareContent}>Share to Instagram</button>
+        <button style={{ color: 'white' }} onClick={copyAndSend}>
+          Share to Instagram
+        </button>
       ) : (
+      <>
         <p>Sharing is not supported on this browser.</p>
+
+        <p>{modalData[0].name}</p>
+        
+        </>
       )}
     </div>
   );

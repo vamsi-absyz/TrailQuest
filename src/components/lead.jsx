@@ -7,6 +7,7 @@ import Logo from "../assets/images/logo.png";
 import Slider from "./slider";
 import SignInForm from "./forms";
 import Cookies from "js-cookie";
+import { label } from "framer-motion/client";
 
 export const Lead = () => {
     // const [selectedTag, setSelectedTag] = useState([]); // Manages selected tags
@@ -17,10 +18,45 @@ export const Lead = () => {
     // const [tagData, setTagData] = useState([]);
 
     const fields = [
-        { name: "name", placeholder: "Full name", type: "text", required: true },
-        { name: "number", placeholder: "Phone number", type: "number", required: false },
-        { name: "email", placeholder: "Email address", type: "email", required: false },
-        { name: "company", placeholder: "Your company name", type: "text", required: false },
+        {
+            name: "name",
+            placeholder: "Full name",
+            type: "text",
+            required: true,
+            label: "Full name",
+        },
+        {
+            name: "number",
+            placeholder: "Phone number",
+            type: "number",
+            required: false,
+            label: "Contact Number",
+        },
+        {
+            name: "email",
+            placeholder: "Email address",
+            type: "email",
+            required: false,
+            label: "Email Address",
+        },
+        {
+            name: "company",
+            placeholder: "Your company name",
+            type: "text",
+            required: true,
+            label: "Your Company",
+        },
+        {
+            name: "confirm",
+            label: "Do you use Salesforce?",
+            placeholder: "Field",
+            type: "radio",
+            required: true,
+            options: [
+                { value: "yes", label: "Yes" },
+                { value: "no", label: "No" },
+            ],
+        },
     ];
 
     const handleFormSubmit = (data) => {
@@ -28,6 +64,7 @@ export const Lead = () => {
         Cookies.set("number", data.get("number"));
         Cookies.set("email", data.get("email"));
         Cookies.set("company", data.get("company"));
+        Cookies.set("isChecked", data.get("confirm"));
     };
 
     return (
@@ -45,24 +82,34 @@ export const Lead = () => {
                         item
                         xs={5}
                         sm={5}
-                        md={4.5}
-                        className="flex justify-start items-start flex-wrap !flex-col "
-                        style={{ gap: "10px", marginTop: "60px" }}
+                        md={4}
+                        className="flex justify-start items-start flex-wrap !flex-col"
+                        sx={{
+                            gap: "10px",
+
+                            "@media (min-width: 768px) and (max-width: 1024px)": {
+                                marginTop: "50px",
+                            },
+                            "@media (min-width: 1024px)": {
+                                marginTop: "10px",
+                            },
+                        }}
                     >
-                        <div className="mb-[8px]">
+                        <div className="mb-[8px] ">
                             <span className="font-medium text-[22px] text-[#17233A]">
                                 Let’s Make Things Happen Together!
                             </span>
                         </div>
                         <div className="w-full">
-                            <div className="mb-[1rem]">
-                                <span>Please fill the details</span>
-                            </div>
-                            <SignInForm title="Absyz" onSubmit={handleFormSubmit} fields={fields} />
+                            <SignInForm
+                                title="Absyz"
+                                onSubmit={handleFormSubmit}
+                                fields={fields}
+                            />
                         </div>
                     </Grid>
 
-                    <Grid item xs={2}></Grid>
+                    {/* <Grid item xs={0} md={3}></Grid> */}
 
                     {/* Carousel section */}
                     <Grid
@@ -70,15 +117,18 @@ export const Lead = () => {
                         xs={4}
                         sm={3}
                         md={3}
-                        className="flex justify-end !flex-col items-center h-[100vh] md:h-[100vh]"
+                        className="flex justify-start !flex-col items-center h-[100vh] md:h-[100vh]"
                     >
-                        <div className="carousel_img">
+                        <div className="flex justify-center items-center w-full pt-[20px] mb-[20px]">
+                            <img src={Logo} alt="logo" className="w-[110px] " />
+                        </div>
+                        <div className="carousel_img_lead">
                             {/* <Carousels /> */}
                             <Slider />
                         </div>
-                        <div className="flex justify-center items-center w-full pt-[20px]">
+                        {/* <div className="flex justify-center items-center w-full pt-[20px]">
                             <img src={Logo} alt="logo" className="w-[110px] " />
-                        </div>
+                        </div> */}
                     </Grid>
                 </Grid>
             </div>
