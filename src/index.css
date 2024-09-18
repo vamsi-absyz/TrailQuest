@@ -29,6 +29,14 @@ body {
   margin: 0;
 }
 
+@media (min-width: 768px) and (max-width: 1024px) {
+  body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+}
+
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;

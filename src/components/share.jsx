@@ -108,7 +108,7 @@ export const WpShare = ({ modalData }) => {
     console.log(modalData, whatsAppUrl, "model data in the share component");
 
     return (
-        <ShareButton />
+        <ShareButton  modalData={modalData}/>
         // <Button
         //     style={{
         //         backgroundColor: "#30335C",
@@ -157,6 +157,8 @@ export const EmailShare = ({ modalData }) => {
 
     const title = `${shareData.title}! \n\n${shareData.content} - ${modalData.title}
     \n\n ${shareData.image}`;
+
+
 
     return (
         <Button
