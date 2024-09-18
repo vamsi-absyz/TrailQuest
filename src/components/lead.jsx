@@ -24,11 +24,10 @@ export const Lead = () => {
     ];
 
     const handleFormSubmit = (data) => {
-        Cookies.set("name", data.get("name") !== "" ? data.get("name") : "user");
-        Cookies.set("number", data.get("number") !== "" ? data.get("number") : "XYZ");
-        Cookies.set("email", data.get("email") !== "" ? data.get("email") : "user@gmail.com");
-        Cookies.set("company", data.get("company") !== "" ? data.get("email") : "XYZ");
-
+        Cookies.set("name", data.get("name"));
+        Cookies.set("number", data.get("number"));
+        Cookies.set("email", data.get("email"));
+        Cookies.set("company", data.get("company"));
     };
 
     return (

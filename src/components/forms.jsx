@@ -66,11 +66,14 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
         const data = new FormData(event.currentTarget);
 
         const isValid = validateInputs(data);
+        console.log(isValid, "isValidisValid")
 
         if (isValid) {
+            console.log("inif")
             onSubmit(data);
             navigate("/home");
         } else {
+            console.log("inelse")
             console.error("Validation failed");
         }
     };
