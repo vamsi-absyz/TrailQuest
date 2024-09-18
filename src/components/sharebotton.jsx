@@ -1,8 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
-
-const ShareButton = () => {
+import Astro from '../../public/Astro.jpg'
+import Bobcat from "../../public/Bobcat.jpg"
+import Dog from "../../public/Dog.jpg"
+import Einstien from "../../public/Einstien.jpg"
+import Elephant from "../../public/Ruth-Elephant.jpg"
+const ShareButton = ({modalData}) => {
   const [isShareSupported, setIsShareSupported] = useState(false);
   const clipboardItemRef = useRef(null);
+
+  console.log(modalData,"modaldata")
+  const imageMapping = {
+    Astro,
+    Bobcat,
+    Dog,
+    Einstien,
+    Elephant
+  };
 
   useEffect(() => {
     // Check if Web Share API is supported when the component mounts
@@ -10,10 +23,19 @@ const ShareButton = () => {
     setIsShareSupported(!!navigator.share);
   }, []);
 
+
+  function getImg(imgName) {
+    return imageMapping[imgName] || null;
+  }
+
   // Function to download the image from the public folder and prepare it for sharing
   async function axiosSend() {
     // The image must be in the public directory
-    const imageUrl = "/Astro.jpg"; // Ensure it's in public/assets/images
+    console.log(modalData,"ddd")
+    const imgName= modalData[0].name;
+
+    const imageUrl = getImg(imgName);
+    console.log(imgName,"imgName") // Ensure it's in public/assets/images
 
     try {
       // Fetch the image from the correct URL
@@ -39,7 +61,7 @@ const ShareButton = () => {
       return;
     }
 
-    const title = 'popcall_instagram_story';
+    const title = modalData[0]?.title;
     const filesArray = [
       new File([clipboardItemRef.current], `${title}.jpg`, {
         type: 'image/jpeg',
@@ -49,6 +71,7 @@ const ShareButton = () => {
 
     const shareData = {
       files: filesArray,
+      content:[modalData[0]?.description]
     };
 
     // Check if the browser can share the file
@@ -71,7 +94,12 @@ const ShareButton = () => {
           Share to Instagram
         </button>
       ) : (
+      <>
         <p>Sharing is not supported on this browser.</p>
+
+        <p>{modalData[0].name}</p>
+        
+        </>
       )}
     </div>
   );
