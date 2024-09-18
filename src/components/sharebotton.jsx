@@ -4,11 +4,15 @@ import Bobcat from "../../public/Bobcat.jpg"
 import Dog from "../../public/Dog.jpg"
 import Einstien from "../../public/Einstien.jpg"
 import Elephant from "../../public/Ruth-Elephant.jpg"
+import Cookies from "js-cookie";
 const ShareButton = ({modalData}) => {
   const [isShareSupported, setIsShareSupported] = useState(false);
   const clipboardItemRef = useRef(null);
+  const capitalizeFirstLetter = (name) =>
+    name ? name.charAt(0).toUpperCase() + name.slice(1) : "";
+  const name = capitalizeFirstLetter(Cookies.get("name"));
+  const message= `${name}, we’ve found the perfect mascot to match`;
 
-  console.log(modalData,"modaldata")
   const imageMapping = {
     Astro,
     Bobcat,
@@ -71,13 +75,16 @@ const ShareButton = ({modalData}) => {
 
     const shareData = {
       files: filesArray,
-      content:[modalData[0]?.description]
+      title:"Congratulations",
+      text:message
+      
     };
 
     // Check if the browser can share the file
     if (navigator.canShare && navigator.canShare(shareData)) {
       try {
         await navigator.share(shareData);
+        console.log(shareData,"data");
         alert('Shared successfully!');
       } catch (error) {
         console.error('Sharing failed:', error);
@@ -97,7 +104,6 @@ const ShareButton = ({modalData}) => {
       <>
         <p>Sharing is not supported on this browser.</p>
 
-        <p>{modalData[0].name}</p>
         
         </>
       )}
