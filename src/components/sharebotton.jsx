@@ -85,7 +85,7 @@ const ShareButton = () => {
       {isShareSupported ? (
         <button
           style={{ color: 'white' }}
-          onClick={shareContent}>Share to Instagram</button>
+          onClick={copyAndSend}>Share to Instagram</button>
       ) : (
         <p>Sharing is not supported on this browser.</p>
       )}
