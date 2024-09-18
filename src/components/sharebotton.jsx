@@ -12,7 +12,7 @@ const ShareButton = () => {
 
   // Function to download the image from the URL and prepare it for sharing
   async function axiosSend() {
-    const imageUrl = "https://i.ibb.co/g6dSggH/2021-12-360-Blog-2-D-Individual-Illustrations-Einstien.png";
+    const imageUrl = 'src/assets/images/Astro.jpg';
 
     try {
       // Fetch the image from the URL
@@ -40,8 +40,8 @@ const ShareButton = () => {
 
     // Prepare the file with the downloaded image
     const filesArray = [
-      new File([clipboardItemRef.current], `${title}.png`, {
-        type: "image/png", // Using 'png' as per the provided URL
+      new File([clipboardItemRef.current], `${title}.jpg`, {
+        type: "image/jpg", // Using 'png' as per the provided URL
         lastModified: new Date().getTime()
       })
     ];
