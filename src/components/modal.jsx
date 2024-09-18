@@ -153,13 +153,13 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                   <div className="relative z-[50]">
                     <div>
                       <img
-                        src={modalData[0].congratsImg}
+                        src={modalData[0].image}
                         alt="conratulations"
                         className="!w-[260px] !h-[260px] object-scale-down"
                       />
                     </div>
 
-                    <div className="flex flex-col items-start absolute top-[4rem] left-[9.5rem]">
+                    {/* <div className="flex flex-col items-start absolute top-[4rem] left-[9.5rem]">
                       <p className="text-[14px] font-medium">Meet</p>
                       <p className="text-[14px] font-medium leading-[10px]">
                         Your
@@ -172,7 +172,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                       <p className="text-[14px] font-medium text-start leading-[4px] text-nowrap">
                         {modalData[0].title.split(" ").slice(1).join(" ")}
                       </p>
-                    </div>
+                    </div> */}
                   </div>
                 </Grid>
 
