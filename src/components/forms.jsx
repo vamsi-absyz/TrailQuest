@@ -142,16 +142,14 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
     const { name, value } = event.target;
   
     if (name === "number") {
-      // Allow only numbers for phoneNumber
-      const regex = /^[0-9\b]+$/; // \b allows for backspace
-      if (value === "" || regex.test(value)) {
+      const regex = /^[0-9\b]+$/; 
+      if ((value === "" || regex.test(value)) && value.length <= 10)  {
         setFormData((prevData) => ({
           ...prevData,
           [name]: value,
         }));
       }
     } else if (name === "name") {
-      // Allow only alphabets and spaces for firstname
       const regex = /^[A-Za-z ]*$/;
       if (regex.test(value)) {
         setFormData((prevData) => ({
@@ -160,7 +158,6 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
         }));
       }
     } else {
-      // For other inputs, update normally
       setFormData((prevData) => ({
         ...prevData,
         [name]: value,

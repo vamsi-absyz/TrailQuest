@@ -22,7 +22,7 @@ const Slider = ({isModalOpen}) => {
     if (!isModalOpen) {
       const interval = setInterval(() => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-      }, 800);
+      }, 700);
 
       return () => clearInterval(interval);
     }

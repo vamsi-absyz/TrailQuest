@@ -75,7 +75,7 @@
 /* Styles for the remaining images sliding from bottom to top */
 .image-box.active-vertical {
   opacity: 1;
-  animation: slide-up 0.2s ease-in-out forwards;
+  animation: slide-up 0.15s ease-in-out forwards;
 }
 
 @keyframes slide-up {
