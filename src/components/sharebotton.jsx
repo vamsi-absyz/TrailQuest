@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const ShareButton = () => {
   const [isShareSupported, setIsShareSupported] = useState(false);
-  const clipboardItemRef = useRef < Blob | null > (null);
+  const clipboardItemRef = useRef(null);
 
   useEffect(() => {
     // Check if Web Share API is supported when the component mounts
@@ -10,83 +10,66 @@ const ShareButton = () => {
     setIsShareSupported(!!navigator.share);
   }, []);
 
-  // Function to download the image from the URL and prepare it for sharing
+  // Function to download the image from the public folder and prepare it for sharing
   async function axiosSend() {
-    const imageUrl = 'src/assets/images/Astro.jpg';
+    // The image must be in the public directory
+    const imageUrl = "/Astro.jpg"; // Ensure it's in public/assets/images
 
     try {
-      // Fetch the image from the URL
+      // Fetch the image from the correct URL
       const response = await fetch(imageUrl);
-      const blob = await response.blob(); // Convert the response into a blob
-      const clipboardItem = new ClipboardItem({
-        [blob.type]: blob
-      });
+      console.log('Image not found', imageUrl);
 
-      // Save the blob to the clipboard item reference
-      clipboardItemRef.current = blob;
+      if (!response.ok) {
+        throw new Error('Image not found', imageUrl);
+      }
+
+      const blob = await response.blob(); // Convert the response into a blob
+      clipboardItemRef.current = blob; // Save the blob to the clipboard item reference
       console.log('Image fetched and prepared:', response);
     } catch (error) {
       console.error('Error fetching image:', error);
     }
   }
 
-  // Function to share the video or image
+  // Function to share the image
   async function copyAndSend() {
-    // if (!clipboardItemRef.current) {
-    //   return;
-    // }
+    if (!clipboardItemRef.current) {
+      console.error('No image blob available');
+      return;
+    }
 
-    const title = "popcall_instagram_story";
-
-    // Prepare the file with the downloaded image
+    const title = 'popcall_instagram_story';
     const filesArray = [
       new File([clipboardItemRef.current], `${title}.jpg`, {
-        type: "image/jpg", // Using 'png' as per the provided URL
-        lastModified: new Date().getTime()
-      })
+        type: 'image/jpeg',
+        lastModified: new Date().getTime(),
+      }),
     ];
 
     const shareData = {
-      files: filesArray
+      files: filesArray,
     };
 
-    // Check if sharing is supported
+    // Check if the browser can share the file
     if (navigator.canShare && navigator.canShare(shareData)) {
       try {
         await navigator.share(shareData);
-        alert("Shared successfully!");
+        alert('Shared successfully!');
       } catch (error) {
-        console.error("Sharing failed:", error);
+        console.error('Sharing failed:', error);
       }
     } else {
-      console.error("Sharing not supported");
+      console.error('Sharing not supported');
     }
   }
-
-  const shareContent = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: 'Amazing Content!',
-        text: 'Check out this amazing content!',
-        url: 'https://yourwebsite.com/path-to-content',
-      })
-        .then(() => {
-          console.log('Content successfully shared');
-        })
-        .catch((error) => {
-          console.error('Error sharing content:', error);
-        });
-    } else {
-      alert('Web Share API is not supported in your browser.');
-    }
-  };
 
   return (
     <div>
       {isShareSupported ? (
-        <button
-          style={{ color: 'white' }}
-          onClick={copyAndSend}>Share to Instagram</button>
+        <button style={{ color: 'white' }} onClick={copyAndSend}>
+          Share to Instagram
+        </button>
       ) : (
         <p>Sharing is not supported on this browser.</p>
       )}
