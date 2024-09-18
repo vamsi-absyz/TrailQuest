@@ -9,7 +9,8 @@
 .chips {
   /* box-shadow: rgba(107, 130, 205, 0.2) 0px 2px 8px 0px; */
   border: 1px solid #c0c0c0;
-  border-radius: 20px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .chips .mantine-Chip-iconWrapper {
@@ -19,6 +20,7 @@
 .chips label {
   padding: 0.9rem 1rem;
   background-color: #ffffff !important;
+  border-radius: inherit; 
 }
 
 .chips label:where([data-checked]) {
