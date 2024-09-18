@@ -6,7 +6,7 @@ const ShareButton = () => {
 
   useEffect(() => {
     // Check if Web Share API is supported when the component mounts
-    axiosSend()
+    axiosSend();
     setIsShareSupported(!!navigator.share);
   }, []);
 
@@ -14,24 +14,27 @@ const ShareButton = () => {
   async function axiosSend() {
     const imageUrl = "https://i.ibb.co/g6dSggH/2021-12-360-Blog-2-D-Individual-Illustrations-Einstien.png";
 
-    // Fetch the image from the URL
-    const response = await fetch(imageUrl);
-    const blob = await response.blob(); // Convert the response into a blob
+    try {
+      // Fetch the image from the URL
+      const response = await fetch(imageUrl);
+      const blob = await response.blob(); // Convert the response into a blob
+      const clipboardItem = new ClipboardItem({
+        [blob.type]: blob
+      });
 
-    const clipboardItem = new ClipboardItem({
-      [blob.type]: blob
-    });
-
-    // Save the blob to the clipboard item reference
-    clipboardItemRef.current = blob;
-
+      // Save the blob to the clipboard item reference
+      clipboardItemRef.current = blob;
+      console.log('Image fetched and prepared:', response);
+    } catch (error) {
+      console.error('Error fetching image:', error);
+    }
   }
 
   // Function to share the video or image
   async function copyAndSend() {
-    if (!clipboardItemRef.current) {
-      return;
-    }
+    // if (!clipboardItemRef.current) {
+    //   return;
+    // }
 
     const title = "popcall_instagram_story";
 
@@ -60,7 +63,6 @@ const ShareButton = () => {
     }
   }
 
-
   const shareContent = () => {
     if (navigator.share) {
       navigator.share({
@@ -81,7 +83,6 @@ const ShareButton = () => {
 
   return (
     <div>
-      {/* <h1>Share Content</h1> */}
       {isShareSupported ? (
         <button
           style={{ color: 'white' }}
