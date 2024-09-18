@@ -33,6 +33,7 @@
 .image-box.active-horizontal-right {
   opacity: 1;
   animation: slide-right 1s ease-in-out forwards;
+  justify-content: flex-end;
 }
 
 @keyframes slide-right {
