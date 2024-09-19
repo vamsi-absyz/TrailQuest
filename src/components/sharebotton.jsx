@@ -65,7 +65,8 @@ const ShareButton = ({ modalData }) => {
       return;
     }
 
-    const title = modalData[0]?.title;
+    // const title = modalData[0]?.title;
+    const title = "Very Good";
     const filesArray = [
       new File([clipboardItemRef.current], `${title}.jpg`, {
         type: "image/jpeg",
