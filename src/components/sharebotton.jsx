@@ -81,9 +81,6 @@ const ShareButton = ({modalData}) => {
       
     };
 
-    console.log("sharedata", shareData);
-    
-
     // Check if the browser can share the file
     if (navigator.canShare && navigator.canShare(shareData)) {
       try {
