@@ -6,6 +6,10 @@
   color: #000;
 }
 
+.css-wq8qsl-MuiFormHelperText-root.Mui-error{
+  margin-left: 4px !important;
+}
+
 .chips {
   /* box-shadow: rgba(107, 130, 205, 0.2) 0px 2px 8px 0px; */
   border: 1px solid #c0c0c0;

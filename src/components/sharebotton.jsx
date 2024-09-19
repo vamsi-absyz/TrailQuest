@@ -14,11 +14,11 @@ const ShareButton = ({modalData}) => {
   const message= `${name}, we’ve found the perfect mascot to match`;
 
   const imageMapping = {
-    Astro,
-    Bobcat,
-    Dog,
-    Einstien,
-    Elephant
+   Astro: "/Astro.jpg",
+    Bobcat:"/Bobcat.jpg",
+    Dog:"/Dog.jpg",
+    Einstien:'/Einstien.jpg',
+    Elephant:"/Ruth-Elephant.jpg"
   };
 
   useEffect(() => {
@@ -39,7 +39,8 @@ const ShareButton = ({modalData}) => {
     const imgName= modalData[0].name;
 
     const imageUrl = getImg(imgName);
-    console.log(imgName,"imgName") // Ensure it's in public/assets/images
+    console.log(imageUrl,"imageurljjjjjjjjjj")
+    // console.log(imgName,"imgName") // Ensure it's in public/assets/images
 
     try {
       // Fetch the image from the correct URL
@@ -80,6 +81,9 @@ const ShareButton = ({modalData}) => {
       
     };
 
+    console.log("sharedata", shareData);
+    
+
     // Check if the browser can share the file
     if (navigator.canShare && navigator.canShare(shareData)) {
       try {
@@ -100,6 +104,7 @@ const ShareButton = ({modalData}) => {
         <button style={{ color: 'white' }} onClick={copyAndSend}>
           Share to Instagram
         </button>
+        
       ) : (
       <>
         <p>Sharing is not supported on this browser.</p>
