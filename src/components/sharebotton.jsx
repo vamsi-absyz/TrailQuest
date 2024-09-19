@@ -80,6 +80,8 @@ const ShareButton = ({modalData}) => {
       
     };
 
+    console.log("removed text and title")
+
     // Check if the browser can share the file
     if (navigator.canShare && navigator.canShare(shareData)) {
       try {
