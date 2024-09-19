@@ -5,21 +5,22 @@ import Dog from "../../public/Dog.jpg"
 import Einstien from "../../public/Einstien.jpg"
 import Elephant from "../../public/Ruth-Elephant.jpg"
 import Cookies from "js-cookie";
-const ShareButton = ({modalData}) => {
+
+const ShareButton = () => {
   const [isShareSupported, setIsShareSupported] = useState(false);
   const clipboardItemRef = useRef(null);
-  const capitalizeFirstLetter = (name) =>
-    name ? name.charAt(0).toUpperCase() + name.slice(1) : "";
-  const name = capitalizeFirstLetter(Cookies.get("name"));
-  const message= `${name}, we’ve found the perfect mascot to match`;
+  // const capitalizeFirstLetter = (name) =>
+   // name ? name.charAt(0).toUpperCase() + name.slice(1) : "";
+  // const name = capitalizeFirstLetter(Cookies.get("name"));
+  // const message= `${name}, we’ve found the perfect mascot to match`;
 
-  const imageMapping = {
-   Astro: "/Astro.jpg",
-    Bobcat:"/Bobcat.jpg",
-    Dog:"/Dog.jpg",
-    Einstien:'/Einstien.jpg',
-    Elephant:"/Ruth-Elephant.jpg"
-  };
+ // const imageMapping = {
+  // Astro: "/Astro.jpg",
+   // Bobcat:"/Bobcat.jpg",
+   // Dog:"/Dog.jpg",
+   // Einstien:'/Einstien.jpg',
+   // Elephant:"/Ruth-Elephant.jpg"
+  // };
 
   useEffect(() => {
     // Check if Web Share API is supported when the component mounts
@@ -28,15 +29,15 @@ const ShareButton = ({modalData}) => {
   }, []);
 
 
-  function getImg(imgName) {
-    return imageMapping[imgName] || null;
-  }
+  // function getImg(imgName) {
+   // return imageMapping[imgName] || null;
+ // }
 
   // Function to download the image from the public folder and prepare it for sharing
   async function axiosSend() {
     // The image must be in the public directory
-    console.log(modalData,"ddd")
-    const imgName= modalData[0].name;
+    // console.log(modalData,"ddd")
+    // const imgName= modalData[0].name;
 
     const imageUrl = '/Astro.jpg';
     console.log(imageUrl,"imageurljjjjjjjjjj")
@@ -66,7 +67,8 @@ const ShareButton = ({modalData}) => {
       return;
     }
 
-    const title = modalData[0]?.title;
+   // const title = modalData[0]?.title;
+    const title = 'Very Good';
     const filesArray = [
       new File([clipboardItemRef.current], `${title}.jpg`, {
         type: 'image/jpeg',
@@ -75,7 +77,7 @@ const ShareButton = ({modalData}) => {
     ];
 
     const shareData = {
-      files: filesArray,
+      files: filesArray
       // title:"Congratulations",
       // text:message
       
