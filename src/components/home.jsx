@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { Modal } from "./modal";
 import Logo from "../assets/images/logo.png";
 import Slider from "./slider";
-
+import Cookies from "js-cookie";
 export const Home = () => {
   const [selectedTag, setSelectedTag] = useState([]); // Manages selected tags
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,7 +24,9 @@ export const Home = () => {
         )
         .flat();
 
-      setTagData(allTagsWithId);
+        const shuffledTags = allTagsWithId.sort(() => Math.random() - 0.5);
+
+        setTagData(shuffledTags);
     }
   }, []);
 
@@ -56,7 +58,19 @@ export const Home = () => {
     // setSelectedTag([]);
     // window.location.reload();
     navigate("/");
+    Cookies.remove("name");
+    Cookies.remove("confirm")
+    Cookies.remove("number")
+    Cookies.remove("email");
+    Cookies.remove("company")
   };
+
+  useEffect(()=>{
+    const user=Cookies.get("name");
+    if(user===undefined){
+        navigate("/")
+    }
+  })
 
   return (
     <Box

@@ -7,8 +7,8 @@ import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router";
 import Cookies from "js-cookie";
 import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
-import { db } from '../../firebaseConfig'; // Adjust the path if necessary
-import { collection, addDoc } from 'firebase/firestore';
+import { db } from "../../firebaseConfig"; // Adjust the path if necessary
+import { collection, addDoc } from "firebase/firestore";
 // Reusable FloatingFormContainer Component
 const FloatingFormContainer = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -47,9 +47,8 @@ const FormField = ({
   onBlur,
   ...props
 }) => {
-
   function handleKeyDown(event) {
-    const invalidKeys = ['-', '+', '.',];
+    const invalidKeys = ["-", "+", "."];
 
     if (invalidKeys.includes(event.key)) {
       event.preventDefault();
@@ -97,7 +96,9 @@ const FormField = ({
             </label>
           </div>
           {error && (
-            <div className="mt-1 text-custom-red  text-[12px] ml-1">{helperText}</div>
+            <div className="mt-1 text-custom-red  text-[12px] ml-1">
+              {helperText}
+            </div>
           )}
         </>
       ) : (
@@ -110,7 +111,7 @@ const FormField = ({
           name={name}
           value={value}
           onChange={onChange}
-          onKeyDown={handleKeyDown}
+          onKeyDown={name==="number" ? handleKeyDown : undefined}
           fullWidth
           variant="outlined"
           placeholder={placeholder}
@@ -127,7 +128,6 @@ const FormField = ({
           }}
           {...props}
         />
-
       )}
     </FormControl>
   );
@@ -143,7 +143,7 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
     company: "",
     confirm: "",
     email: "",
-    number: ""
+    number: "",
   });
 
   const handleChange = (event) => {
@@ -159,7 +159,7 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
         }));
       }
     } else if (name === "name") {
-      const regex = /^[A-Za-z ]*$/;
+        const regex = /^[A-Za-z._+ ]*$/;
       if (regex.test(value)) {
         setFormData((prevData) => ({
           ...prevData,
@@ -173,7 +173,6 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
       }));
     }
   };
-
 
   const handleBlur = (event) => {
     const { name, value } = event.target;
@@ -220,10 +219,11 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
     setFormErrors(errors);
   };
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+
+    console.log(data.get("name"),"data");
 
     // Validate the inputs
     const isValid = validateInputs(data);
@@ -241,11 +241,11 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
     try {
       // Add a new document with a generated ID
       const docRef = await addDoc(collection(db, "users"), {
-        name: 'vamsi',
-        email: 'korlam@gmail.com',
-        phone: '12345678',
-        company: 'absyz',
-        isSalesforce: true
+        name: data.get("name"),
+        email: data.get("email"),
+        phone: data.get("number"),
+        company: data.get("company"),
+        isSalesforce: data.get("confirm"),
       });
       console.log("Document written with ID: ", docRef.id);
     } catch (error) {
@@ -260,8 +260,9 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
 
     fieldsToValidate.forEach((field) => {
       if (!data.get(field)) {
-        errors[field] = `${fields.find((f) => f.name === field)?.placeholder
-          } is required`;
+        errors[field] = `${
+          fields.find((f) => f.name === field)?.placeholder
+        } is required`;
       }
     });
 
