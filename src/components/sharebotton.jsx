@@ -75,8 +75,8 @@ const ShareButton = ({modalData}) => {
 
     const shareData = {
       files: filesArray,
-      title:"Congratulations",
-      text:message
+      // title:"Congratulations",
+      // text:message
       
     };
 
