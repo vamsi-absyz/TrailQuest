@@ -7,7 +7,8 @@ import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router";
 import Cookies from "js-cookie";
 import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
-
+import { db } from "../../firebaseConfig"; // Adjust the path if necessary
+import { collection, addDoc } from "firebase/firestore";
 // Reusable FloatingFormContainer Component
 const FloatingFormContainer = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -46,14 +47,13 @@ const FormField = ({
   onBlur,
   ...props
 }) => {
+  function handleKeyDown(event) {
+    const invalidKeys = ["-", "+", "."];
 
-    function handleKeyDown(event) {
-        const invalidKeys = ['-', '+', '.',]; 
-        
-        if (invalidKeys.includes(event.key)) {
-          event.preventDefault(); 
-        }
-      }
+    if (invalidKeys.includes(event.key)) {
+      event.preventDefault();
+    }
+  }
 
   return (
     <FormControl>
@@ -96,7 +96,9 @@ const FormField = ({
             </label>
           </div>
           {error && (
-            <div className="mt-1 text-custom-red  text-[12px] ml-1">{helperText}</div>
+            <div className="mt-1 text-custom-red  text-[12px] ml-1">
+              {helperText}
+            </div>
           )}
         </>
       ) : (
@@ -109,7 +111,7 @@ const FormField = ({
           name={name}
           value={value}
           onChange={onChange}
-          onKeyDown={handleKeyDown}
+          onKeyDown={name==="number" ? handleKeyDown : undefined}
           fullWidth
           variant="outlined"
           placeholder={placeholder}
@@ -126,7 +128,6 @@ const FormField = ({
           }}
           {...props}
         />
-        
       )}
     </FormControl>
   );
@@ -141,24 +142,24 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
     name: "",
     company: "",
     confirm: "",
-    email:"",
-    number:""
+    email: "",
+    number: "",
   });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-  
+
     if (name === "number") {
-        const regex = /^[0-9]*$/;
- 
-      if ((value === "" || regex.test(value)) && value.length <= 10)  {
+      const regex = /^[0-9]*$/;
+
+      if ((value === "" || regex.test(value)) && value.length <= 10) {
         setFormData((prevData) => ({
           ...prevData,
           [name]: value,
         }));
       }
     } else if (name === "name") {
-      const regex = /^[A-Za-z ]*$/;
+        const regex = /^[A-Za-z._+ ]*$/;
       if (regex.test(value)) {
         setFormData((prevData) => ({
           ...prevData,
@@ -172,7 +173,6 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
       }));
     }
   };
-  
 
   const handleBlur = (event) => {
     const { name, value } = event.target;
@@ -206,23 +206,24 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
       } else {
         delete errors[name];
       }
-    }else if(name==="number"){
-        if(!value){
-            errors[name] = "";
-        }else if(value.length<10){
-            errors[name] = "Phone number must have exactly 10 digits";
-        }else{
-            delete errors[name];
-        }
+    } else if (name === "number") {
+      if (!value) {
+        errors[name] = "";
+      } else if (value.length < 10) {
+        errors[name] = "Phone number must have exactly 10 digits";
+      } else {
+        delete errors[name];
+      }
     }
 
     setFormErrors(errors);
   };
 
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+
+    console.log(data.get("name"),"data");
 
     // Validate the inputs
     const isValid = validateInputs(data);
@@ -235,6 +236,20 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
       navigate("/home"); // Redirect to /home after successful submission
     } else {
       console.error("Validation failed");
+    }
+
+    try {
+      // Add a new document with a generated ID
+      const docRef = await addDoc(collection(db, "users"), {
+        name: data.get("name"),
+        email: data.get("email"),
+        phone: data.get("number"),
+        company: data.get("company"),
+        isSalesforce: data.get("confirm"),
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (error) {
+      console.error("Error adding document: ", error);
     }
   };
 
@@ -286,7 +301,7 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
             <FormField
               key={field.name}
               id={field.name}
-              placeholder={field.placeholder} 
+              placeholder={field.placeholder}
               type={field.type}
               label={field.label}
               required={field.required}
