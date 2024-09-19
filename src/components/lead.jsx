@@ -59,6 +59,13 @@ export const Lead = () => {
     },
   ];
 
+
+  useEffect(()=>{
+    const user=Cookies.get("name");
+    if(user===undefined){
+        navigate("/")
+    }
+  })
   const handleFormSubmit = (data) => {
     Cookies.set("name", data.get("name") !== "" ? data.get("name") : "user");
     Cookies.set(

@@ -85,8 +85,8 @@ const ShareButton = ({modalData}) => {
     if (navigator.canShare && navigator.canShare(shareData)) {
       try {
         await navigator.share(shareData);
-        console.log(shareData,"data");
-        alert('Shared successfully!');
+        console.log(shareData, "data");
+        // alert("Shared successfully!");
       } catch (error) {
         console.error('Sharing failed:', error);
       }

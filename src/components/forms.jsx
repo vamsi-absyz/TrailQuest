@@ -109,7 +109,7 @@ const FormField = ({
           name={name}
           value={value}
           onChange={onChange}
-          onKeyDown={handleKeyDown}
+          onKeyDown={name==="number" ? handleKeyDown : undefined}
           fullWidth
           variant="outlined"
           placeholder={placeholder}
@@ -158,7 +158,7 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
         }));
       }
     } else if (name === "name") {
-      const regex = /^[A-Za-z ]*$/;
+        const regex = /^[A-Za-z._+ ]*$/;
       if (regex.test(value)) {
         setFormData((prevData) => ({
           ...prevData,
