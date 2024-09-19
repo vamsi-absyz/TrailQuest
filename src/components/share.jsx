@@ -7,6 +7,9 @@ import {
 import Button from "@mui/material/Button";
 import Cookies from "js-cookie";
 import ShareButton from "./sharebotton";
+import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const WpShare = ({ modalData }) => {
     const [whatsAppUrl, setWhatsAppUrl] = useState("");
@@ -108,7 +111,7 @@ export const WpShare = ({ modalData }) => {
     console.log(modalData, whatsAppUrl, "model data in the share component");
 
     return (
-        <ShareButton  modalData={modalData}/>
+        <ShareButton modalData={modalData} />
         // <Button
         //     style={{
         //         backgroundColor: "#30335C",
@@ -186,3 +189,49 @@ export const EmailShare = ({ modalData }) => {
         </Button>
     );
 };
+
+export const ShareData = () => {
+
+    const handleSubmitForm = () => {
+        const formData = {
+            name: Cookies.get("name"),
+            email: Cookies.get("email"),
+            phone: Cookies.get("number"),
+            company: Cookies.get("company"),
+        }
+        console.log(formData, "checking the data")
+
+        if (formData) {
+            try {
+                const url = "http://localhost:5000/submit-form"
+                axios
+                    .post(url, formData)
+                    .then((response) => {
+                        if (response.status) {
+                            toast.success(response.data)
+                            console.log(response, "responsefromfrontend")
+                        }
+                    })
+                    .catch((error) => console.error(error));
+            } catch (err) {
+                console.error(err, "err")
+            }
+        }
+    }
+    return (
+        <>
+            <button className=""
+                onClick={handleSubmitForm} style={{
+                    backgroundColor: "#1776E5",
+                    borderRadius: "5px",
+                    color: "white",
+                    fontSize: "14px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: "4px 14px",
+                }}>Share</button>
+            <ToastContainer hideProgressBar={true} />
+        </>
+    )
+}

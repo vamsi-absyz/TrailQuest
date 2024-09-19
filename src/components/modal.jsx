@@ -4,7 +4,7 @@ import { characterData } from "../utils/mock_data"; // Assuming this is your dat
 import { Grid, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { ConfettiBackground } from "./ConfettiBackground";
-import { EmailShare, WpShare } from "./share";
+import { EmailShare, ShareData, WpShare } from "./share";
 import Cookies from "js-cookie";
 
 const backdropVariants = {
@@ -194,6 +194,9 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                   </button>
 
                   {modalData && <WpShare modalData={modalData} />}
+
+                  <ShareData />
+
                 </Grid>
               </div>
             </div>
