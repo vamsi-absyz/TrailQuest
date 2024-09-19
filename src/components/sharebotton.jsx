@@ -71,7 +71,7 @@ const ShareButton = () => {
     const title = 'Very Good';
     const filesArray = [
       new File([clipboardItemRef.current], `${title}.jpg`, {
-        type: 'image/jpeg',
+        type: 'image/jpg',
         lastModified: new Date().getTime(),
       }),
     ];
