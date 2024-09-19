@@ -80,6 +80,8 @@ const ShareButton = ({modalData}) => {
       
     };
 
+    console.log("image check", Astro);
+    
     // Check if the browser can share the file
     if (navigator.canShare && navigator.canShare(shareData)) {
       try {
