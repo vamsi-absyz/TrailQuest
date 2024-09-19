@@ -32,7 +32,7 @@
 /* Styles for the first image sliding from right to left */
 .image-box.active-horizontal-right {
   opacity: 1;
-  animation: slide-right 1s ease-in-out forwards;
+  /* animation: slide-right 1s ease-in-out forwards; */
   justify-content: flex-end;
 }
 
@@ -54,7 +54,8 @@
 /* Styles for the second image sliding from left to right */
 .image-box.active-horizontal-left {
   opacity: 1;
-  animation: slide-left 1s ease-in-out forwards;
+  /* animation: slide-left 1s ease-in-out forwards; */
+  justify-content: flex-end;
 }
 
 @keyframes slide-left {
@@ -75,22 +76,22 @@
 /* Styles for the remaining images sliding from bottom to top */
 .image-box.active-vertical {
   opacity: 1;
-  animation: slide-up 0.15s ease-in-out forwards;
+  animation: slide-up-down 0.4s ease-in-out forwards; /* Adjusted duration */
 }
 
-@keyframes slide-up {
+@keyframes slide-up-down {
   0% {
-    transform: translateY(100%); /* Slide from bottom outside the container */
+    transform: translateY(30px); /* Start position (more down) */
     opacity: 0;
   }
-  20% {
-    transform: translateY(0); /* Center the image */
+  40% {
+    transform: translateY(-20px); /* Upward peak position */
     opacity: 1;
   }
-  80% {
-    transform: translateY(-10px); /* Slight movement */
-  }
   100% {
-    transform: translateY(5px); /* Slight movement */
+    transform: translateY(0); /* End position (neutral) */
+    opacity: 1;
   }
 }
+
+
