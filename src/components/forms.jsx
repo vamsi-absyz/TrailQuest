@@ -7,7 +7,8 @@ import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router";
 import Cookies from "js-cookie";
 import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
-
+import { db } from '../../firebaseConfig'; // Adjust the path if necessary
+import { collection, addDoc } from 'firebase/firestore';
 // Reusable FloatingFormContainer Component
 const FloatingFormContainer = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -47,13 +48,13 @@ const FormField = ({
   ...props
 }) => {
 
-    function handleKeyDown(event) {
-        const invalidKeys = ['-', '+', '.',]; 
-        
-        if (invalidKeys.includes(event.key)) {
-          event.preventDefault(); 
-        }
-      }
+  function handleKeyDown(event) {
+    const invalidKeys = ['-', '+', '.',];
+
+    if (invalidKeys.includes(event.key)) {
+      event.preventDefault();
+    }
+  }
 
   return (
     <FormControl>
@@ -126,7 +127,7 @@ const FormField = ({
           }}
           {...props}
         />
-        
+
       )}
     </FormControl>
   );
@@ -141,17 +142,17 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
     name: "",
     company: "",
     confirm: "",
-    email:"",
-    number:""
+    email: "",
+    number: ""
   });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-  
+
     if (name === "number") {
-        const regex = /^[0-9]*$/;
- 
-      if ((value === "" || regex.test(value)) && value.length <= 10)  {
+      const regex = /^[0-9]*$/;
+
+      if ((value === "" || regex.test(value)) && value.length <= 10) {
         setFormData((prevData) => ({
           ...prevData,
           [name]: value,
@@ -172,7 +173,7 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
       }));
     }
   };
-  
+
 
   const handleBlur = (event) => {
     const { name, value } = event.target;
@@ -206,21 +207,21 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
       } else {
         delete errors[name];
       }
-    }else if(name==="number"){
-        if(!value){
-            errors[name] = "";
-        }else if(value.length<10){
-            errors[name] = "Phone number must have exactly 10 digits";
-        }else{
-            delete errors[name];
-        }
+    } else if (name === "number") {
+      if (!value) {
+        errors[name] = "";
+      } else if (value.length < 10) {
+        errors[name] = "Phone number must have exactly 10 digits";
+      } else {
+        delete errors[name];
+      }
     }
 
     setFormErrors(errors);
   };
 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
@@ -236,6 +237,20 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
     } else {
       console.error("Validation failed");
     }
+
+    try {
+      // Add a new document with a generated ID
+      const docRef = await addDoc(collection(db, "users"), {
+        name: 'vamsi',
+        email: 'korlam@gmail.com',
+        phone: '12345678',
+        company: 'absyz',
+        isSalesforce: true
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (error) {
+      console.error("Error adding document: ", error);
+    }
   };
 
   const validateInputs = (data) => {
@@ -245,9 +260,8 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
 
     fieldsToValidate.forEach((field) => {
       if (!data.get(field)) {
-        errors[field] = `${
-          fields.find((f) => f.name === field)?.placeholder
-        } is required`;
+        errors[field] = `${fields.find((f) => f.name === field)?.placeholder
+          } is required`;
       }
     });
 
@@ -286,7 +300,7 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
             <FormField
               key={field.name}
               id={field.name}
-              placeholder={field.placeholder} 
+              placeholder={field.placeholder}
               type={field.type}
               label={field.label}
               required={field.required}
