@@ -38,7 +38,7 @@ const ShareButton = ({modalData}) => {
     console.log(modalData,"ddd")
     const imgName= modalData[0].name;
 
-    const imageUrl = getImg(imgName);
+    const imageUrl = '/Astro.jpg';
     console.log(imageUrl,"imageurljjjjjjjjjj")
     // console.log(imgName,"imgName") // Ensure it's in public/assets/images
 
