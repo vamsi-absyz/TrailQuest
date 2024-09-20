@@ -20,8 +20,8 @@ const ShareButton = ({ modalData }) => {
   useEffect(() => {
     // Check if Web Share API is supported when the component mounts
     axiosSend();
-    setIsShareSupported(navigator.share && navigator.canShare);
-  }, [modalData]);
+    setIsShareSupported(!!navigator.share);
+  }, []);
 
   function getImg(imgName) {
     return imageMapping[imgName] || null;
