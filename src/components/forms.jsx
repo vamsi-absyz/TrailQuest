@@ -7,7 +7,8 @@ import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router";
 import Cookies from "js-cookie";
 import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
-
+import { db } from "../../firebaseConfig"; // Adjust the path if necessary
+import { collection, addDoc } from "firebase/firestore";
 // Reusable FloatingFormContainer Component
 const FloatingFormContainer = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -43,8 +44,16 @@ const FormField = ({
   name,
   value,
   onChange,
+  onBlur,
   ...props
 }) => {
+  function handleKeyDown(event) {
+    const invalidKeys = ["-", "+", "."];
+
+    if (invalidKeys.includes(event.key)) {
+      event.preventDefault();
+    }
+  }
 
   return (
     <FormControl>
@@ -81,12 +90,15 @@ const FormField = ({
                 value="no"
                 checked={value === "no"}
                 onChange={onChange}
+                onBlur={onBlur}
               />
               <span className="ml-2 text-gray-800">No</span>
             </label>
           </div>
           {error && (
-            <div className="mt-1 text-red-600 text-sm">{helperText}</div>
+            <div className="mt-1 text-custom-red  text-[12px] ml-1">
+              {helperText}
+            </div>
           )}
         </>
       ) : (
@@ -99,15 +111,11 @@ const FormField = ({
           name={name}
           value={value}
           onChange={onChange}
-          inputProps={{
-            pattern:
-              type === "text" && name === "name" ? "[A-Za-z ]*" : undefined,
-            inputMode:
-              type === "text" && name === "number" ? "numeric" : undefined,
-          }}
+          onKeyDown={name==="number" ? handleKeyDown : undefined}
           fullWidth
           variant="outlined"
           placeholder={placeholder}
+          onBlur={onBlur}
           sx={{
             margin: "4px 0",
             borderRadius: "10px",
@@ -134,23 +142,24 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
     name: "",
     company: "",
     confirm: "",
-    email:"",
-    number:""
+    email: "",
+    number: "",
   });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-  
+
     if (name === "number") {
-      const regex = /^[0-9\b]+$/; 
-      if ((value === "" || regex.test(value)) && value.length <= 10)  {
+      const regex = /^[0-9]*$/;
+
+      if ((value === "" || regex.test(value)) && value.length <= 10) {
         setFormData((prevData) => ({
           ...prevData,
           [name]: value,
         }));
       }
     } else if (name === "name") {
-      const regex = /^[A-Za-z ]*$/;
+        const regex = /^[A-Za-z._+ ]*$/;
       if (regex.test(value)) {
         setFormData((prevData) => ({
           ...prevData,
@@ -164,13 +173,57 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
       }));
     }
   };
-  
 
-  console.log(formData,"formdata")
+  const handleBlur = (event) => {
+    const { name, value } = event.target;
 
-  const handleSubmit = (event) => {
+    let errors = { ...formErrors };
+    if (name === "email") {
+      if (!value) {
+        errors[name] = "";
+      } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value)) {
+        errors[name] = "Invalid email format";
+      } else {
+        delete errors[name];
+      }
+    } else if (name === "name") {
+      if (!value) {
+        errors[name] = "Name is required";
+      } else if (!/^[A-Za-z ]*$/.test(value)) {
+        errors[name] = "Invalid name format";
+      } else {
+        delete errors[name];
+      }
+    } else if (name === "company") {
+      if (!value) {
+        errors[name] = "Company is required";
+      } else {
+        delete errors[name];
+      }
+    } else if (name === "confirm") {
+      if (!value) {
+        errors[name] = "Confirmation is required";
+      } else {
+        delete errors[name];
+      }
+    } else if (name === "number") {
+      if (!value) {
+        errors[name] = "";
+      } else if (value.length < 10) {
+        errors[name] = "Phone number must have exactly 10 digits";
+      } else {
+        delete errors[name];
+      }
+    }
+
+    setFormErrors(errors);
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+
+    console.log(data.get("name"),"data");
 
     // Validate the inputs
     const isValid = validateInputs(data);
@@ -183,6 +236,20 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
       navigate("/home"); // Redirect to /home after successful submission
     } else {
       console.error("Validation failed");
+    }
+
+    try {
+      // Add a new document with a generated ID
+      const docRef = await addDoc(collection(db, "users"), {
+        name: data.get("name"),
+        email: data.get("email"),
+        phone: data.get("number"),
+        company: data.get("company"),
+        isSalesforce: data.get("confirm"),
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (error) {
+      console.error("Error adding document: ", error);
     }
   };
 
@@ -204,12 +271,14 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
       errors["email"] = "Invalid email format";
     }
 
-    // Handle radio button validation for 'confirm'
     const confirmValue = data.get("confirm");
     if (!confirmValue) {
       errors["confirm"] = "Confirmation is required";
     }
-
+    const phoneNumber = data.get("number");
+    if (phoneNumber && (phoneNumber.length < 10 || phoneNumber.length > 10)) {
+      errors["number"] = "Phone number must have exactly 10 digits";
+    }
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -232,7 +301,7 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
             <FormField
               key={field.name}
               id={field.name}
-              placeholder={field.placeholder} // Using placeholder instead of label
+              placeholder={field.placeholder}
               type={field.type}
               label={field.label}
               required={field.required}
@@ -243,6 +312,7 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
               selectedValue={field.type === "radio" ? radioValue : undefined}
               value={formData[field.name]}
               onChange={handleChange}
+              onBlur={handleBlur}
               className=""
             />
           ))}

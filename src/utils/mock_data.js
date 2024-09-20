@@ -1,4 +1,12 @@
 
+import Astro from "../assets/images/Astro.jpg";
+import Bobcat from "../assets/images/Bobcat.jpg";
+import Dog from "../assets/images/Dog.jpg";
+import Einstein from "../assets/images/Einstien.jpg";
+import Elephant from "../assets/images/Ruth-Elephant.jpg";
+
+
+
 export const characterData = [
   
   {
@@ -17,8 +25,7 @@ export const characterData = [
     bgColor: "#C5CDFC",
     description: "Representative of community and inclusion",
     title: "Astro Nomical",
-    image:
-      "https://i.ibb.co/ft4RtK2/2021-12-360-Blog-2-D-Individual-Illustrations-Astro.webp",
+    image:Astro,
     image_name: "astro_image.webp",
     pronoun: "They/Them",
     trailheadText: "Get Started with Trailhead",
@@ -42,7 +49,7 @@ export const characterData = [
       "Representative of Einstein Product and AI Innovation at Salesforce",
     title: "Einstein",
     image:
-      "https://i.ibb.co/g6dSggH/2021-12-360-Blog-2-D-Individual-Illustrations-Einstien.png",
+     Einstein,
     image_name: "Einstien_image.png",
     pronoun: "He/Him",
     trailheadText: "Get Smart with Salesforce Einstein",
@@ -60,8 +67,7 @@ export const characterData = [
     congratsImg: "https://i.postimg.cc/3YPg8K7z/ele-congrats.png?dl=1",
     bgColor: "#C5CDFC",
     position: "left",
-    image:
-      "https://i.ibb.co/F3x8347/2021-12-360-Blog-2-D-Individual-Illustrations-Ruth.png",
+    image:Elephant,
     image_name: "Individual-Illustrations-Ruth.png",
     pronoun: "They/Them",
     trailheadText: "Advanced Apex Specialist",
@@ -79,7 +85,7 @@ export const characterData = [
     bgColor: "#BEC7F6",
     congratsImg: "https://i.postimg.cc/3YPg8K7z/ele-congrats.png?dl=1",
     position: "right",
-    image: "https://www.salesforce.com/blog/wp-content/uploads/sites/2/2021/12/2021-12-360Blog-2D-IndividualIllustrations-Koa.png",
+    image: Dog,
     image_name: "dog.png",
     pronoun: "He/Him",
     trailheadText: "Salesforce Essentials for Small Business",
@@ -95,8 +101,7 @@ export const characterData = [
     congratsImg: "https://i.postimg.cc/3YPg8K7z/ele-congrats.png?dl=1",
     bgColor: "#7BD1F8",
     position: "left",
-    image:
-      "https://i.ibb.co/89719wR/2021-12-360-Blog-2-D-Individual-Illustrations-Appy.png",
+    image:Bobcat,
     image_name: "Individual-Illustrations-Appy.png",
     pronoun: "She/her",
     trailheadText: "Salesforce Partner Community",

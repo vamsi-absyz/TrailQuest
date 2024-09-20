@@ -8,8 +8,11 @@ import { Modal } from "./modal";
 import Logo from "../assets/images/logo.png";
 import Slider from "./slider";
 import Cookies from "js-cookie";
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> development
 export const Home = () => {
   const [selectedTag, setSelectedTag] = useState([]); // Manages selected tags
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,7 +29,9 @@ export const Home = () => {
         )
         .flat();
 
-      setTagData(allTagsWithId);
+        const shuffledTags = allTagsWithId.sort(() => Math.random() - 0.5);
+
+        setTagData(shuffledTags);
     }
   }, []);
 
@@ -54,12 +59,19 @@ export const Home = () => {
 
   const handleCloseModal = () => {
     navigate("/");
-    Cookies.remove('name');
-    Cookies.remove('email');
-    Cookies.remove('company');
-    Cookies.remove('number');
-    Cookies.remove('isChecked');
+    Cookies.remove("name");
+    Cookies.remove("confirm")
+    Cookies.remove("number")
+    Cookies.remove("email");
+    Cookies.remove("company")
   };
+
+  useEffect(()=>{
+    const user=Cookies.get("name");
+    if(user===undefined){
+        navigate("/")
+    }
+  })
 
   return (
     <Box
