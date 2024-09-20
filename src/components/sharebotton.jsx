@@ -1,10 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import Astro from "../../public/Astro.jpg";
-import Bobcat from "../../public/Bobcat.jpg";
-import Dog from "../../public/Dog.jpg";
-import Einstien from "../../public/Einstien.jpg";
-import Elephant from "../../public/Ruth-Elephant.jpg";
 import Cookies from "js-cookie";
+
 const ShareButton = ({ modalData }) => {
   const [isShareSupported, setIsShareSupported] = useState(false);
   const clipboardItemRef = useRef(null);
@@ -24,8 +20,8 @@ const ShareButton = ({ modalData }) => {
   useEffect(() => {
     // Check if Web Share API is supported when the component mounts
     axiosSend();
-    setIsShareSupported(!!navigator.share);
-  }, []);
+    setIsShareSupported(navigator.share && navigator.canShare);
+  }, [modalData]);
 
   function getImg(imgName) {
     return imageMapping[imgName] || null;
@@ -33,28 +29,32 @@ const ShareButton = ({ modalData }) => {
 
   // Function to download the image from the public folder and prepare it for sharing
   async function axiosSend() {
-    // The image must be in the public directory
-    console.log(modalData, "ddd");
-    const imgName = modalData[0].name;
+    const imgName = modalData[0]?.name;
+
+    if (!imgName) {
+      console.error("Image name not found in modal data.");
+      return;
+    }
 
     const imageUrl = getImg(imgName);
-    console.log(imageUrl, "imageurljjjjjjjj");
-    // console.log(imgName,"imgName") // Ensure it's in public/assets/images
+    if (!imageUrl) {
+      console.error("Image URL not found.");
+      return;
+    }
 
     try {
-      // Fetch the image from the correct URL
       const response = await fetch(imageUrl);
-      console.log("Image not found", imageUrl);
 
       if (!response.ok) {
-        throw new Error("Image not found", imageUrl);
+        throw new Error(`Image not found at ${imageUrl}`);
       }
 
-      const blob = await response.blob(); // Convert the response into a blob
-      clipboardItemRef.current = blob; // Save the blob to the clipboard item reference
-      console.log("Image fetched and prepared:", response);
+      const blob = await response.blob();
+      clipboardItemRef.current = blob;
+      console.log("Image fetched successfully:", imageUrl);
     } catch (error) {
       console.error("Error fetching image:", error);
+      alert("Failed to load the image. Please try again later.");
     }
   }
 
@@ -62,10 +62,10 @@ const ShareButton = ({ modalData }) => {
   async function copyAndSend() {
     if (!clipboardItemRef.current) {
       console.error("No image blob available");
+      alert("Image is not ready for sharing. Please try again.");
       return;
     }
 
-    // const title = modalData[0]?.title;
     const title = "Very Good";
     const filesArray = [
       new File([clipboardItemRef.current], `${title}.jpg`, {
@@ -74,23 +74,19 @@ const ShareButton = ({ modalData }) => {
       }),
     ];
 
-    const shareData = {
-      files: filesArray,
-      // title:"Congratulations",
-      // text:message
-    };
+    const shareData = { files: filesArray };
 
-    // Check if the browser can share the file
-    if (navigator.canShare && navigator.canShare(shareData)) {
+    if (navigator.canShare(shareData)) {
       try {
         await navigator.share(shareData);
-        console.log(shareData,"data");
-        // alert('Shared successfully!');
+        console.log("Image shared successfully!");
       } catch (error) {
         console.error("Sharing failed:", error);
+        alert("Failed to share the image. Please try again.");
       }
     } else {
-      console.error("Sharing not supported");
+      console.error("Sharing is not supported for this data.");
+      alert("Sharing is not supported on this device.");
     }
   }
 
@@ -101,9 +97,7 @@ const ShareButton = ({ modalData }) => {
           Share to Instagram
         </button>
       ) : (
-        <>
-          <p>Sharing is not supported on this browser.</p>
-        </>
+        <p>Sharing is not supported on this browser.</p>
       )}
     </div>
   );
