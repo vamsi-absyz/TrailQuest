@@ -106,16 +106,3 @@ export const characterData = [
   },
   
 ];
-
-
-// {
-//   id: 9,
-//   tags: ["reliable", "spirited", "playful", "kind", "adoring"],
-//   description: "Representative of love and longevity",
-//   title: "Koa the Dog",
-//   image: Dog,
-//   pronoun: "He/Him",
-//   trailheadText: "Salesforce Essentials for Small Business",
-//   trailheadBadge:
-//     "https://trailhead.salesforce.com/content/learn/modules/roles-and-responsibilities-for-marketing-teams?trail_id=personalize_customer_journeys_marketing_cloud?&utm_source=salesforce&utm_medium=blog-360&utm_campaign=trailblazer_blog&utm_content=tbc_apr24_salesforcecharacters&icid=SFBLOG:tbc-blog:7010M0000025ltGQAQ&_ga=2.232064219.536382854.1726036616-890700713.1724145521",
-// },

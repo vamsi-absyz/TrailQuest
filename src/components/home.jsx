@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { Modal } from "./modal";
 import Logo from "../assets/images/logo.png";
 import Slider from "./slider";
+import Cookies from "js-cookie";
+
 
 export const Home = () => {
   const [selectedTag, setSelectedTag] = useState([]); // Manages selected tags
@@ -51,11 +53,12 @@ export const Home = () => {
   };
 
   const handleCloseModal = () => {
-    // setSelectedId("");
-    // setIsModalOpen(false);
-    // setSelectedTag([]);
-    // window.location.reload();
     navigate("/");
+    Cookies.remove('name');
+    Cookies.remove('email');
+    Cookies.remove('company');
+    Cookies.remove('number');
+    Cookies.remove('isChecked');
   };
 
   return (
@@ -95,22 +98,21 @@ export const Home = () => {
                   {tagData.map((item, index) => (
                     <div key={index} className="m-[4px] sm:mx-[4px]">
                       <Chip
-                  
-            
+
+
                         // size="medium"
                         icon={null}
                         checked={selectedTag.some((t) => t.tag === item.tag)}
                         // checked={selectedTag.includes(item.tag)} // Check if the tag is selected
                         value={item.tag}
-                        className={`chips capitalize text-[#032d60] font-medium bg-[#fff] ${
-                          selectedTag.includes(item.tag)
-                            ? "bg-teal-500 text-white"
-                            : ""
-                        }`}
+                        className={`chips capitalize text-[#032d60] font-medium bg-[#fff] ${selectedTag.includes(item.tag)
+                          ? "bg-teal-500 text-white"
+                          : ""
+                          }`}
                         onClick={() => handleClick(item.tag, item.id)}
                       >
                         {item.tag}
-                       
+
                       </Chip>
                     </div>
                   ))}

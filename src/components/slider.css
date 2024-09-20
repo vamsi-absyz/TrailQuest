@@ -1,7 +1,5 @@
 .slider-container {
   position: relative;
-  /* width: 300px;
-  height: 400px; */
   overflow: hidden;
   display: flex;
   justify-content: center; /* Centering images horizontally */
@@ -10,23 +8,14 @@
 
 .image-box {
   position: absolute;
-  /* width: 100%; */
-  /* height: 100%; */
   display: flex;
   justify-content: start;
-  /*  align-items: center; */
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
 
 .slider-image {
-  /* width: 250px;
-  height: 350px; */
   max-width: 250px !important;
-  /* width: 80%; */
-  /* height: auto; */
-  /* object-fit: contain; */
-  /* border-radius: 40px; */
 }
 
 /* Styles for the first image sliding from right to left */
@@ -73,24 +62,51 @@
 }
 
 /* Styles for the remaining images sliding from bottom to top */
-.image-box.active-vertical {
+/* .image-box.active-vertical {
   opacity: 1;
   animation: slide-up 0.15s ease-in-out forwards;
+} */
+
+/* @keyframes slide-up {
+  0% {
+    transform: translateY(100%); /* Slide from bottom outside the container */
+/* opacity: 0;
+  }
+  20% {
+    transform: translateY(0); /* Center the image */
+/* opacity: 1; */
+/* } */
+/* 80% {
+    transform: translateY(-10px); /* Slight movement */
+/* }
+  100% {
+    transform: translateY(5px); /* Slight movement */
+/* } */
+/* } */
+
+.image-box.active-vertical {
+  opacity: 1;
+  animation: slide-up 0.8s ease-in-out forwards; /* Longer duration for smoother effect */
 }
 
 @keyframes slide-up {
   0% {
-    transform: translateY(100%); /* Slide from bottom outside the container */
+    transform: translateY(100%); /* Start from below the container */
     opacity: 0;
   }
   20% {
-    transform: translateY(0); /* Center the image */
+    transform: translateY(0); /* Reach the top */
     opacity: 1;
   }
+  60% {
+    transform: translateY(-15px); /* Move slightly above the center */
+  }
   80% {
-    transform: translateY(-10px); /* Slight movement */
+    transform: translateY(0); /* Bring it back to the center */
+    opacity: 1;
   }
   100% {
-    transform: translateY(5px); /* Slight movement */
+    transform: translateY(5px); /* Slow down the final movement downward */
+    opacity: 1;
   }
 }
