@@ -70,6 +70,8 @@ const ShareButton = ({ modalData }) => {
     }
 
     const title = modalData[0]?.title;
+
+    console.log(title,"toitle")
     const filesArray = [
       new File([clipboardItemRef.current], `${title}.jpg`, {
         type: "image/jpeg",
@@ -103,7 +105,7 @@ console.log(navigator.canShare ,"first" ,navigator.canShare(shareData),"second")
           onClick={copyAndSend}
           disabled={!isImageReady}
         >
-          Share to Instagram
+          Share Instagram
         </button>
       ) : (
         <p>Sharing is not supported on this browser.</p>
