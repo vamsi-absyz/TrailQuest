@@ -103,13 +103,13 @@ export const Lead = () => {
                 marginTop: "50px",
               },
               "@media (min-width: 1024px)": {
-                marginTop: "10px", 
+                marginTop: "10px",
               },
             }}
           >
             <div className="mb-[8px] ">
               <span className="font-medium text-[22px] text-[#17233A]">
-                Let’s Make Things Happen Together!
+                Let’s Make Things Together!
               </span>
             </div>
             <div className="w-full">

@@ -38,8 +38,6 @@ const ShareButton = ({ modalData }) => {
       fetchImage(); // Re-fetch the image in case of orientation change
     };
 
-
-
     // Add event listener for orientation change
     window.addEventListener("orientationchange", handleOrientationChange);
 
