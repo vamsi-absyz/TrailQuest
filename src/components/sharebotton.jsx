@@ -48,39 +48,75 @@ const ShareButton = ({ modalData }) => {
   }, []);
   console.log(clipboardItemRef.current, "clipboardItemRef.current");
 
+  const compressImage = (blob) => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.src = URL.createObjectURL(blob);
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const scaleFactor = 0.5; // Adjust as needed to compress the image
+        canvas.width = img.width * scaleFactor;
+        canvas.height = img.height * scaleFactor;
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        canvas.toBlob((compressedBlob) => {
+          resolve(compressedBlob);
+        }, 'image/jpeg');
+      };
+      img.onerror = (error) => reject(error);
+    });
+  };
+
   function getImg(imgName) {
     return imageMapping[imgName] || null;
   }
 
   // Function to download the image from the public folder and prepare it for sharing
+  // async function fetchImage() {
+  //   const imgName = modalData[0]?.name;
+
+  //   if (!imgName) {
+  //     console.error("Image name not found in modal data.");
+  //     return;
+  //   }
+
+  //   const imageUrl = getImg(imgName);
+  //   if (!imageUrl) {
+  //     console.error("Image URL not found.");
+  //     return;
+  //   }
+
+  //   try {
+  //     const response = await fetch(imageUrl);
+
+  //     if (!response.ok) {
+  //       throw new Error(`Image not found at ${imageUrl}`);
+  //     }
+
+  //     const blob = await response.blob();
+  //     clipboardItemRef.current = blob;
+  //     setIsImageReady(true);
+  //     console.log("Image fetched successfully:", imageUrl);
+  //   } catch (error) {
+  //     console.error("Error fetching image:", error);
+  //     alert("Failed to load the image. Please try again later.");
+  //   }
+  // }
+
   async function fetchImage() {
     const imgName = modalData[0]?.name;
-
-    if (!imgName) {
-      console.error("Image name not found in modal data.");
-      return;
-    }
-
     const imageUrl = getImg(imgName);
-    if (!imageUrl) {
-      console.error("Image URL not found.");
-      return;
-    }
 
     try {
       const response = await fetch(imageUrl);
-
-      if (!response.ok) {
-        throw new Error(`Image not found at ${imageUrl}`);
-      }
-
       const blob = await response.blob();
-      clipboardItemRef.current = blob;
+
+      const compressedBlob = await compressImage(blob); // Compress image
+
+      clipboardItemRef.current = compressedBlob;
       setIsImageReady(true);
-      console.log("Image fetched successfully:", imageUrl);
     } catch (error) {
-      console.error("Error fetching image:", error);
-      alert("Failed to load the image. Please try again later.");
+      console.error("Error fetching/compressing image:", error);
     }
   }
 
