@@ -79,7 +79,7 @@ const ShareButton = ({ modalData }) => {
       }),
     ];
 
-    const shareData = { files: filesArray, text: message };
+    const shareData = { files: filesArray, title:title };
 
 console.log(navigator.canShare ,"first" ,navigator.canShare(shareData),"second")
 
