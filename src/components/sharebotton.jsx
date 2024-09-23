@@ -24,11 +24,21 @@ const ShareButton = ({ modalData }) => {
     setIsShareSupported(navigator.canShare && !!navigator.share);
     fetchImage();
 
+    // const handleOrientationChange = () => {
+    //   console.log(`Orientation changed to: ${window.screen.orientation.type}`);
+    //   // You can add any logic that should be executed when orientation changes
+    //   fetchImage(); // Re-fetch the image in case of orientation change
+    // };
+
     const handleOrientationChange = () => {
       console.log(`Orientation changed to: ${window.screen.orientation.type}`);
-      // You can add any logic that should be executed when orientation changes
+      // Clear the existing image blob to avoid issues
+      clipboardItemRef.current = null;
+      setIsImageReady(false);
       fetchImage(); // Re-fetch the image in case of orientation change
     };
+
+
 
     // Add event listener for orientation change
     window.addEventListener("orientationchange", handleOrientationChange);
@@ -38,6 +48,7 @@ const ShareButton = ({ modalData }) => {
       window.removeEventListener("orientationchange", handleOrientationChange);
     };
   }, []);
+  console.log(clipboardItemRef.current, "clipboardItemRef.current");
 
   function getImg(imgName) {
     return imageMapping[imgName] || null;
@@ -84,6 +95,8 @@ const ShareButton = ({ modalData }) => {
     }
 
     const title = modalData[0]?.title;
+
+    console.log("Ready to share:", clipboardItemRef.current); // Check image readiness
 
     console.log(title, "title");
     const filesArray = [
