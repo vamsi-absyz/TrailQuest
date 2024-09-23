@@ -8,11 +8,6 @@ import { Modal } from "./modal";
 import Logo from "../assets/images/logo.png";
 import Slider from "./slider";
 import Cookies from "js-cookie";
-<<<<<<< HEAD
-
-
-=======
->>>>>>> development
 export const Home = () => {
   const [selectedTag, setSelectedTag] = useState([]); // Manages selected tags
   const [isModalOpen, setIsModalOpen] = useState(false);
