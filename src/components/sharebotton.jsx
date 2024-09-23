@@ -23,6 +23,20 @@ const ShareButton = ({ modalData }) => {
     // Check if Web Share API is supported when the component mounts
     setIsShareSupported(navigator.canShare && !!navigator.share);
     fetchImage();
+
+    const handleOrientationChange = () => {
+      console.log(`Orientation changed to: ${window.screen.orientation.type}`);
+      // You can add any logic that should be executed when orientation changes
+      fetchImage(); // Re-fetch the image in case of orientation change
+    };
+
+    // Add event listener for orientation change
+    window.addEventListener("orientationchange", handleOrientationChange);
+
+    return () => {
+      // Clean up event listener
+      window.removeEventListener("orientationchange", handleOrientationChange);
+    };
   }, []);
 
   function getImg(imgName) {
@@ -63,15 +77,15 @@ const ShareButton = ({ modalData }) => {
 
   // Function to share the image
   async function copyAndSend() {
-    if (!clipboardItemRef.current) {
-      console.error("No image blob available");
+    if (!isImageReady || !clipboardItemRef.current) {
+      console.error("No image blob available or image is not ready");
       alert("Image is not ready for sharing. Please try again.");
       return;
     }
 
     const title = modalData[0]?.title;
 
-    console.log(title,"toitle")
+    console.log(title, "title");
     const filesArray = [
       new File([clipboardItemRef.current], `${title}.jpg`, {
         type: "image/jpeg",
@@ -79,9 +93,9 @@ const ShareButton = ({ modalData }) => {
       }),
     ];
 
-    const shareData = { files: filesArray, title:title };
+    const shareData = { files: filesArray, title: title };
 
-console.log(navigator.canShare ,"first" ,navigator.canShare(shareData),"second")
+    console.log(navigator.canShare, "first", navigator.canShare(shareData), "second");
 
     if (navigator.canShare && navigator.canShare(shareData)) {
       try {
@@ -105,7 +119,7 @@ console.log(navigator.canShare ,"first" ,navigator.canShare(shareData),"second")
           onClick={copyAndSend}
           disabled={!isImageReady}
         >
-          Share Instagram
+          Share on Instagram
         </button>
       ) : (
         <p>Sharing is not supported on this browser.</p>
