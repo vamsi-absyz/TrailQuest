@@ -3,7 +3,9 @@ import Cookies from "js-cookie";
 
 const ShareButton = ({ modalData }) => {
   const [isShareSupported, setIsShareSupported] = useState(false);
+  const [isImageReady, setIsImageReady] = useState(false);
   const clipboardItemRef = useRef(null);
+
   const capitalizeFirstLetter = (name) =>
     name ? name.charAt(0).toUpperCase() + name.slice(1) : "";
   const name = capitalizeFirstLetter(Cookies.get("name"));
@@ -19,16 +21,30 @@ const ShareButton = ({ modalData }) => {
 
   useEffect(() => {
     // Check if Web Share API is supported when the component mounts
-    axiosSend();
-    setIsShareSupported(navigator.share && navigator.canShare);
-  }, [modalData]);
+    setIsShareSupported(navigator.canShare && !!navigator.share);
+    fetchImage();
+
+    const handleOrientationChange = () => {
+      console.log(`Orientation changed to: ${window.screen.orientation.type}`);
+      // You can add any logic that should be executed when orientation changes
+      fetchImage(); // Re-fetch the image in case of orientation change
+    };
+
+    // Add event listener for orientation change
+    window.addEventListener("orientationchange", handleOrientationChange);
+
+    return () => {
+      // Clean up event listener
+      window.removeEventListener("orientationchange", handleOrientationChange);
+    };
+  }, []);
 
   function getImg(imgName) {
     return imageMapping[imgName] || null;
   }
 
   // Function to download the image from the public folder and prepare it for sharing
-  async function axiosSend() {
+  async function fetchImage() {
     const imgName = modalData[0]?.name;
 
     if (!imgName) {
@@ -51,6 +67,7 @@ const ShareButton = ({ modalData }) => {
 
       const blob = await response.blob();
       clipboardItemRef.current = blob;
+      setIsImageReady(true);
       console.log("Image fetched successfully:", imageUrl);
     } catch (error) {
       console.error("Error fetching image:", error);
@@ -60,13 +77,15 @@ const ShareButton = ({ modalData }) => {
 
   // Function to share the image
   async function copyAndSend() {
-    if (!clipboardItemRef.current) {
-      console.error("No image blob available");
+    if (!isImageReady || !clipboardItemRef.current) {
+      console.error("No image blob available or image is not ready");
       alert("Image is not ready for sharing. Please try again.");
       return;
     }
 
-    const title = "Very Good";
+    const title = modalData[0]?.title;
+
+    console.log(title, "title");
     const filesArray = [
       new File([clipboardItemRef.current], `${title}.jpg`, {
         type: "image/jpeg",
@@ -74,9 +93,11 @@ const ShareButton = ({ modalData }) => {
       }),
     ];
 
-    const shareData = { files: filesArray };
+    const shareData = { files: filesArray, title: title };
 
-    if (navigator.canShare(shareData)) {
+    console.log(navigator.canShare, "first", navigator.canShare(shareData), "second");
+
+    if (navigator.canShare && navigator.canShare(shareData)) {
       try {
         await navigator.share(shareData);
         console.log("Image shared successfully!");
@@ -93,8 +114,12 @@ const ShareButton = ({ modalData }) => {
   return (
     <div>
       {isShareSupported ? (
-        <button style={{ color: "white" }} onClick={copyAndSend}>
-          Share to Instagram
+        <button
+          style={{ color: "white" }}
+          onClick={copyAndSend}
+          disabled={!isImageReady}
+        >
+          Share on Instagram
         </button>
       ) : (
         <p>Sharing is not supported on this browser.</p>
