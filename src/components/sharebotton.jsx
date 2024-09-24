@@ -25,7 +25,6 @@ const ShareButton = ({ modalData }) => {
     fetchImage();
 
     const handleOrientationChange = () => {
-      console.log(`Orientation changed to: ${window.screen.orientation.type}`);
       // You can add any logic that should be executed when orientation changes
       fetchImage(); // Re-fetch the image in case of orientation change
     };
@@ -68,7 +67,6 @@ const ShareButton = ({ modalData }) => {
       const blob = await response.blob();
       clipboardItemRef.current = blob;
       setIsImageReady(true);
-      console.log("Image fetched successfully:", imageUrl);
     } catch (error) {
       console.error("Error fetching image:", error);
       alert("Failed to load the image. Please try again later.");
@@ -85,7 +83,6 @@ const ShareButton = ({ modalData }) => {
 
     const title = modalData[0]?.title;
 
-    console.log(title, "title");
     const filesArray = [
       new File([clipboardItemRef.current], `${title}.jpg`, {
         type: "image/jpeg",
@@ -95,12 +92,9 @@ const ShareButton = ({ modalData }) => {
 
     const shareData = { files: filesArray, title: title };
 
-    console.log(navigator.canShare, "first", navigator.canShare(shareData), "second");
-
     if (navigator.canShare && navigator.canShare(shareData)) {
       try {
         await navigator.share(shareData);
-        console.log("Image shared successfully!");
       } catch (error) {
         console.error("Sharing failed:", error);
         alert("Failed to share the image. Please try again.");

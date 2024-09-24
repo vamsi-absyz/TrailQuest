@@ -105,8 +105,6 @@ export const WpShare = ({ modalData }) => {
     //     setWhatsAppUrl(url);
     //   };
 
-    console.log(modalData, whatsAppUrl, "model data in the share component");
-
     return (
         <ShareButton  modalData={modalData}/>
         // <Button

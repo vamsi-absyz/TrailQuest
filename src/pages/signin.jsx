@@ -79,7 +79,6 @@ export default function SignIn(props) {
   };
 
   const storeCookies = (data) => {
-    console.log(data.get("email"), "chekcing")
     Cookies.set("email", data.get("email") !== "" ? data.get("email") : "test");
     Cookies.set("company", data.get("company") !== "" ? data.get("email") : "test");
     Cookies.set("name", data.get("name"));
@@ -103,7 +102,6 @@ export default function SignIn(props) {
     return isValid;
   };
 
-  // console.log(name, "singiin")
   // React.useEffect(() => {
   //   // const email = Cookies.get("email");
   //   // const company = Cookies.get("company");

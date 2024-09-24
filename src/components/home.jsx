@@ -30,8 +30,6 @@ export const Home = () => {
     }
   }, []);
 
-  console.log(tagData, "tagdata");
-
   const handleClick = (tag, id) => {
     const tagObject = { tag, id };
 

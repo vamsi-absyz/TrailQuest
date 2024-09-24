@@ -223,12 +223,8 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
-    console.log(data.get("name"),"data");
-
     // Validate the inputs
     const isValid = validateInputs(data);
-
-    console.log(isValid, "isValid");
 
     // Proceed only if validation is successful
     if (isValid) {
@@ -247,7 +243,6 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
         company: data.get("company"),
         isSalesforce: data.get("confirm"),
       });
-      console.log("Document written with ID: ", docRef.id);
     } catch (error) {
       console.error("Error adding document: ", error);
     }
