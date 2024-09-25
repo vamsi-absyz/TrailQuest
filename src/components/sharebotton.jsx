@@ -132,7 +132,6 @@ import Cookies from "js-cookie";
 const ShareButton = ({ modalData }) => {
   const [isShareSupported, setIsShareSupported] = useState(false);
   const [isImageReady, setIsImageReady] = useState(false);
-  const [imageRatio, setImageRatio] = useState("auto"); // Default ratio for portrait mode
   const clipboardItemRef = useRef(null);
 
   const capitalizeFirstLetter = (name) =>
@@ -152,34 +151,22 @@ const ShareButton = ({ modalData }) => {
     // Check if Web Share API is supported when the component mounts
     setIsShareSupported(navigator.canShare && !!navigator.share);
     fetchImage();
-    handleOrientationChange();
 
-    const orientationMediaQuery = window.matchMedia("(orientation: landscape)");
-    // Add event listener for orientation change using matchMedia
-    orientationMediaQuery.addEventListener("change", handleOrientationChange);
+    const handleOrientationChange = () => {
+      fetchImage(); // Re-fetch the image in case of orientation change
+    };
+
+    window.addEventListener("orientationchange", handleOrientationChange);
 
     return () => {
-      // Clean up event listener
-      orientationMediaQuery.removeEventListener("change", handleOrientationChange);
+      window.removeEventListener("orientationchange", handleOrientationChange);
     };
   }, []);
-
-  function handleOrientationChange() {
-    // Detect if the orientation is landscape or portrait
-    const isLandscape = window.matchMedia("(orientation: landscape)").matches;
-
-    if (isLandscape) {
-      setImageRatio(1.91 / 1); // Set the ratio to 1.91:1 for landscape mode
-    } else {
-      setImageRatio("auto"); // Set to auto (default) for portrait mode
-    }
-  }
 
   function getImg(imgName) {
     return imageMapping[imgName] || null;
   }
 
-  // Function to download the image from the public folder and prepare it for sharing
   async function fetchImage() {
     const imgName = modalData[0]?.name;
 
@@ -210,6 +197,44 @@ const ShareButton = ({ modalData }) => {
     }
   }
 
+  // Function to resize the image if in landscape mode
+  async function resizeImageForLandscape(blob) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.src = URL.createObjectURL(blob);
+
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+
+        const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+
+        // Check if the orientation is landscape and reduce dimensions
+        if (isLandscape) {
+          const newWidth = img.width / 2;
+          const newHeight = img.height / 2;
+
+          canvas.width = newWidth;
+          canvas.height = newHeight;
+
+          context.drawImage(img, 0, 0, newWidth, newHeight);
+        } else {
+          canvas.width = img.width;
+          canvas.height = img.height;
+          context.drawImage(img, 0, 0, img.width, img.height);
+        }
+
+        canvas.toBlob((resizedBlob) => {
+          resolve(resizedBlob);
+        }, "image/jpeg");
+      };
+
+      img.onerror = (error) => {
+        reject(error);
+      };
+    });
+  }
+
   // Function to share the image
   async function copyAndSend() {
     if (!isImageReady || !clipboardItemRef.current) {
@@ -220,25 +245,28 @@ const ShareButton = ({ modalData }) => {
 
     const title = modalData[0]?.title;
 
-    const filesArray = [
-      new File([clipboardItemRef.current], `${title}.jpg`, {
-        type: "image/jpeg",
-        lastModified: new Date().getTime(),
-      }),
-    ];
+    try {
+      // Resize image for landscape mode
+      const resizedBlob = await resizeImageForLandscape(clipboardItemRef.current);
 
-    const shareData = { files: filesArray, title: title };
+      const filesArray = [
+        new File([resizedBlob], `${title}.jpg`, {
+          type: "image/jpeg",
+          lastModified: new Date().getTime(),
+        }),
+      ];
 
-    if (navigator.canShare && navigator.canShare(shareData)) {
-      try {
+      const shareData = { files: filesArray, title: title };
+
+      if (navigator.canShare && navigator.canShare(shareData)) {
         await navigator.share(shareData);
-      } catch (error) {
-        console.error("Sharing failed:", error);
-        alert("Failed to share the image. Please try again.");
+      } else {
+        console.error("Sharing is not supported for this data.");
+        alert("Sharing is not supported on this device.");
       }
-    } else {
-      console.error("Sharing is not supported for this data.");
-      alert("Sharing is not supported on this device.");
+    } catch (error) {
+      console.error("Sharing failed:", error);
+      alert("Failed to share the image. Please try again.");
     }
   }
 
@@ -254,20 +282,6 @@ const ShareButton = ({ modalData }) => {
         </button>
       ) : (
         <p>Sharing is not supported on this browser.</p>
-      )}
-
-      {isImageReady && (
-        <div
-          style={{
-            width: "100%", 
-            height: imageRatio === "auto" ? "auto" : `${100 / imageRatio}%`,
-            backgroundImage: `url(${getImg(modalData[0]?.name)})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          {/* Render the image as a background with the correct ratio */}
-        </div>
       )}
     </div>
   );
