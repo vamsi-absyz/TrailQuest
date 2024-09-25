@@ -24,9 +24,9 @@ export const Home = () => {
         )
         .flat();
 
-        const shuffledTags = allTagsWithId.sort(() => Math.random() - 0.5);
+      const shuffledTags = allTagsWithId.sort(() => Math.random() - 0.5);
 
-        setTagData(shuffledTags);
+      setTagData(shuffledTags);
     }
   }, []);
 
@@ -63,10 +63,10 @@ export const Home = () => {
     Cookies.remove("company")
   };
 
-  useEffect(()=>{
-    const user=Cookies.get("name");
-    if(user===undefined){
-        navigate("/")
+  useEffect(() => {
+    const user = Cookies.get("name");
+    if (user === undefined) {
+      navigate("/")
     }
   })
 
@@ -81,12 +81,14 @@ export const Home = () => {
           spacing={2}
           className="m-auto h-full w-full flex justify-evenly"
         >
+          <Grid item md={0.5}></Grid>
+
           {/* Chip Group */}
           <Grid
             item
             xs={7}
             sm={8}
-            md={7}
+            md={6}
             className="flex justify-start items-start flex-wrap !flex-col "
             style={{ gap: "10px", marginTop: "60px" }}
           >
@@ -107,22 +109,21 @@ export const Home = () => {
                   {tagData.map((item, index) => (
                     <div key={index} className="m-[4px] sm:mx-[4px]">
                       <Chip
-                  
-            
+
+
                         // size="medium"
                         icon={null}
                         checked={selectedTag.some((t) => t.tag === item.tag)}
                         // checked={selectedTag.includes(item.tag)} // Check if the tag is selected
                         value={item.tag}
-                        className={`chips capitalize text-[#032d60] font-medium bg-[#fff] ${
-                          selectedTag.includes(item.tag)
-                            ? "bg-teal-500 text-white"
-                            : ""
-                        }`}
+                        className={`chips capitalize text-[#032d60] font-medium bg-[#fff] ${selectedTag.includes(item.tag)
+                          ? "bg-teal-500 text-white"
+                          : ""
+                          }`}
                         onClick={() => handleClick(item.tag, item.id)}
                       >
                         {item.tag}
-                       
+
                       </Chip>
                     </div>
                   ))}
@@ -146,6 +147,9 @@ export const Home = () => {
               <Slider isModalOpen={isModalOpen} />
             </div>
           </Grid>
+
+          <Grid item md={0.5}></Grid>
+
         </Grid>
       </div>
 

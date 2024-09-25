@@ -15,7 +15,7 @@ const images = [
   { id: 5, pos: "left", img: Bobcat },
 ];
 
-const Slider = ({isModalOpen}) => {
+const Slider = ({ isModalOpen }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -29,11 +29,11 @@ const Slider = ({isModalOpen}) => {
   }, [isModalOpen]);
 
   return (
-    <div className="slider-container w-[100%] h-[275px] sm:h-[325px]  lg:w-[100%] lg:h-[400px] bg-[#f1efef] rounded-[30px]">
+    <div className="slider-container w-[100%]  h-[350px] lg:w-[100%] lg:h-[400px] bg-[#f1efef] rounded-[30px]">
       {images.map((image, index) => (
         <div
           key={index}
-          className={` w-auto md:!w-full image-box ${index === 0
+          className={` w-full md:!w-full image-box ${index === 0
             ? currentImageIndex === index
               ? "active-horizontal-right"
               : ""

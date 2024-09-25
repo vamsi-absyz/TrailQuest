@@ -84,6 +84,9 @@ export const Lead = () => {
       sx={{ flexGrow: 1 }}
       className="bg-[#F2F3F3] bg-img w-full flex flex-col justify-start items-center bg-cover md:bg-contain"
     >
+      <div className="flex lg:hidden w-full justify-center items-center">
+        <img src={Logo} alt="logo" className="w-[110px] " />
+      </div>
       <div className="w-full sm:px-[2rem] md:px-[2rem] sm:pb-[2rem] md:pb-1 pt-[10px] ">
         <Grid
           container
@@ -92,8 +95,8 @@ export const Lead = () => {
         >
           <Grid
             item
-            xs={5}
-            sm={5}
+            xs={10}
+            sm={10}
             md={4}
             className="flex justify-start items-start flex-wrap !flex-col"
             sx={{
@@ -103,7 +106,7 @@ export const Lead = () => {
                 marginTop: "50px",
               },
               "@media (min-width: 1024px)": {
-                marginTop: "10px", 
+                marginTop: "10px",
               },
             }}
           >
@@ -121,26 +124,21 @@ export const Lead = () => {
             </div>
           </Grid>
 
-          {/* <Grid item xs={0} md={3}></Grid> */}
 
           {/* Carousel section */}
           <Grid
             item
-            xs={4}
-            sm={3}
+            xs={8}
+            sm={6}
             md={3}
-            className="flex justify-start !flex-col items-center h-[100vh] md:h-[100vh]"
+            className="flex justify-start !flex-col items-center h-[100vh] md:h-[100vh] !mt-[2rem] md:!mt-0 lg:!mt-0"
           >
-            <div className="flex justify-center items-center w-full pt-[20px] mb-[20px]">
+            <div className="justify-center items-center w-full pt-[20px] mb-[20px] hidden lg:flex">
               <img src={Logo} alt="logo" className="w-[110px] " />
             </div>
             <div className="carousel_img_lead">
-              {/* <Carousels /> */}
               <Slider />
             </div>
-            {/* <div className="flex justify-center items-center w-full pt-[20px]">
-                            <img src={Logo} alt="logo" className="w-[110px] " />
-                        </div> */}
           </Grid>
         </Grid>
       </div>

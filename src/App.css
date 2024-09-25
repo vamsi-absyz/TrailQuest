@@ -6,7 +6,7 @@
   color: #000;
 }
 
-.css-wq8qsl-MuiFormHelperText-root.Mui-error{
+.css-wq8qsl-MuiFormHelperText-root.Mui-error {
   margin-left: 4px !important;
 }
 
@@ -24,7 +24,7 @@
 .chips label {
   padding: 0.9rem 1rem;
   background-color: #ffffff !important;
-  border-radius: inherit; 
+  border-radius: inherit;
 }
 
 .chips label:where([data-checked]) {
@@ -33,6 +33,7 @@
 
 .chips label span {
   color: #17233a;
+  font-size: 1rem;
 }
 .chips label:where([data-checked]) span {
   color: #ffffff;
@@ -40,22 +41,20 @@
 
 .carousel_img {
   /* background-color: #ffffff !important; */
-  box-shadow: -30px 24px 34px 0px #FFFFFF inset;
-  border: 2px solid #FFFFFF;
+  box-shadow: -30px 24px 34px 0px #ffffff inset;
+  border: 2px solid #ffffff;
   width: 100%;
   border-radius: 30px !important;
-  margin-top:40px;
-  background: #F1EFEF;
-
+  margin-top: 40px;
+  background: #f1efef;
 }
-.carousel_img_lead{
+.carousel_img_lead {
   /* background-color: #ffffff !important; */
-  box-shadow: -30px 24px 34px 0px #FFFFFF inset;
-  border: 2px solid #FFFFFF;
+  box-shadow: -30px 24px 34px 0px #ffffff inset;
+  border: 2px solid #ffffff;
   width: 100%;
   border-radius: 30px !important;
-  background: #F1EFEF;
-
+  background: #f1efef;
 }
 
 .slick-list {
@@ -91,7 +90,7 @@ input {
   color: #000 !important;
 }
 
-input[type=radio] {
+input[type="radio"] {
   border: 0px;
   width: 18px;
   height: 2em;
