@@ -99,7 +99,7 @@ export const Lead = () => {
             xs={10}
             sm={7}
             md={4}
-            className="flex !justify-start !items-start flex-wrap !flex-col"
+            className="flex !justify-start !items-start flex-wrap !flex-col sm:!pl-[3rem] !pl-0"
             sx={{
               gap: "10px",
 
@@ -116,7 +116,7 @@ export const Lead = () => {
                 Let’s Make Things Happen Together!
               </span>
             </div>
-            <div className="w-full">
+            <div className="w-full ">
               <SignInForm
                 title="Absyz"
                 onSubmit={handleFormSubmit}
