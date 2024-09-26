@@ -158,8 +158,7 @@ export const Home = () => {
           <Grid
             xs={8}
             sm={6}
-            md={3}
-            // lg={4}
+            md={4}
             className="flex justify-start !flex-col items-center h-[100vh] md:h-[100vh] "
           >
             <div className="justify-center items-center w-full pt-[20px] hidden lg:flex">
