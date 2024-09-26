@@ -75,22 +75,27 @@ export const Home = () => {
       sx={{ flexGrow: 1 }}
       className="bg-[#F2F3F3] bg-img w-full flex flex-col justify-start items-center bg-cover md:bg-contain"
     >
+
+      <div className="flex lg:hidden w-full justify-center items-center">
+        <img src={Logo} alt="logo" className="w-[110px] " />
+      </div>
+
       <div className="m-auto sm:px-[2rem] md:px-[2rem] sm:pb-[2rem] md:pb-1 pt-[10px] ">
         <Grid
           container
           spacing={2}
-          className="m-auto h-full w-full flex justify-evenly"
+          className="m-auto h-full w-full flex justify-center"
         >
           <Grid item md={0.5}></Grid>
 
           {/* Chip Group */}
           <Grid
             item
-            xs={7}
-            sm={8}
-            md={6}
-            className="flex justify-start items-start flex-wrap !flex-col "
-            style={{ gap: "10px", marginTop: "60px" }}
+            xs={10}
+            sm={10}
+            md={5.5}
+            className="flex justify-start items-start flex-wrap !flex-col mt-0 lg:!mt-[60px] "
+            style={{ gap: "10px" }}
           >
             <div className="mb-[8px]">
               <span className="font-medium text-[22px] text-[#17233A]">
@@ -134,12 +139,12 @@ export const Home = () => {
 
           {/* Carousel section */}
           <Grid
-            xs={4}
-            sm={3}
+            xs={8}
+            sm={4}
             md={3}
             className="flex justify-start !flex-col items-center h-[100vh] md:h-[100vh] "
           >
-            <div className="flex justify-center items-center w-full pt-[20px]">
+            <div className="justify-center items-center w-full pt-[20px] hidden lg:flex">
               <img src={Logo} alt="logo" className="w-[110px] " />
             </div>
             <div className="carousel_img">
@@ -148,7 +153,7 @@ export const Home = () => {
             </div>
           </Grid>
 
-          <Grid item md={0.5}></Grid>
+          <Grid item xs={0} md={0.5} className="hidden lg:flex"></Grid>
 
         </Grid>
       </div>
