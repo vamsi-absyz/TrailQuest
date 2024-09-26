@@ -87,11 +87,11 @@ export const Lead = () => {
       <div className="flex lg:hidden w-full justify-center items-center">
         <img src={Logo} alt="logo" className="w-[110px] " />
       </div>
-      <div className="w-full sm:px-[0rem] md:px-[2rem] sm:pb-[2rem] md:pb-1 pt-[10px] ">
+      <div className="w-full sm:px-[2rem] md:px-[2rem] sm:pb-[2rem] md:pb-1 pt-[10px] ">
         <Grid
           container
           spacing={2}
-          className="m-auto h-full w-full flex justify-evenly"
+          className="m-auto h-full w-full flex justify-between"
         >
           <Grid
             item
