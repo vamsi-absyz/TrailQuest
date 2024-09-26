@@ -102,13 +102,13 @@ export const Home = () => {
           spacing={2}
           className="m-auto h-full w-full flex justify-center"
         >
-          <Grid item md={0.5}></Grid>
+          <Grid item xs={0} md={0.5}></Grid>
 
           {/* Chip Group */}
           <Grid
             item
             xs={10}
-            sm={10}
+            sm={7}
             md={5.5}
             // lg={5.5}
             className="flex justify-start items-start flex-wrap !flex-col mt-0 lg:!mt-[60px] "
@@ -153,6 +153,7 @@ export const Home = () => {
               </Group>
             </Chip.Group>
           </Grid>
+          
 
           {/* Carousel section */}
           <Grid
