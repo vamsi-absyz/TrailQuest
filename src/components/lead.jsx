@@ -96,7 +96,7 @@ export const Lead = () => {
           <Grid
             item
             xs={10}
-            sm={10}
+            sm={7}
             md={4}
             className="flex justify-start items-start flex-wrap !flex-col"
             sx={{
