@@ -91,7 +91,7 @@ export const Lead = () => {
         <Grid
           container
           spacing={2}
-          className="m-auto h-full w-full flex justify-evenly"
+          className="m-auto h-full w-full flex justify-start"
         >
           <Grid item sm={0.5} md={0} lg={0} className="hidden sm:flex md:hidden lg:hidden"></Grid>
           <Grid
