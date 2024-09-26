@@ -133,7 +133,7 @@ export const Lead = () => {
             xs={8}
             sm={6}
             md={3}
-            className="flex justify-start !flex-col items-center h-[100vh] md:h-[100vh] !mt-[2rem] md:!mt-0 lg:!mt-0"
+            className="flex justify-start !flex-col items-center h-[100vh] md:h-[100vh] !mt-[2rem] md:!mt-0 lg:!mt-0 sm:!pl-[3rem] !pl-0"
           >
             <div className="justify-center items-center w-full pt-[20px] mb-[20px] hidden lg:flex">
               <img src={Logo} alt="logo" className="w-[110px] " />
