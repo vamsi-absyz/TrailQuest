@@ -98,7 +98,7 @@ export const Lead = () => {
             xs={10}
             sm={7}
             md={4}
-            className="flex !justify-start !items-start flex-wrap !flex-col"
+            className="flex !justify-start !items-center flex-wrap !flex-col"
             sx={{
               gap: "10px",
 
