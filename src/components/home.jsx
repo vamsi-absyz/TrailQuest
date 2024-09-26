@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box, Grid, useMediaQuery } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 import { Chip, Group } from "@mantine/core";
 import { characterData } from "../utils/mock_data";
 // import { Carousels } from "./carousel";
@@ -8,6 +8,21 @@ import { Modal } from "./modal";
 import Logo from "../assets/images/logo.png";
 import Slider from "./slider";
 import Cookies from "js-cookie";
+
+import { Grid, createTheme, ThemeProvider } from '@mui/material';
+
+// Create a custom theme
+const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1201,
+      xl: 1536,
+    },
+  },
+});
 export const Home = () => {
   const [selectedTag, setSelectedTag] = useState([]); // Manages selected tags
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -81,83 +96,85 @@ export const Home = () => {
       </div>
 
       <div className="m-auto sm:px-[2rem] md:px-[2rem] sm:pb-[2rem] md:pb-1 pt-[10px] ">
-        <Grid
-          container
-          spacing={2}
-          className="m-auto h-full w-full flex justify-center"
-        >
-          <Grid item md={0.5}></Grid>
-
-          {/* Chip Group */}
+        <ThemeProvider theme={theme}>
           <Grid
-            item
-            xs={10}
-            sm={10}
-            md={10}
-            lg={5.5}
-            className="flex justify-start items-start flex-wrap !flex-col mt-0 lg:!mt-[60px] "
-            style={{ gap: "10px" }}
+            container
+            spacing={2}
+            className="m-auto h-full w-full flex justify-center"
           >
-            <div className="mb-[8px]">
-              <span className="font-medium text-[22px] text-[#17233A]">
-                Select 6 Characteristics That Best Describe You
-              </span>
-            </div>
-            <Chip.Group className="" multiple>
-              <Group
-                className="flex justify-center items-center p-0 pt-0 md:pr-[20px] pb-[40px] md:pt-[20px] sm:p-0"
-                gap={10}
-              >
-                <div
-                  className="flex justify-start items-center !sm:flex-row flex-wrap w-full sm:w-auto flex-row"
-                  style={{ gap: 12 }}
+            <Grid item md={0.5}></Grid>
+
+            {/* Chip Group */}
+            <Grid
+              item
+              xs={10}
+              sm={10}
+              md={10}
+              lg={5.5}
+              className="flex justify-start items-start flex-wrap !flex-col mt-0 lg:!mt-[60px] "
+              style={{ gap: "10px" }}
+            >
+              <div className="mb-[8px]">
+                <span className="font-medium text-[22px] text-[#17233A]">
+                  Select 6 Characteristics That Best Describe You
+                </span>
+              </div>
+              <Chip.Group className="" multiple>
+                <Group
+                  className="flex justify-center items-center p-0 pt-0 md:pr-[20px] pb-[40px] md:pt-[20px] sm:p-0"
+                  gap={10}
                 >
-                  {tagData.map((item, index) => (
-                    <div key={index} className="m-[4px] sm:mx-[4px]">
-                      <Chip
+                  <div
+                    className="flex justify-start items-center !sm:flex-row flex-wrap w-full sm:w-auto flex-row"
+                    style={{ gap: 12 }}
+                  >
+                    {tagData.map((item, index) => (
+                      <div key={index} className="m-[4px] sm:mx-[4px]">
+                        <Chip
 
 
-                        // size="medium"
-                        icon={null}
-                        checked={selectedTag.some((t) => t.tag === item.tag)}
-                        // checked={selectedTag.includes(item.tag)} // Check if the tag is selected
-                        value={item.tag}
-                        className={`chips capitalize text-[#032d60] font-medium bg-[#fff] ${selectedTag.includes(item.tag)
-                          ? "bg-teal-500 text-white"
-                          : ""
-                          }`}
-                        onClick={() => handleClick(item.tag, item.id)}
-                      >
-                        {item.tag}
+                          // size="medium"
+                          icon={null}
+                          checked={selectedTag.some((t) => t.tag === item.tag)}
+                          // checked={selectedTag.includes(item.tag)} // Check if the tag is selected
+                          value={item.tag}
+                          className={`chips capitalize text-[#032d60] font-medium bg-[#fff] ${selectedTag.includes(item.tag)
+                            ? "bg-teal-500 text-white"
+                            : ""
+                            }`}
+                          onClick={() => handleClick(item.tag, item.id)}
+                        >
+                          {item.tag}
 
-                      </Chip>
-                    </div>
-                  ))}
-                </div>
-              </Group>
-            </Chip.Group>
+                        </Chip>
+                      </div>
+                    ))}
+                  </div>
+                </Group>
+              </Chip.Group>
+            </Grid>
+
+            {/* Carousel section */}
+            <Grid
+              xs={8}
+              sm={4}
+              md={4}
+              lg={3}
+              className="flex justify-start !flex-col items-center h-[100vh] md:h-[100vh] "
+            >
+              <div className="justify-center items-center w-full pt-[20px] hidden lg:flex">
+                <img src={Logo} alt="logo" className="w-[110px] " />
+              </div>
+              <div className="carousel_img">
+                {/* <Carousels /> */}
+                <Slider isModalOpen={isModalOpen} />
+              </div>
+            </Grid>
+
+            <Grid item xs={0} md={0.5} className="hidden lg:flex"></Grid>
+
           </Grid>
-
-          {/* Carousel section */}
-          <Grid
-            xs={8}
-            sm={4}
-            md={4}
-            lg={3}
-            className="flex justify-start !flex-col items-center h-[100vh] md:h-[100vh] "
-          >
-            <div className="justify-center items-center w-full pt-[20px] hidden lg:flex">
-              <img src={Logo} alt="logo" className="w-[110px] " />
-            </div>
-            <div className="carousel_img">
-              {/* <Carousels /> */}
-              <Slider isModalOpen={isModalOpen} />
-            </div>
-          </Grid>
-
-          <Grid item xs={0} md={0.5} className="hidden lg:flex"></Grid>
-
-        </Grid>
+        </ThemeProvider>
       </div>
 
       {isModalOpen && isTabletOrLarger && (
