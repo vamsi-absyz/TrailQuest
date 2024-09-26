@@ -91,7 +91,7 @@ export const Lead = () => {
         <Grid
           container
           spacing={2}
-          className="m-auto h-full w-full flex justify-between"
+          className="m-auto h-full w-full flex justify-around"
         >
           <Grid
             item
