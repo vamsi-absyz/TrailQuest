@@ -96,7 +96,7 @@ export const Lead = () => {
           <Grid
             item
             xs={10}
-            sm={10}
+            sm={8}
             md={4}
             className="flex justify-start items-start flex-wrap !flex-col"
             sx={{
@@ -123,6 +123,8 @@ export const Lead = () => {
               />
             </div>
           </Grid>
+
+          <Grid item xs={0} sm={2}></Grid>
 
 
           {/* Carousel section */}
