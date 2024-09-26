@@ -124,7 +124,7 @@ export const Lead = () => {
             </div>
           </Grid>
 
-          <Grid item xs={0} sm={3}></Grid>
+          <Grid item xs={0} sm={3} md={0} className="flex md:hidden"></Grid>
 
 
           {/* Carousel section */}
