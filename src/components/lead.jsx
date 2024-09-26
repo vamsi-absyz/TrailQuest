@@ -91,14 +91,14 @@ export const Lead = () => {
         <Grid
           container
           spacing={2}
-          className="m-auto h-full w-full flex justify-around"
+          className="m-auto h-full w-full flex justify-evenly"
         >
           <Grid
             item
             xs={10}
             sm={7}
             md={4}
-            className="flex justify-start items-start flex-wrap !flex-col"
+            className="flex !justify-start !items-start flex-wrap !flex-col"
             sx={{
               gap: "10px",
 
