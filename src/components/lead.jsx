@@ -110,7 +110,7 @@ export const Lead = () => {
               },
             }}
           >
-            <div className="mb-[8px] ">
+            <div className="mb-[8px]">
               <span className="font-medium text-[22px] text-[#17233A]">
                 Let’s Make Things Happen Together!
               </span>
