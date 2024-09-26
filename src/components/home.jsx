@@ -93,7 +93,8 @@ export const Home = () => {
             item
             xs={10}
             sm={10}
-            md={5.5}
+            md={10}
+            lg={5.5}
             className="flex justify-start items-start flex-wrap !flex-col mt-0 lg:!mt-[60px] "
             style={{ gap: "10px" }}
           >
@@ -141,7 +142,8 @@ export const Home = () => {
           <Grid
             xs={8}
             sm={4}
-            md={3}
+            md={4}
+            lg={3}
             className="flex justify-start !flex-col items-center h-[100vh] md:h-[100vh] "
           >
             <div className="justify-center items-center w-full pt-[20px] hidden lg:flex">
