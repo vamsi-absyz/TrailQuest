@@ -93,10 +93,11 @@ export const Lead = () => {
           spacing={2}
           className="m-auto h-full w-full flex justify-between"
         >
+          <Grid item sm={1}></Grid>
           <Grid
             item
             xs={10}
-            sm={7.5}
+            sm={7}
             md={4}
             className="flex !justify-start !items-center flex-wrap !flex-col"
             sx={{
