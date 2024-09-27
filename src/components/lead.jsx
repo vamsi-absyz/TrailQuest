@@ -92,7 +92,7 @@ export const Lead = () => {
           container
           spacing={2}
           className="m-auto h-full w-full flex"
-          sx={{ justifyContent: { sm: "flex-start", md: "space-evenly" } }}
+          sx={{ justifyContent: { xs: "center", sm: "flex-start", md: "space-evenly" } }}
         >
           <Grid item sm={0.5} md={0} lg={0} className="hidden sm:flex md:hidden lg:hidden"></Grid>
           <Grid
