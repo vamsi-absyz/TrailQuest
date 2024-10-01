@@ -60,7 +60,7 @@ const FormField = ({
       {label && (
         <label
           htmlFor={id}
-          className="text-[0.9rem] mb-[2px] text-[#17233A] font-normal"
+          className="text-[0.9rem] sm:!text-[1rem] mb-[2px] text-[#17233A] font-normal"
         >
           {(name === "name" || name === "company" || name === "confirm") && (
             <span style={{ color: "red" }}>*</span>
@@ -111,7 +111,7 @@ const FormField = ({
           name={name}
           value={value}
           onChange={onChange}
-          onKeyDown={name==="number" ? handleKeyDown : undefined}
+          onKeyDown={name === "number" ? handleKeyDown : undefined}
           fullWidth
           variant="outlined"
           placeholder={placeholder}
@@ -159,7 +159,7 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
         }));
       }
     } else if (name === "name") {
-        const regex = /^[A-Za-z._+ ]*$/;
+      const regex = /^[A-Za-z._+ ]*$/;
       if (regex.test(value)) {
         setFormData((prevData) => ({
           ...prevData,
@@ -255,9 +255,8 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
 
     fieldsToValidate.forEach((field) => {
       if (!data.get(field)) {
-        errors[field] = `${
-          fields.find((f) => f.name === field)?.placeholder
-        } is required`;
+        errors[field] = `${fields.find((f) => f.name === field)?.placeholder
+          } is required`;
       }
     });
 
@@ -315,7 +314,7 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
             type="submit"
             fullWidth
             variant="contained"
-            className="!w-max !mt-[0.5rem]"
+            className="!w-max !mt-[0.5rem] !text-[0.9rem] sm:!text-[1rem]"
             sx={{
               backgroundColor: "#0470EF",
               color: "#fff",

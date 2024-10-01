@@ -91,7 +91,7 @@ export const Home = () => {
       className="bg-[#F2F3F3] bg-img w-full flex flex-col justify-start items-center bg-cover md:bg-contain"
     >
 
-      <div className="flex lg:hidden w-full justify-center items-center">
+      <div className="flex lg:hidden w-full justify-center items-center sm:!my-[1rem]">
         <img src={Logo} alt="logo" className="w-[110px] " />
       </div>
 
@@ -100,9 +100,9 @@ export const Home = () => {
         <Grid
           container
           spacing={2}
-          className="m-auto h-full w-full flex justify-center"
+          className="m-auto h-full w-full flex sm:!justify-start lg:!justify-center"
         >
-          <Grid item md={0.5}></Grid>
+          <Grid item sm={0} md={0.5} className="lg:!hidden md:!hidden sm:!flex xs:!hidden"></Grid>
 
           {/* Chip Group */}
           <Grid
@@ -115,7 +115,7 @@ export const Home = () => {
             style={{ gap: "10px" }}
           >
             <div className="mb-[8px]">
-              <span className="font-medium text-[22px] text-[#17233A]">
+              <span className="font-medium text-[22px] text-[#17233A] sm:!text-[26px]">
                 Select 6 Characteristics That Best Describe You
               </span>
             </div>
@@ -154,12 +154,16 @@ export const Home = () => {
             </Chip.Group>
           </Grid>
 
+          {/* <Grid item xs={0} sm={2} md={0} lg={0} className=""></Grid>
+          <Grid item xs={0} sm={2} md={0} lg={0} className=""></Grid> */}
+
+
           {/* Carousel section */}
           <Grid
             xs={8}
             sm={6}
             md={3}
-            className="flex justify-start !flex-col items-center h-[100vh] md:h-[100vh] "
+            className="flex justify-start !flex-col items-center h-[100vh] md:h-[100vh] !ml-[6rem] lg:!ml-0 xl:!ml-0 2xl:!ml-0"
           >
             <div className="justify-center items-center w-full pt-[20px] hidden lg:flex">
               <img src={Logo} alt="logo" className="w-[110px] " />
