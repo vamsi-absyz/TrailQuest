@@ -159,20 +159,41 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                   </div>
 
                   {loader ?
-                    <Skeleton
-                      animation="wave"
-                      variant="rectangular"
-                      width={333}
-                      height={260}
-                    /> :
+                    <div className="flex flex-col justify-center items-center">
+
+                      <Skeleton
+                        animation="wave"
+                        variant="rounded"
+                        width={333}
+                        height={200}
+                      />
+
+                      <Skeleton
+                        animation="wave"
+                        variant="rounded"
+                        width={333}
+                        height={20}
+                        className="my-[10px]"
+                      />
+
+                      <Skeleton
+                        animation="wave"
+                        variant="rounded"
+                        width={333}
+                        height={20}
+                      />
+
+                    </div>
+                    :
                     <div className="relative z-[50]">
                       <img
                         src={modalData[0].image}
                         alt="congratulations"
-                        loading="lazy"
+                        // loading="lazy"
                         className="!h-[260px] sm:!h-auto lg:!h-[260px] xl:!l-[260px] object-scale-down"
                       />
-                    </div>}
+                    </div>
+                  }
 
                   {/* <Suspense fallback={<div className="!h-[260px]">Loading...</div>}>
                     <div className="relative z-[50]">
