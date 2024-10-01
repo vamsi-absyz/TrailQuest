@@ -4,8 +4,6 @@ import Einstein from "../assets/images/Group 75.svg";
 import Elephant from "../assets/images/Group 79.svg";
 import Dog from "../assets/images/Group 80.svg";
 
-
-
 export const characterData = [
 
   {

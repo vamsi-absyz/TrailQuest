@@ -62,7 +62,7 @@ const FormField = ({
           htmlFor={id}
           className="text-[0.9rem] sm:!text-[1rem] mb-[2px] text-[#17233A] font-normal"
         >
-          {(name === "name" || name === "company" || name === "confirm") && (
+          {(name === "name" || name === "company" || name === "confirm" || name === "email") && (
             <span style={{ color: "red" }}>*</span>
           )}{" "}
           {label}
@@ -251,7 +251,7 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
   const validateInputs = (data) => {
     let errors = {};
 
-    const fieldsToValidate = ["name", "company", "confirm"];
+    const fieldsToValidate = ["name", "company", "confirm", 'email'];
 
     fieldsToValidate.forEach((field) => {
       if (!data.get(field)) {

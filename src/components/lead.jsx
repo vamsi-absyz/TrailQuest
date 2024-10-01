@@ -36,7 +36,7 @@ export const Lead = () => {
       name: "email",
       placeholder: "Email address",
       type: "email",
-      required: false,
+      required: true,
       label: "Email Address",
     },
     {

@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { characterData } from "../utils/mock_data"; // Assuming this is your data source
-import { Box, Grid, IconButton } from "@mui/material";
+import { Box, Grid, IconButton, Skeleton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { ConfettiBackground } from "./ConfettiBackground";
 import { EmailShare, WpShare } from "./share";
@@ -78,6 +78,14 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
     }
   }, [selectedTag]);
 
+  const [loader, setLoader] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoader(false)
+    }, 800)
+  }, [loader])
+
   return (
     <>
       {modalData && (
@@ -150,16 +158,32 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                     )}
                   </div>
 
-                  <Suspense fallback={<div>Loading...</div>}>
+                  {loader ?
+                    <Skeleton
+                      animation="wave"
+                      variant="rectangular"
+                      width={333}
+                      height={260}
+                    /> :
                     <div className="relative z-[50]">
                       <img
                         src={modalData[0].image}
-                        alt="conratulations"
+                        alt="congratulations"
                         loading="lazy"
-                        className="!h-[260px] sm:!h-auto object-scale-down"
+                        className="!h-[260px] sm:!h-auto lg:!h-[260px] xl:!l-[260px] object-scale-down"
+                      />
+                    </div>}
+
+                  {/* <Suspense fallback={<div className="!h-[260px]">Loading...</div>}>
+                    <div className="relative z-[50]">
+                      <img
+                        src={modalData[0].image}
+                        alt="congratulations"
+                        loading="lazy"
+                        className="!h-[260px] sm:!h-auto lg:!h-[260px] xl:!l-[260px] object-scale-down"
                       />
                     </div>
-                  </Suspense>
+                  </Suspense> */}
                 </Grid>
 
                 <Grid className="flex gap-2 mt-4">
