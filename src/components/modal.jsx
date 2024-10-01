@@ -100,9 +100,9 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
             className="fixed inset-0 z-50 flex justify-center items-center"
           >
             <Box
-              className="bg-white rounded-lg shadow-lg relative"
+              className="bg-white rounded-lg shadow-lg relative w-[450px] sm:!w-[550px] lg:!w-[450px]"
               sx={{
-                width: { xs: "450px", sm: "600", md: "450px" },
+                // width: { xs: "450px", sm: "600", md: "450px" },
               }}
             >
               <div className="flex justify-end items-end w-full my-[10px] px-[10px]">
@@ -155,7 +155,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                       <img
                         src={modalData[0].image}
                         alt="conratulations"
-                        className="!h-[260px] object-scale-down"
+                        className="!h-[260px] sm:!h-auto object-scale-down"
                       />
                     </div>
                   </div>
