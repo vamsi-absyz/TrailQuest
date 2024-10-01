@@ -12,11 +12,11 @@ const ShareButton = ({ modalData }) => {
   const message = `${name}, we’ve found the perfect mascot to match`;
 
   const imageMapping = {
-    Astro: "/RuthInstagramStory.png",
-    Bobcat: "/RuthInstagramStory.png",
-    Dog: "/RuthInstagramStory.png",
-    Einstien: "/RuthInstagramStory.png",
-    Elephant: "/RuthInstagramStory.png",
+    Astro: "/Ruth-Elephant.png",
+    Bobcat: "/Ruth-Elephant.png",
+    Dog: "/Ruth-Elephant.png",
+    Einstien: "/Ruth-Elephant.png",
+    Elephant: "/Ruth-Elephant.png",
   };
 
   useEffect(() => {

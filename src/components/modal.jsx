@@ -130,10 +130,10 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                       margin: "0 0 4px 0",
                     }}
                   >
-                    Congratulations
+                    Congratulations, {name}
                   </h1>
                   <span className="text-[14px] text-[#17233A] !pt-[8px]">
-                    Hey <b className="text-[14px] text-[#17233A]">{name}</b>, we’ve found the perfect mascot to match
+                    we’ve found the perfect mascot to match you.
                   </span>
                 </div>
 

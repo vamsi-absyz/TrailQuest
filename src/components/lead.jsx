@@ -100,7 +100,7 @@ export const Lead = () => {
             xs={10}
             sm={7}
             md={4}
-            className="flex !justify-start !items-start flex-wrap !flex-col sm:!pl-[3rem] !pl-0"
+            className="flex !justify-start !items-start flex-wrap !flex-col sm:!pl-[3rem] md:!pl-0 !pl-0"
             sx={{
               gap: "10px",
 
@@ -113,7 +113,7 @@ export const Lead = () => {
             }}
           >
             <div className="mb-[8px]">
-              <span className="font-medium text-[22px] text-[#17233A] sm:!text-[26px]">
+              <span className="font-medium !text-[22px] text-[#17233A] sm:!text-[26px] md:!text-[22px] lg:!text-[22px] ">
                 Let’s Make Things Happen Together!
               </span>
             </div>

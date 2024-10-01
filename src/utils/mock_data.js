@@ -8,8 +8,8 @@
 import Astro from "../assets/images/Group 76.png";
 import Bobcat from "../assets/images/Group 73.png";
 import Einstein from "../assets/images/Group 75.png";
-import Elephant from "../assets/images/Group 75.png";
-import Dog from "../assets/images/Group 75.png";
+import Elephant from "../assets/images/Group 79.png";
+import Dog from "../assets/images/Group 80.png";
 
 
 
