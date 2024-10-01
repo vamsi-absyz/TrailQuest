@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { characterData } from "../utils/mock_data"; // Assuming this is your data source
 import { Box, Grid, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
@@ -150,15 +150,16 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                     )}
                   </div>
 
-                  <div className="relative z-[50]">
-                    <div>
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <div className="relative z-[50]">
                       <img
                         src={modalData[0].image}
                         alt="conratulations"
+                        loading="lazy"
                         className="!h-[260px] sm:!h-auto object-scale-down"
                       />
                     </div>
-                  </div>
+                  </Suspense>
                 </Grid>
 
                 <Grid className="flex gap-2 mt-4">

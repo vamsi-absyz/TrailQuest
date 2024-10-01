@@ -1,15 +1,8 @@
-
-// import Astro from "../assets/images/Astro.jpg";
-// import Bobcat from "../assets/images/Bobcat.jpg";
-// import Dog from "../assets/images/Dog.jpg";
-// import Einstein from "../assets/images/Einstien.jpg";
-// import Elephant from "../assets/images/Ruth-Elephant.jpg";
-
-import Astro from "../assets/images/Group 76.png";
-import Bobcat from "../assets/images/Group 73.png";
-import Einstein from "../assets/images/Group 75.png";
-import Elephant from "../assets/images/Group 79.png";
-import Dog from "../assets/images/Group 80.png";
+import Astro from "../assets/images/Group 76.svg";
+import Bobcat from "../assets/images/Group 73.svg";
+import Einstein from "../assets/images/Group 75.svg";
+import Elephant from "../assets/images/Group 79.svg";
+import Dog from "../assets/images/Group 80.svg";
 
 
 
