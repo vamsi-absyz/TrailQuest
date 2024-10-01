@@ -100,7 +100,7 @@ export const Lead = () => {
             xs={10}
             sm={7}
             md={4}
-            className="flex !justify-start !items-start flex-wrap !flex-col sm:!pl-[3rem] md:!pl-0 !pl-0"
+            className="flex !justify-start !items-start flex-wrap !flex-col sm:!pl-[3rem] xl:!pl-0 !pl-0"
             sx={{
               gap: "10px",
 
@@ -108,7 +108,7 @@ export const Lead = () => {
                 marginTop: "50px",
               },
               "@media (min-width: 1024px)": {
-                marginTop: "10px",
+                // marginTop: "10px",
               },
             }}
           >

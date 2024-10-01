@@ -110,11 +110,20 @@ const ShareButton = ({ modalData }) => {
     <div>
       {isShareSupported ? (
         <button
-          style={{ color: "white" }}
+          style={{
+            backgroundColor: "#1776E5",
+            borderRadius: "5px",
+            color: "white",
+            fontSize: "16px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "10px 18px",
+          }}
           onClick={copyAndSend}
           disabled={!isImageReady}
         >
-          Share on Instagram
+          Share
         </button>
       ) : (
         <p>Sharing is not supported on this browser.</p>

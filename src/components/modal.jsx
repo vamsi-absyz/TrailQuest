@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { characterData } from "../utils/mock_data"; // Assuming this is your data source
-import { Grid, IconButton } from "@mui/material";
+import { Box, Grid, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { ConfettiBackground } from "./ConfettiBackground";
 import { EmailShare, WpShare } from "./share";
@@ -99,10 +99,10 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
             exit="exit"
             className="fixed inset-0 z-50 flex justify-center items-center"
           >
-            <div
+            <Box
               className="bg-white rounded-lg shadow-lg relative"
-              style={{
-                width: "450px",
+              sx={{
+                width: { xs: "450px", sm: "600", md: "450px" },
               }}
             >
               <div className="flex justify-end items-end w-full my-[10px] px-[10px]">
@@ -158,21 +158,6 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                         className="!h-[260px] object-scale-down"
                       />
                     </div>
-
-                    {/* <div className="flex flex-col items-start absolute top-[4rem] left-[9.5rem]">
-                      <p className="text-[14px] font-medium">Meet</p>
-                      <p className="text-[14px] font-medium leading-[10px]">
-                        Your
-                      </p>
-                      <p className="text-[14px] font-medium">Mascot</p>
-
-                      <span className="text-[26px] font-[900] ">
-                        {modalData[0].title.split(" ", 1).join("")}
-                      </span>
-                      <p className="text-[14px] font-medium text-start leading-[4px] text-nowrap">
-                        {modalData[0].title.split(" ").slice(1).join(" ")}
-                      </p>
-                    </div> */}
                   </div>
                 </Grid>
 
@@ -180,14 +165,15 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                   <button
                     onClick={handleDoItAgain}
                     style={{
-                      backgroundColor: "#1776E5",
+                      backgroundColor: "#405368",
                       borderRadius: "5px",
                       color: "white",
-                      fontSize: "14px",
+                      fontSize: "16px",
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
-                      padding: "4px 14px",
+                      padding: "10px 18px",
+                      marginRight: "8px"
                     }}
                   >
                     Do it again
@@ -196,7 +182,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                   {modalData && <WpShare modalData={modalData} />}
                 </Grid>
               </div>
-            </div>
+            </Box>
           </motion.div>
         </AnimatePresence>
       )}
