@@ -115,8 +115,16 @@ export const CharcaterInfo = () => {
                 )}
               </div>
 
-              {modalData[0].position === "right" ? (
-                <div
+              <div className="img relative">
+                <img
+                  src={modalData[0].image}
+                  alt={modalData[0].title}
+                  className="object-contain "
+                />
+              </div>
+
+              {/* {modalData[0].position === "right" ? ( */}
+              {/* <div
                   className="z-[50] w-[180px] h-[180px] rounded-[50%] flex justify-center"
                   style={{ backgroundColor: modalData[0].bgColor }}
                 >
@@ -141,9 +149,9 @@ export const CharcaterInfo = () => {
                       className="object-contain !w-[120px] !max-w-[120px]"
                     />
                   </div>
-                </div>
-              ) : (
-                <div
+                </div> */}
+              {/* ) : ( */}
+              {/* <div
                   className="z-[50] w-[180px] h-[180px] rounded-[50%] flex justify-center"
                   style={{ backgroundColor: modalData[0].bgColor }}
                 >
@@ -169,7 +177,7 @@ export const CharcaterInfo = () => {
                     </p>
                   </div>
                 </div>
-              )}
+              // )} */}
             </Grid>
 
             <Grid className="flex gap-2 mt-4">
