@@ -12,11 +12,11 @@ const ShareButton = ({ modalData }) => {
   const message = `${name}, we’ve found the perfect mascot to match`;
 
   const imageMapping = {
-    Astro: "/Group 76.jpg",
-    Bobcat: "/Group 73.jpg",
-    Dog: "/Group 75.jpg",
-    Einstien: "/Group 75.jpg",
-    Elephant: "/Group 75.jpg",
+    Astro: "/Group 75.png",
+    Bobcat: "/Group 75.png",
+    Dog: "/Group 75.png",
+    Einstien: "/Group 75.png",
+    Elephant: "/Group 75.png",
   };
 
   useEffect(() => {
@@ -95,6 +95,7 @@ const ShareButton = ({ modalData }) => {
     if (navigator.canShare && navigator.canShare(shareData)) {
       try {
         await navigator.share(shareData);
+        console.log("Image shared successfully!");
       } catch (error) {
         console.error("Sharing failed:", error);
         alert("Failed to share the image. Please try again.");
