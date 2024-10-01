@@ -155,7 +155,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                       <img
                         src={modalData[0].image}
                         alt="conratulations"
-                        className="!w-[260px] !h-[260px] object-scale-down"
+                        className="!h-[260px] object-scale-down"
                       />
                     </div>
 
