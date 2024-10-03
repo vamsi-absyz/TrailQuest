@@ -45,6 +45,7 @@ const ShareButton = ({ modalData }) => {
   // Function to download the image from the public folder and prepare it for sharing
   async function fetchImage() {
     const imgName = modalData[0]?.name;
+    console.log(imgName, "imgName")
 
     if (!imgName) {
       console.error("Image name not found in modal data.");
@@ -52,6 +53,7 @@ const ShareButton = ({ modalData }) => {
     }
 
     const imageUrl = getImg(imgName);
+    console.log(imageUrl, "imageURL")
     if (!imageUrl) {
       console.error("Image URL not found.");
       return;

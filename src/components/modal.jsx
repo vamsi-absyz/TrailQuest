@@ -34,6 +34,8 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
   // Image from assets
 
 
+  console.log(modalData, "modalData")
+
   const capitalizeFirstLetter = (name) =>
     name ? name.charAt(0).toUpperCase() + name.slice(1) : "";
 
@@ -183,8 +185,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                   <div className="relative">
                     <Zoom in={true} style={{}}>
                       <img
-                        // src={modalData[0].image}
-                        src={imageSrc}
+                        src={modalData[0].image}
                         alt="congratulations"
                         loading="lazy"
                         className="!h-[260px] sm:!h-auto lg:!h-[260px] xl:!l-[260px] object-scale-down"
