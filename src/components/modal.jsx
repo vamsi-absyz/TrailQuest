@@ -29,7 +29,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
   const [modalData, setModalData] = useState(null);
   const [playConfetti, setPlayConfetti] = useState(false);
   const [confettiKey, setConfettiKey] = useState(0);
-  const [imageSrc, setImageSrc] = useState(Dog);
+  // const [imageSrc, setImageSrc] = useState('');
   const [loading, setLoading] = useState(false); // To handle loading state
   // Image from assets
 
@@ -95,7 +95,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
       setLoading(false);
 
       // Preload the image
-      preloadImage(imageSrc)
+      preloadImage(filterData[0]?.image)
         .then(() => {
 
           setLoading(true); // Image loaded
