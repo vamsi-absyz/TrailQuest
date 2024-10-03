@@ -204,8 +204,8 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                   </div>
 
 
-                  <div className="relative ">
-                    <Zoom in={true} style={{ transitionDelay: '500ms' }}>
+                  <div className="relative h-[351px]">
+                    <Zoom in={true} style={{}}>
                       <img
                         src={modalData[0].image}
                         alt="congratulations"
