@@ -1,8 +1,8 @@
-import Astro from "../assets/images/Group 76.svg";
-import Bobcat from "../assets/images/Group 73.svg";
-import Einstein from "../assets/images/Group 75.svg";
-import Elephant from "../assets/images/Group 79.svg";
-import Dog from "../assets/images/Group 80.svg";
+import Astro from "../assets/images/Group 76.jpg";
+import Bobcat from "../assets/images/Group 73.jpg";
+import Einstein from "../assets/images/Group 75.jpg";
+import Elephant from "../assets/images/Group 79.jpg";
+import Dog from "../assets/images/Group 80.jpg";
 
 export const characterData = [
 
