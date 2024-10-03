@@ -158,7 +158,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                     )}
                   </div>
 
-                  {/* {loader ?
+                  {loader ?
                     <div className="flex flex-col justify-center items-center">
 
                       <Skeleton
@@ -184,27 +184,16 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                       />
 
                     </div>
-                    : */}
-                  <div className="relative z-[50]">
-                    <img
-                      src={modalData[0].image}
-                      alt="congratulations"
-                      // loading="lazy"
-                      className="!h-[260px] sm:!h-auto lg:!h-[260px] xl:!l-[260px] object-scale-down"
-                    />
-                  </div>
-                  {/* } */}
-
-                  {/* <Suspense fallback={<div className="!h-[260px]">Loading...</div>}>
+                    :
                     <div className="relative z-[50]">
                       <img
                         src={modalData[0].image}
                         alt="congratulations"
-                        loading="lazy"
+                        // loading="lazy"
                         className="!h-[260px] sm:!h-auto lg:!h-[260px] xl:!l-[260px] object-scale-down"
                       />
                     </div>
-                  </Suspense> */}
+                  }
                 </Grid>
 
                 <Grid className="flex gap-2 mt-4">

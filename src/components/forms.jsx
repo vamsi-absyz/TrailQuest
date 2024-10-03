@@ -235,6 +235,20 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
     }
 
     try {
+
+      const currentDate = new Date();
+      // Get hours, minutes, and seconds
+      const hours = currentDate.getHours();
+      const minutes = currentDate.getMinutes();
+      const seconds = currentDate.getSeconds();
+
+      // Format the time as HH:MM:SS
+      const currentTime = `${hours.toString().padStart(2, "0")}:${minutes
+        .toString()
+        .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+
+      console.log(currentTime, "currentTime")
+
       // Add a new document with a generated ID
       const docRef = await addDoc(collection(db, "users"), {
         name: data.get("name"),
@@ -242,6 +256,7 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
         phone: data.get("number"),
         company: data.get("company"),
         isSalesforce: data.get("confirm"),
+        timestamp: currentTime
       });
     } catch (error) {
       console.error("Error adding document: ", error);
