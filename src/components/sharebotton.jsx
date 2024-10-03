@@ -72,7 +72,7 @@ const ShareButton = ({ modalData }) => {
       setIsImageReady(true);
     } catch (error) {
       console.error("Error fetching image:", error);
-      alert(`Failed to load the image. Please try again later.${error}`);
+      alert(error);
     }
   }
 
