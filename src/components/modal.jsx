@@ -128,64 +128,84 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                 </IconButton>
               </div>
 
-              <div className="flex flex-col justify-center items-center text-center px-[18px] pb-[24px]">
-                <div>
-                  <h1
-                    style={{
-                      color: "#1776E5",
-                      fontSize: "30px",
-                      fontWeight: "bold",
-                      margin: "0 0 4px 0",
-                    }}
-                  >
-                    Congratulations, {name}
-                  </h1>
-                  <span className="text-[14px] text-[#17233A] !pt-[8px]">
-                    we’ve found the perfect mascot to match you.
-                  </span>
-                </div>
+              {loader ?
+                <div className="flex flex-col justify-center items-center h-[460px]">
 
-                <Grid
-                  className="flex justify-center items-center relative z-10 py-[20px]"
-                  ref={containerRef}
-                >
-                  <div className="animation z-[10]">
-                    {playConfetti && (
-                      <ConfettiBackground
-                        key={confettiKey}
-                        containerRef={containerRef}
-                      />
-                    )}
+                  <Skeleton
+                    animation="wave"
+                    variant="rounded"
+                    width={333}
+                    height={20}
+                    className="my-[10px]"
+                  />
+
+                  <Skeleton
+                    animation="wave"
+                    variant="rounded"
+                    width={333}
+                    height={20}
+                    className="mb-[10px]"
+                  />
+
+                  <Skeleton
+                    animation="wave"
+                    variant="rounded"
+                    width={333}
+                    height={200}
+                    className="my-[10px]"
+                  />
+
+                  <Skeleton
+                    animation="wave"
+                    variant="rounded"
+                    width={333}
+                    height={20}
+                    className="my-[10px]"
+                  />
+
+                  <Skeleton
+                    animation="wave"
+                    variant="rounded"
+                    width={333}
+                    height={20}
+                    className="my-[10px]"
+
+                  />
+
+                </div>
+                :
+                <div className="flex flex-col justify-center items-center text-center px-[18px] pb-[24px]">
+                  <div>
+                    <h1
+                      style={{
+                        color: "#1776E5",
+                        fontSize: "30px",
+                        fontWeight: "bold",
+                        margin: "0 0 4px 0",
+                      }}
+                    >
+                      Congratulations, {name}
+                    </h1>
+                    <span className="text-[14px] text-[#17233A] !pt-[8px]">
+                      we’ve found the perfect mascot to match you.
+                    </span>
                   </div>
 
-                  {loader ?
-                    <div className="flex flex-col justify-center items-center">
-
-                      <Skeleton
-                        animation="wave"
-                        variant="rounded"
-                        width={333}
-                        height={200}
-                      />
-
-                      <Skeleton
-                        animation="wave"
-                        variant="rounded"
-                        width={333}
-                        height={20}
-                        className="my-[10px]"
-                      />
-
-                      <Skeleton
-                        animation="wave"
-                        variant="rounded"
-                        width={333}
-                        height={20}
-                      />
-
+                  <Grid
+                    className="flex justify-center items-center relative z-10 py-[20px]"
+                    ref={containerRef}
+                  >
+                    <div className="animation ">
+                      {playConfetti && (
+                        <ConfettiBackground
+                          key={confettiKey}
+                          containerRef={containerRef}
+                        />
+                      )}
                     </div>
-                    :
-                    <div className="relative z-[50]">
+
+
+                    <div className="relative ">
                       <img
                         src={modalData[0].image}
                         alt="congratulations"
@@ -193,30 +213,30 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                         className="!h-[260px] sm:!h-auto lg:!h-[260px] xl:!l-[260px] object-scale-down"
                       />
                     </div>
-                  }
-                </Grid>
+                    {/* } */}
+                  </Grid>
 
-                <Grid className="flex gap-2 mt-4">
-                  <button
-                    onClick={handleDoItAgain}
-                    style={{
-                      backgroundColor: "#405368",
-                      borderRadius: "5px",
-                      color: "white",
-                      fontSize: "16px",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      padding: "10px 18px",
-                      marginRight: "8px"
-                    }}
-                  >
-                    Do it again
-                  </button>
+                  <Grid className="flex gap-2 mt-4 w-full justify-center items-center">
+                    <button
+                      onClick={handleDoItAgain}
+                      style={{
+                        backgroundColor: "#405368",
+                        borderRadius: "5px",
+                        color: "white",
+                        fontSize: "16px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        padding: "10px 18px",
+                        marginRight: "8px"
+                      }}
+                    >
+                      Do it again
+                    </button>
 
-                  {modalData && <WpShare modalData={modalData} />}
-                </Grid>
-              </div>
+                    {modalData && <WpShare modalData={modalData} />}
+                  </Grid>
+                </div>}
             </Box>
           </motion.div>
         </AnimatePresence>
