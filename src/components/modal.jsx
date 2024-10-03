@@ -6,6 +6,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import { ConfettiBackground } from "./ConfettiBackground";
 import { EmailShare, WpShare } from "./share";
 import Cookies from "js-cookie";
+import Dog from "../assets/images/Group 80.svg";
+
 
 const backdropVariants = {
   hidden: { opacity: 0 },
@@ -27,6 +29,10 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
   const [modalData, setModalData] = useState(null);
   const [playConfetti, setPlayConfetti] = useState(false);
   const [confettiKey, setConfettiKey] = useState(0);
+  const [imageSrc, setImageSrc] = useState(Dog);
+  const [loading, setLoading] = useState(false); // To handle loading state
+  // Image from assets
+
 
   const capitalizeFirstLetter = (name) =>
     name ? name.charAt(0).toUpperCase() + name.slice(1) : "";
@@ -40,6 +46,15 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
     }, 100); // Small delay to ensure reset
   };
   const containerRef = useRef(null);
+
+  const preloadImage = (url) => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.src = url;
+      img.onload = () => resolve(url);
+      img.onerror = (err) => reject(err);
+    });
+  };
 
   useEffect(() => {
     if (isModalOpen) {
@@ -75,20 +90,25 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
 
       const filterData = characterData.filter((arr) => arr.id === data);
       setModalData(filterData);
+      setLoading(false);
+
+      // Preload the image
+      preloadImage(imageSrc)
+        .then(() => {
+
+          setLoading(true); // Image loaded
+        })
+        .catch((error) => {
+          console.log(error, "Error while loading image")
+          setLoading(true); // Handle load error if any
+        });
     }
   }, [selectedTag]);
 
-  const [loader, setLoader] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoader(false)
-    }, 2000)
-  }, [loader])
 
   return (
     <>
-      {modalData && (
+      {modalData && loading ? (
         <AnimatePresence>
           <motion.div
             className="fixed inset-0 z-40 "
@@ -128,7 +148,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                 </IconButton>
               </div>
 
-              {/* {loader ?
+              {/* {loading ?
                 <div className="flex flex-col justify-center items-center h-[460px]">
                   <Skeleton
                     animation="wave"
@@ -190,6 +210,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                   </span>
                 </div>
 
+
                 <Grid
                   className="flex justify-center items-center relative z-10 py-[20px]"
                   ref={containerRef}
@@ -204,10 +225,11 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                   </div>
 
 
-                  <div className="relative h-[351px]">
+                  <div className="relative">
                     <Zoom in={true} style={{}}>
                       <img
-                        src={modalData[0].image}
+                        // src={modalData[0].image}
+                        src={imageSrc}
                         alt="congratulations"
                         loading="lazy"
                         className="!h-[260px] sm:!h-auto lg:!h-[260px] xl:!l-[260px] object-scale-down"
@@ -241,7 +263,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
             </Box>
           </motion.div>
         </AnimatePresence>
-      )}
+      ) : null}
     </>
   );
 };
