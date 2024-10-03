@@ -148,51 +148,6 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                 </IconButton>
               </div>
 
-              {/* {loading ?
-                <div className="flex flex-col justify-center items-center h-[460px]">
-                  <Skeleton
-                    animation="wave"
-                    variant="rounded"
-                    width={333}
-                    height={20}
-                    className="my-[10px]"
-                  />
-
-                  <Skeleton
-                    animation="wave"
-                    variant="rounded"
-                    width={333}
-                    height={20}
-                    className="mb-[10px]"
-                  />
-
-                  <Skeleton
-                    animation="wave"
-                    variant="rounded"
-                    width={333}
-                    height={200}
-                    className="my-[10px]"
-                  />
-
-                  <Skeleton
-                    animation="wave"
-                    variant="rounded"
-                    width={333}
-                    height={20}
-                    className="my-[10px]"
-                  />
-
-                  <Skeleton
-                    animation="wave"
-                    variant="rounded"
-                    width={333}
-                    height={20}
-                    className="my-[10px]"
-
-                  />
-
-                </div>
-                : */}
               <div className="flex flex-col justify-center items-center text-center px-[18px] pb-[24px]">
                 <div>
                   <h1
@@ -259,7 +214,6 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                   {modalData && <WpShare modalData={modalData} />}
                 </Grid>
               </div>
-              {/* } */}
             </Box>
           </motion.div>
         </AnimatePresence>
