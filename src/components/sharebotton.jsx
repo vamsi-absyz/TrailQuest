@@ -61,17 +61,18 @@ const ShareButton = ({ modalData }) => {
 
     try {
       const response = await fetch(imageUrl);
+      console.log(response, "responseofimage")
 
-      if (!response.ok) {
+      if (!response?.ok) {
         throw new Error(`Image not found at ${imageUrl}`);
       }
 
-      const blob = await response.blob();
+      const blob = await response?.blob();
       clipboardItemRef.current = blob;
       setIsImageReady(true);
     } catch (error) {
       console.error("Error fetching image:", error);
-      alert("Failed to load the image. Please try again later.");
+      alert(`Failed to load the image. Please try again later.${error}`);
     }
   }
 
