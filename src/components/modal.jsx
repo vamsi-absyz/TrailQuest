@@ -83,7 +83,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
   useEffect(() => {
     setTimeout(() => {
       setLoader(false)
-    }, 800)
+    }, 2000)
   }, [loader])
 
   return (
@@ -130,7 +130,6 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
 
               {loader ?
                 <div className="flex flex-col justify-center items-center h-[460px]">
-
                   <Skeleton
                     animation="wave"
                     variant="rounded"
@@ -209,7 +208,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                       <img
                         src={modalData[0].image}
                         alt="congratulations"
-                        // loading="lazy"
+                        loading="lazy"
                         className="!h-[260px] sm:!h-auto lg:!h-[260px] xl:!l-[260px] object-scale-down"
                       />
                     </div>
