@@ -114,13 +114,13 @@ input[type="number"] {
     background-position: right;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: contain;
+    background-size: cover;
     width: 80%;
     height: 100vh;
     min-height: 100vh;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .landing-bg-img {
     background-attachment: scroll;
     background-size: cover;
