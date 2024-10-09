@@ -114,7 +114,7 @@ export const Lead = () => {
           >
             <div className="mb-[8px]">
               <span className="font-medium !text-[22px] text-[#17233A] sm:!text-[26px] md:!text-[22px] lg:!text-[22px] ">
-                Let’s Make Things Happen Together!
+                Things Happen Together!
               </span>
             </div>
             <div className="w-full ">
