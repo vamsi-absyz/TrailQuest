@@ -94,7 +94,7 @@ export const Lead = () => {
       <Fade in={checked}>
         {isLandingPage ? (
           <Box className="landing-bg-img flex flex-col justify-center items-center w-full h-full">
-            <h1 className="font-bold font-medium !text-[24px] text-[#17233A] sm:!text-[28px] md:!text-[36px] lg:!text-[32px] ">
+            <h1 className="font-bold font-medium text-center !text-[24px] text-[#17233A] sm:!text-[3rem] md:!text-[2.5rem] lg:!text-[32px] ">
               Lets Play - Know Your Salesforce Character
             </h1>
             <Button
@@ -107,9 +107,9 @@ export const Lead = () => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                padding: "12px 32px",
+                padding: "0.8rem 3rem",
                 marginRight: "8px",
-                marginTop: "20px",
+                marginTop: "3rem",
                 transition: "transform 0.1s ease, box-shadow 0.1s ease",
                 boxShadow: "2px 6px 10px rgba(0, 0, 0, 0.2)",
                 fontWeight: "bold",
