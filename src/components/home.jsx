@@ -39,6 +39,7 @@ export const Home = () => {
         )
         .flat();
 
+
       const shuffledTags = allTagsWithId.sort(() => Math.random() - 0.5);
 
       setTagData(shuffledTags);
@@ -119,7 +120,7 @@ export const Home = () => {
                 Select 6 Characteristics That Best Describe You
               </span>
             </div>
-            <Chip.Group className="" multiple>
+            <Chip.Group className="" multiple> 
               <Group
                 className="flex justify-center items-center p-0 pt-0 md:pr-[20px] pb-[40px] md:pt-[20px] sm:p-0"
                 gap={10}

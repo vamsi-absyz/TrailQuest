@@ -247,7 +247,6 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
         .toString()
         .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 
-      console.log(currentTime, "currentTime")
 
       // Add a new document with a generated ID
       const docRef = await addDoc(collection(db, "users"), {
