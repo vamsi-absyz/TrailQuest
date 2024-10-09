@@ -110,8 +110,8 @@ input[type="number"] {
 }
 
 .landing-bg-img {
-  background-image: url("../src/assets/images/SF1.png");
-  background-position: center;
+  background-image: url("../src/assets/images/SF5.jpg");
+  background-position: right;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
