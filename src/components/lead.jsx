@@ -94,7 +94,7 @@ export const Lead = () => {
       <Fade in={checked}>
         {isLandingPage ? (
           <Box className="landing-bg-img flex flex-col justify-center items-center w-full h-full">
-            <h1 className="text-[34px]">
+            <h1 className="font-bold font-medium !text-[24px] text-[#17233A] sm:!text-[26px] md:!text-[32px] lg:!text-[28px] ">
               Lets play - Know Your Salesforce Character
             </h1>
             <Button
@@ -112,6 +112,7 @@ export const Lead = () => {
                 marginTop: "20px",
                 transition: "transform 0.1s ease, box-shadow 0.1s ease",
                 boxShadow: "2px 6px 10px rgba(0, 0, 0, 0.2)",
+                fontWeight: "bold",
               }}
               onMouseDown={(e) => {
                 e.currentTarget.style.transform = "translateY(5px)";
