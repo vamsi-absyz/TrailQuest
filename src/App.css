@@ -108,3 +108,22 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+/* .landing-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background: url("https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2024/03/marquee-public-policy-background-mobile.jpg?w=731");
+} */
+
+.landing-bg-img {
+  background-image: url("../src/assets/images/LgBg.jpg");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+    min-height: 100vh;
+}
