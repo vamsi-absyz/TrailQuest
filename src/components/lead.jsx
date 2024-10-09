@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box, Grid, useMediaQuery } from "@mui/material";
+import { Box, Grid, useMediaQuery, Paper, Fade, Button } from "@mui/material";
 import { Chip, Group } from "@mantine/core";
 import { characterData } from "../utils/mock_data";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ import Slider from "./slider";
 import SignInForm from "./forms";
 import Cookies from "js-cookie";
 import { label } from "framer-motion/client";
+import { useSetState } from "@mantine/hooks";
 
 export const Lead = () => {
   // const [selectedTag, setSelectedTag] = useState([]); // Manages selected tags
@@ -16,7 +17,16 @@ export const Lead = () => {
   const isTabletOrLarger = useMediaQuery("(min-width: 768px)");
   const navigate = useNavigate();
   // const [tagData, setTagData] = useState([]);
+  const [isLandingPage, setIsLandingPage] = useState(true);
+   const [checked, setChecked] = useState(true); // Controls the Fade effect
 
+  const onStartClick = () => {
+    setChecked(false); // Start fade out when the button is clicked
+    setTimeout(() => {
+      setIsLandingPage(false); // Switch to the next page after the fade out
+      setChecked(true); // Start fade in for the new content
+    }, 500); // Delay to match the duration of the fade out
+  };
   const fields = [
     {
       name: "name",
@@ -80,71 +90,104 @@ export const Lead = () => {
   };
 
   return (
-    <Box
-      sx={{ flexGrow: 1 }}
-      className="bg-[#F2F3F3] bg-img w-full flex flex-col justify-start items-center bg-cover md:bg-contain"
-    >
-      <div className="flex lg:hidden w-full justify-center items-center mt-[1rem]">
-        <img src={Logo} alt="logo" className="w-[110px] " />
-      </div>
-      <div className="w-full sm:px-[2rem] md:px-[2rem] sm:pb-[2rem] md:pb-1 pt-[10px] ">
-        <Grid
-          container
-          spacing={2}
-          className="m-auto h-full w-full flex"
-          sx={{ justifyContent: { xs: "center", sm: "flex-start", md: "space-evenly" } }}
+    <>
+    <Fade in={checked}>
+      {isLandingPage ? (
+        <Box className="landing-bg-img flex flex-col justify-center items-center w-full h-full">
+            <h1 className="text-[34px]">Lets play - Know Your Salesforce Character</h1>
+            <Button style={{
+                      backgroundColor: "#0470EF",
+                      borderRadius: "20px",
+                      color: "white",
+                      fontSize: "18px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      padding: "8px 28px",
+                      marginRight: "8px",
+                      marginTop: "20px"
+                    }} onClick={onStartClick}>Start</Button>
+        </Box>
+      ) : (
+      
+      <Box
+          sx={{ flexGrow: 1 }}
+          className="bg-[#F2F3F3] bg-img w-full flex flex-col justify-start items-center bg-cover md:bg-contain"
         >
-          <Grid item sm={0.5} md={0} lg={0} className="hidden sm:flex md:hidden lg:hidden"></Grid>
-          <Grid
-            item
-            xs={10}
-            sm={7}
-            md={4}
-            className="flex !justify-start !items-start flex-wrap !flex-col sm:!pl-[3rem] xl:!pl-0 !pl-0"
-            sx={{
-              gap: "10px",
+          <div className="flex lg:hidden w-full justify-center items-center mt-[1rem]">
+            <img src={Logo} alt="logo" className="w-[110px] " />
+          </div>
+          <div className="w-full sm:px-[2rem] md:px-[2rem] sm:pb-[2rem] md:pb-1 pt-[10px] ">
+            <Grid
+              container
+              spacing={2}
+              className="m-auto h-full w-full flex"
+              sx={{
+                justifyContent: {
+                  xs: "center",
+                  sm: "flex-start",
+                  md: "space-evenly",
+                },
+              }}
+            >
+              <Grid
+                item
+                sm={0.5}
+                md={0}
+                lg={0}
+                className="hidden sm:flex md:hidden lg:hidden"
+              ></Grid>
+              <Grid
+                item
+                xs={10}
+                sm={7}
+                md={4}
+                className="flex !justify-start !items-start flex-wrap !flex-col sm:!pl-[3rem] xl:!pl-0 !pl-0"
+                sx={{
+                  gap: "10px",
 
-              "@media (min-width: 768px) and (max-width: 1024px)": {
-                marginTop: "50px",
-              },
-              "@media (min-width: 1024px)": {
-                // marginTop: "10px",
-              },
-            }}
-          >
-            <div className="mb-[8px]">
-              <span className="font-medium !text-[22px] text-[#17233A] sm:!text-[26px] md:!text-[22px] lg:!text-[22px] ">
-                Let’s Make Things Happen Together!
-              </span>
-            </div>
-            <div className="w-full ">
-              <SignInForm
-                title="Absyz"
-                onSubmit={handleFormSubmit}
-                fields={fields}
-              />
-            </div>
-          </Grid>
+                  "@media (min-width: 768px) and (max-width: 1024px)": {
+                    marginTop: "50px",
+                  },
+                  "@media (min-width: 1024px)": {
+                    // marginTop: "10px",
+                  },
+                }}
+              >
+                <div className="mb-[8px]">
+                  <span className="font-medium !text-[22px] text-[#17233A] sm:!text-[26px] md:!text-[22px] lg:!text-[22px] ">
+                    Let's Make Things Happen Together!
+                  </span>
+                </div>
+                <div className="w-full ">
+                  <SignInForm
+                    title="Absyz"
+                    onSubmit={handleFormSubmit}
+                    fields={fields}
+                  />
+                </div>
+              </Grid>
 
-
-
-          {/* Carousel section */}
-          <Grid
-            item
-            xs={8}
-            sm={6}
-            md={3}
-            className="flex justify-start !flex-col items-center h-[100vh] md:h-[100vh] !mt-[2rem] md:!mt-0 lg:!mt-0 sm:!pl-[3rem] !pl-0"
-          >
-            <div className="justify-center items-center w-full pt-[20px] mb-[20px] hidden lg:flex">
-              <img src={Logo} alt="logo" className="w-[110px] " />
-            </div>
-            <div className="carousel_img_lead">
-              <Slider />
-            </div>
-          </Grid>
-        </Grid>
-      </div>
-    </Box>
+              {/* Carousel section */}
+              <Grid
+                item
+                xs={8}
+                sm={6}
+                md={3}
+                className="flex justify-start !flex-col items-center h-[100vh] md:h-[100vh] !mt-[2rem] md:!mt-0 lg:!mt-0 sm:!pl-[3rem] !pl-0"
+              >
+                <div className="justify-center items-center w-full pt-[20px] mb-[20px] hidden lg:flex">
+                  <img src={Logo} alt="logo" className="w-[110px] " />
+                </div>
+                <div className="carousel_img_lead">
+                  <Slider />
+                </div>
+              </Grid>
+            </Grid>
+          </div>
+        </Box>
+      )}
+      </Fade>
+    </>
   );
 };
