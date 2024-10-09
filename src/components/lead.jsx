@@ -18,7 +18,7 @@ export const Lead = () => {
   const navigate = useNavigate();
   // const [tagData, setTagData] = useState([]);
   const [isLandingPage, setIsLandingPage] = useState(true);
-   const [checked, setChecked] = useState(true); // Controls the Fade effect
+  const [checked, setChecked] = useState(true); // Controls the Fade effect
 
   const onStartClick = () => {
     setChecked(false); // Start fade out when the button is clicked
@@ -91,102 +91,125 @@ export const Lead = () => {
 
   return (
     <>
-    <Fade in={checked}>
-      {isLandingPage ? (
-        <Box className="landing-bg-img flex flex-col justify-center items-center w-full h-full">
-            <h1 className="text-[34px]">Lets play - Know Your Salesforce Character</h1>
-            <Button style={{
-                      backgroundColor: "#0470EF",
-                      borderRadius: "20px",
-                      color: "white",
-                      fontSize: "18px",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      padding: "8px 28px",
-                      marginRight: "8px",
-                      marginTop: "20px"
-                    }} onClick={onStartClick}>Start</Button>
-        </Box>
-      ) : (
-      
-      <Box
-          sx={{ flexGrow: 1 }}
-          className="bg-[#F2F3F3] bg-img w-full flex flex-col justify-start items-center bg-cover md:bg-contain"
-        >
-          <div className="flex lg:hidden w-full justify-center items-center mt-[1rem]">
-            <img src={Logo} alt="logo" className="w-[110px] " />
-          </div>
-          <div className="w-full sm:px-[2rem] md:px-[2rem] sm:pb-[2rem] md:pb-1 pt-[10px] ">
-            <Grid
-              container
-              spacing={2}
-              className="m-auto h-full w-full flex"
-              sx={{
-                justifyContent: {
-                  xs: "center",
-                  sm: "flex-start",
-                  md: "space-evenly",
-                },
+      <Fade in={checked}>
+        {isLandingPage ? (
+          <Box className="landing-bg-img flex flex-col justify-center items-center w-full h-full">
+            <h1 className="text-[34px]">
+              Lets play - Know Your Salesforce Character
+            </h1>
+            <Button
+              onClick={onStartClick}
+              style={{
+                backgroundColor: "#0470EF",
+                borderRadius: "20px",
+                color: "white",
+                fontSize: "18px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "8px 28px",
+                marginRight: "8px",
+                marginTop: "20px",
+                transition: "transform 0.1s ease, box-shadow 0.1s ease",
+                boxShadow: "2px 6px 10px rgba(0, 0, 0, 0.2)",
+              }}
+              onMouseDown={(e) => {
+                e.currentTarget.style.transform = "translateY(5px)";
+                e.currentTarget.style.boxShadow =
+                  "0px 2px 5px rgba(0, 0, 0, 0.2)";
+              }}
+              onMouseUp={(e) => {
+                e.currentTarget.style.transform = "translateY(0px)";
+                e.currentTarget.style.boxShadow =
+                  "2px 6px 10px rgba(0, 0, 0, 0.2)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "translateY(0px)";
+                e.currentTarget.style.boxShadow =
+                  "2px 6px 10px rgba(0, 0, 0, 0.2)";
               }}
             >
+              Start
+            </Button>
+          </Box>
+        ) : (
+          <Box
+            sx={{ flexGrow: 1 }}
+            className="bg-[#F2F3F3] bg-img w-full flex flex-col justify-start items-center bg-cover md:bg-contain"
+          >
+            <div className="flex lg:hidden w-full justify-center items-center mt-[1rem]">
+              <img src={Logo} alt="logo" className="w-[110px] " />
+            </div>
+            <div className="w-full sm:px-[2rem] md:px-[2rem] sm:pb-[2rem] md:pb-1 pt-[10px] ">
               <Grid
-                item
-                sm={0.5}
-                md={0}
-                lg={0}
-                className="hidden sm:flex md:hidden lg:hidden"
-              ></Grid>
-              <Grid
-                item
-                xs={10}
-                sm={7}
-                md={4}
-                className="flex !justify-start !items-start flex-wrap !flex-col sm:!pl-[3rem] xl:!pl-0 !pl-0"
+                container
+                spacing={2}
+                className="m-auto h-full w-full flex"
                 sx={{
-                  gap: "10px",
-
-                  "@media (min-width: 768px) and (max-width: 1024px)": {
-                    marginTop: "50px",
-                  },
-                  "@media (min-width: 1024px)": {
-                    // marginTop: "10px",
+                  justifyContent: {
+                    xs: "center",
+                    sm: "flex-start",
+                    md: "space-evenly",
                   },
                 }}
               >
-                <div className="mb-[8px]">
-                  <span className="font-medium !text-[22px] text-[#17233A] sm:!text-[26px] md:!text-[22px] lg:!text-[22px] ">
-                    Let's Make Things Happen Together!
-                  </span>
-                </div>
-                <div className="w-full ">
-                  <SignInForm
-                    title="Absyz"
-                    onSubmit={handleFormSubmit}
-                    fields={fields}
-                  />
-                </div>
-              </Grid>
+                <Grid
+                  item
+                  sm={0.5}
+                  md={0}
+                  lg={0}
+                  className="hidden sm:flex md:hidden lg:hidden"
+                ></Grid>
+                <Grid
+                  item
+                  xs={10}
+                  sm={7}
+                  md={4}
+                  className="flex !justify-start !items-start flex-wrap !flex-col sm:!pl-[3rem] xl:!pl-0 !pl-0"
+                  sx={{
+                    gap: "10px",
 
-              {/* Carousel section */}
-              <Grid
-                item
-                xs={8}
-                sm={6}
-                md={3}
-                className="flex justify-start !flex-col items-center h-[100vh] md:h-[100vh] !mt-[2rem] md:!mt-0 lg:!mt-0 sm:!pl-[3rem] !pl-0"
-              >
-                <div className="justify-center items-center w-full pt-[20px] mb-[20px] hidden lg:flex">
-                  <img src={Logo} alt="logo" className="w-[110px] " />
-                </div>
-                <div className="carousel_img_lead">
-                  <Slider />
-                </div>
+                    "@media (min-width: 768px) and (max-width: 1024px)": {
+                      marginTop: "50px",
+                    },
+                    "@media (min-width: 1024px)": {
+                      // marginTop: "10px",
+                    },
+                  }}
+                >
+                  <div className="mb-[8px]">
+                    <span className="font-medium !text-[22px] text-[#17233A] sm:!text-[26px] md:!text-[22px] lg:!text-[22px] ">
+                      Let's Make Things Happen Together!
+                    </span>
+                  </div>
+                  <div className="w-full ">
+                    <SignInForm
+                      title="Absyz"
+                      onSubmit={handleFormSubmit}
+                      fields={fields}
+                    />
+                  </div>
+                </Grid>
+
+                {/* Carousel section */}
+                <Grid
+                  item
+                  xs={8}
+                  sm={6}
+                  md={3}
+                  className="flex justify-start !flex-col items-center h-[100vh] md:h-[100vh] !mt-[2rem] md:!mt-0 lg:!mt-0 sm:!pl-[3rem] !pl-0"
+                >
+                  <div className="justify-center items-center w-full pt-[20px] mb-[20px] hidden lg:flex">
+                    <img src={Logo} alt="logo" className="w-[110px] " />
+                  </div>
+                  <div className="carousel_img_lead">
+                    <Slider />
+                  </div>
+                </Grid>
               </Grid>
-            </Grid>
-          </div>
-        </Box>
-      )}
+            </div>
+          </Box>
+        )}
       </Fade>
     </>
   );
