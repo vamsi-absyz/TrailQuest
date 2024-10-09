@@ -128,6 +128,21 @@ export const Lead = () => {
                 e.currentTarget.style.boxShadow =
                   "2px 6px 10px rgba(0, 0, 0, 0.2)";
               }}
+              onTouchStart={(e) => {
+                e.currentTarget.style.transform = "translateY(5px)";
+                e.currentTarget.style.boxShadow =
+                  "0px 2px 5px rgba(0, 0, 0, 0.2)";
+              }}
+              onTouchEnd={(e) => {
+                e.currentTarget.style.transform = "translateY(0px)";
+                e.currentTarget.style.boxShadow =
+                  "0px 6px 10px rgba(0, 0, 0, 0.2)";
+              }}
+              onTouchCancel={(e) => {
+                e.currentTarget.style.transform = "translateY(0px)";
+                e.currentTarget.style.boxShadow =
+                  "0px 6px 10px rgba(0, 0, 0, 0.2)";
+              }}
             >
               Start
             </Button>
