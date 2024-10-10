@@ -102,7 +102,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
       // Preload the image
       preloadImage(filterData[0]?.image)
         .then(() => {
-            setLoading(true); // Image loaded
+          setLoading(true); // Image loaded
         })
         .catch((error) => {
           console.log(error, "Error while loading image");
@@ -174,7 +174,6 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                   </span>
                 </div>
 
-
                 <Grid
                   className="flex justify-center items-center relative z-10 py-[20px]"
                   ref={containerRef}
@@ -187,7 +186,6 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                       />
                     )}
                   </div>
-
 
                   <div className="relative">
                     <Zoom in={true} style={{}}>
@@ -227,18 +225,16 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
         </AnimatePresence>
       ) : modalData && loading === false ? (
         <div className="fixed inset-0 flex justify-center items-center">
-  {/* Blurred Background */}
-  <div className="absolute inset-0 bg-[#f2f3f3] opacity-70 backdrop-blur-md z-20"></div>
-  
-  {/* Spinner */}
-  <div className="relative z-50 flex justify-center items-center h-full w-full">
-    <CircularProgress
-      className="loader"
-      sx={{ color: "red" }}
-      size={60}
-    />
-  </div>
-</div>
+          <div className="absolute inset-0 bg-[#f2f3f3] opacity-70 backdrop-blur-md z-20"></div>
+
+          <div className="relative z-50 flex justify-center items-center h-full w-full">
+            <CircularProgress
+              className="loader"
+              sx={{ color: "red" }}
+              size={60}
+            />
+          </div>
+        </div>
       ) : null}
     </>
   );
