@@ -97,7 +97,7 @@ export const Home = () => {
         <img src={Logo} alt="logo" className="w-[160px] " />
       </div>
 
-      <div className="m-auto sm:px-[2rem] md:px-[2rem] sm:pb-[2rem] md:pb-1 pt-[10px] ">
+      <div className="m-auto sm:px-[2rem] md:px-[2rem] sm:pb-[2rem] md:pb-1 pt-[10px] sm:!mt-[20px] md:!mt-[30px">
         {/* <ThemeProvider theme={theme}> */}
         <Grid
           container
@@ -113,7 +113,7 @@ export const Home = () => {
             sm={10}
             md={5.5}
             // lg={5.5}
-            className="flex justify-start items-start flex-wrap !flex-col mt-0 sm:!mt-[20px] md:!mt-[30px] lg:!mt-[45px] "
+            className="flex justify-start items-start flex-wrap !flex-col mt-0 lg:!mt-[45px] "
             style={{ gap: "10px" }}
           >
             <div className="mb-[8px] md:max-w-[75%]">
