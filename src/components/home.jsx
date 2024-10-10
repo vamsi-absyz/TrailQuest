@@ -92,8 +92,8 @@ export const Home = () => {
       className="bg-[#F2F3F3] bg-img w-full flex flex-col justify-start items-center bg-cover md:bg-contain"
     >
 
-      <div className="flex lg:hidden w-full justify-center items-center sm:!my-[2rem] mt-4">
-        <img src={Logo} alt="logo" className="w-[110px] " />
+      <div className="flex lg:hidden w-full justify-center items-center sm:!my-[5rem] mt-4">
+        <img src={Logo} alt="logo" className="w-[160px] " />
       </div>
 
       <div className="m-auto sm:px-[2rem] md:px-[2rem] sm:pb-[2rem] md:pb-1 pt-[10px] ">
@@ -122,11 +122,11 @@ export const Home = () => {
             </div>
             <Chip.Group className="" multiple> 
               <Group
-                className="flex justify-center items-center p-0 pt-0 md:pr-[20px] pb-[40px] md:pt-[20px] sm:p-0"
+                className="flex justify-center items-center p-0 pt-0 md:pr-[20px] pb-[40px] md:pt-[20px] sm:p-0 md:max-w-[105%]"
                 gap={10}
               >
                 <div
-                  className="flex justify-start items-center !sm:flex-row flex-wrap w-full sm:w-auto flex-row"
+                  className="flex justify-start items-center !sm:flex-row flex-wrap w-full sm:w-auto flex-row "
                   style={{ gap: 12 }}
                 >
                   {tagData.map((item, index) => (

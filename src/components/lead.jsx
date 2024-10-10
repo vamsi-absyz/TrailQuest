@@ -158,8 +158,8 @@ export const Lead = () => {
             sx={{ flexGrow: 1 }}
             className="bg-[#F2F3F3] bg-img w-full flex flex-col justify-start items-center bg-cover md:bg-contain"
           >
-            <div className="flex lg:hidden w-full justify-center items-center mt-[1rem]">
-              <img src={Logo} alt="logo" className="w-[110px] " />
+            <div className="flex lg:hidden w-full justify-center items-center mt-[5rem]">
+              <img src={Logo} alt="logo" className="w-[160px] " />
             </div>
             <div className="w-full sm:px-[2rem] md:px-[2rem] sm:pb-[2rem] md:pb-1 pt-[10px] ">
               <Grid
