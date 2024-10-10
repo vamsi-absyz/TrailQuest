@@ -9,6 +9,7 @@ import SignInForm from "./forms";
 import Cookies from "js-cookie";
 import { label } from "framer-motion/client";
 import { useSetState } from "@mantine/hooks";
+import "./lead.css"
 
 export const Lead = () => {
   // const [selectedTag, setSelectedTag] = useState([]); // Manages selected tags
@@ -94,7 +95,7 @@ export const Lead = () => {
       <Fade in={checked}>
         {isLandingPage ? (
           <Box className="landing-bg-img flex flex-col justify-center items-center w-full h-full">
-            <h1 className="font-bold font-medium text-center !text-[24px] text-[#17233A] sm:!text-[3rem] md:!text-[3rem] lg:!text-[32px] ">
+            <h1 className="typewriter font-bold font-medium text-center !text-[24px] text-[#17233A] sm:!text-[2.8rem] md:!text-[2.8rem] lg:!text-[32px] ">
               Lets Play - Know Your Salesforce Character
             </h1>
             <Button
@@ -103,7 +104,7 @@ export const Lead = () => {
                 backgroundColor: "#0470EF",
                 borderRadius: "20px",
                 color: "white",
-                fontSize: "30px",
+                fontSize: "1.6rem",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
