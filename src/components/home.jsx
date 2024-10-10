@@ -113,7 +113,7 @@ export const Home = () => {
             sm={10}
             md={5.5}
             // lg={5.5}
-            className="flex justify-start items-start flex-wrap !flex-col mt-0 sm:mt-[20px] lg:!mt-[45px] "
+            className="flex justify-start items-start flex-wrap !flex-col mt-0 sm:!mt-[20px] md:!mt-[30px] lg:!mt-[45px] "
             style={{ gap: "10px" }}
           >
             <div className="mb-[8px] md:max-w-[75%]">
