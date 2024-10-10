@@ -9,7 +9,7 @@ import SignInForm from "./forms";
 import Cookies from "js-cookie";
 import { label } from "framer-motion/client";
 import { useSetState } from "@mantine/hooks";
-import "./lead.css"
+import "./lead.css";
 
 export const Lead = () => {
   // const [selectedTag, setSelectedTag] = useState([]); // Manages selected tags
@@ -96,7 +96,11 @@ export const Lead = () => {
         {isLandingPage ? (
           <Box className="landing-bg-img flex flex-col justify-center items-center w-full h-full">
             <h1 className="typewriter font-bold font-medium text-center !text-[24px] text-[#17233A] sm:!text-[2.8rem] md:!text-[2.8rem] lg:!text-[32px] ">
-              Lets Play - Know Your Salesforce<br /> Character
+              <span className="typewriter-line1">
+                Lets Play - Know Your Salesforce
+              </span>
+              <br />
+              <span className="typewriter-line2">Character</span>
             </h1>
             <Button
               onClick={onStartClick}

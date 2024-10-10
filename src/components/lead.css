@@ -1,21 +1,52 @@
-.typewriter {
+/* First line typing effect */
+.typewriter-line1 {
     white-space: nowrap;
     overflow: hidden;
     border-right: 3px solid black;
-    width: fit-content;
-    animation: typing 4s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
+    display: inline-block;
+    width: 0;
+    /* Initially hidden */
+    animation: typing-line1 4s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
 }
 
-@keyframes typing {
+/* Second line typing effect */
+.typewriter-line2 {
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid black;
+    display: inline-block;
+    width: 0;
+    /* Initially hidden */
+    animation: typing-line2 4s steps(10, end) forwards, blink-caret 0.75s step-end infinite;
+    animation-delay: 4s;
+    /* Delay to start after the first line */
+}
+
+/* Typing effect for first line */
+@keyframes typing-line1 {
     from {
         width: 0;
     }
 
     to {
         width: 100%;
+        /* Adjust width based on the length of the first line */
     }
 }
 
+/* Typing effect for second line */
+@keyframes typing-line2 {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+        /* Adjust width based on the length of the second line */
+    }
+}
+
+/* Blinking caret animation */
 @keyframes blink-caret {
 
     from,
@@ -28,14 +59,11 @@
     }
 }
 
+/* Media query for tablet devices */
 @media only screen and (max-width: 768px) {
-    .typewriter {
-        font-size: 1.2em;
-        white-space: normal;
-        animation: typing 4s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
-    }
 
-    .typewriter br {
-        display: inline;
+    .typewriter-line1,
+    .typewriter-line2 {
+        font-size: 1.2em;
     }
 }
