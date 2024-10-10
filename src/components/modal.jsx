@@ -120,6 +120,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
             animate="visible"
             exit="exit"
             onClick={handleCloseModal}
+            transition={{ duration: 0.2 }}
           />
 
           <motion.div
@@ -128,6 +129,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
             animate="visible"
             exit="exit"
             className="fixed inset-0 z-50 flex justify-center items-center"
+            transition={{ duration: 0.2 }}
           >
             <Box
               className="bg-white rounded-lg shadow-lg relative w-[450px] sm:!w-[550px] lg:!w-[450px]"
