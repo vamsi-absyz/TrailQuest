@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import "./slider.css";
-import Astro from "../assets/images/Astro.jpg";
-import Bobcat from "../assets/images/Bobcat.jpg";
-import Elephant from "../assets/images/Ruth-Elephant.jpg";
-import Einstien from "../assets/images/Einstien.jpg";
-import Dog from "../assets/images/Dog.jpg"
+import Astro from "../assets/images/Astro.png";
+import Bobcat from "../assets/images/Bobcat.png";
+import Elephant from "../assets/images/Ruth-Elephant.png";
+import Einstien from "../assets/images/Einstien.png";
+import Dog from "../assets/images/Dog.png"
 
 
 const images = [

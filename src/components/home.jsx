@@ -92,7 +92,7 @@ export const Home = () => {
       className="bg-[#F2F3F3] bg-img w-full flex flex-col justify-start items-center bg-cover md:bg-contain"
     >
 
-      <div className="flex lg:hidden w-full justify-center items-center sm:!my-[1rem]">
+      <div className="flex lg:hidden w-full justify-center items-center sm:!my-[2rem] mt-4">
         <img src={Logo} alt="logo" className="w-[110px] " />
       </div>
 
