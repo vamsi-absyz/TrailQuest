@@ -120,6 +120,10 @@ input[type="number"] {
   min-height: 100vh;
 }
 
+.loader circle {
+  color: #30335C;
+}
+
 @media (min-width: 768px) {
   .landing-bg-img {
     background-attachment: scroll;
@@ -127,3 +131,4 @@ input[type="number"] {
     height: 100vh;
   }
 }
+

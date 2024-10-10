@@ -1,13 +1,19 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { characterData } from "../utils/mock_data"; // Assuming this is your data source
-import { Box, Grid, IconButton, Skeleton, Zoom } from "@mui/material";
+import {
+  Box,
+  Grid,
+  IconButton,
+  Skeleton,
+  Zoom,
+  CircularProgress,
+} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { ConfettiBackground } from "./ConfettiBackground";
 import { EmailShare, WpShare } from "./share";
 import Cookies from "js-cookie";
 import Dog from "../assets/images/Group 80.svg";
-
 
 const backdropVariants = {
   hidden: { opacity: 0 },
@@ -33,8 +39,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
   const [loading, setLoading] = useState(false); // To handle loading state
   // Image from assets
 
-
-  console.log(modalData, "modalData")
+  console.log(modalData, "modalData");
 
   const capitalizeFirstLetter = (name) =>
     name ? name.charAt(0).toUpperCase() + name.slice(1) : "";
@@ -65,6 +70,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
   }, [isModalOpen]);
 
   useEffect(() => {
+    setLoading(false);
     if (selectedTag && selectedTag.length > 0) {
       // Collect IDs from selectedTag and filter data based on the IDs
       function getHighestFrequencyId(array) {
@@ -92,21 +98,18 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
 
       const filterData = characterData.filter((arr) => arr.id === data);
       setModalData(filterData);
-      setLoading(false);
 
       // Preload the image
       preloadImage(filterData[0]?.image)
         .then(() => {
-
-          setLoading(true); // Image loaded
+            setLoading(true); // Image loaded
         })
         .catch((error) => {
-          console.log(error, "Error while loading image")
+          console.log(error, "Error while loading image");
           setLoading(true); // Handle load error if any
         });
     }
   }, [selectedTag]);
-
 
   return (
     <>
@@ -133,9 +136,11 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
           >
             <Box
               className="bg-white rounded-lg shadow-lg relative w-[450px] sm:!w-[550px] lg:!w-[450px]"
-              sx={{
-                // width: { xs: "450px", sm: "600", md: "450px" },
-              }}
+              sx={
+                {
+                  // width: { xs: "450px", sm: "600", md: "450px" },
+                }
+              }
             >
               <div className="flex justify-end items-end w-full my-[10px] px-[10px]">
                 <IconButton
@@ -208,7 +213,7 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
                       justifyContent: "center",
                       alignItems: "center",
                       padding: "10px 18px",
-                      marginRight: "8px"
+                      marginRight: "8px",
                     }}
                   >
                     Do it again
@@ -220,6 +225,17 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
             </Box>
           </motion.div>
         </AnimatePresence>
+      ) : modalData && loading === false ? (
+        <div className="fixed inset-0 flex justify-center items-center">
+          <div className="absolute inset-0 bg-[#f2f3f3] opacity-70 backdrop-blur-md z-20"></div>
+          <div className="relative !h-full z-50 top-[20rem]">
+            <CircularProgress
+              className="absolute loader"
+              sx={{ color: "red" }}
+              size={60}
+            />
+          </div>
+        </div>
       ) : null}
     </>
   );
