@@ -79,6 +79,7 @@ export const Home = () => {
     Cookies.remove("company")
   };
 
+
   useEffect(() => {
     const user = Cookies.get("name");
     if (user === undefined) {
@@ -115,7 +116,7 @@ export const Home = () => {
             className="flex justify-start items-start flex-wrap !flex-col mt-0 lg:!mt-[60px] "
             style={{ gap: "10px" }}
           >
-            <div className="mb-[8px] max-w-[90%]">
+            <div className="mb-[8px] md:max-w-[75%]">
               <span className="font-medium text-[22px] text-[#17233A] sm:!text-[26px]">
                 Select 6 Characteristics That Best Describe You
               </span>
