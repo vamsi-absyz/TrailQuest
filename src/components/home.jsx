@@ -115,7 +115,7 @@ export const Home = () => {
             className="flex justify-start items-start flex-wrap !flex-col mt-0 lg:!mt-[60px] "
             style={{ gap: "10px" }}
           >
-            <div className="mb-[8px]">
+            <div className="mb-[8px] max-w-[90%]">
               <span className="font-medium text-[22px] text-[#17233A] sm:!text-[26px]">
                 Select 6 Characteristics That Best Describe You
               </span>
