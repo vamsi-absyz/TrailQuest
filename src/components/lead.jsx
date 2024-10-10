@@ -96,7 +96,7 @@ export const Lead = () => {
         {isLandingPage ? (
           <Box className="landing-bg-img flex flex-col justify-center items-center w-full h-full">
             <h1 className="typewriter font-bold font-medium text-center !text-[24px] text-[#17233A] sm:!text-[2.8rem] md:!text-[2.8rem] lg:!text-[32px] ">
-              Lets Play - Know Your Salesforce Character
+              Lets Play - Know Your Salesforce<br /> Character
             </h1>
             <Button
               onClick={onStartClick}

@@ -3,42 +3,39 @@
     overflow: hidden;
     border-right: 3px solid black;
     width: fit-content;
-    animation: typing 6s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
+    animation: typing 4s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
 }
 
 @keyframes typing {
     from {
         width: 0;
     }
+
     to {
         width: 100%;
     }
 }
 
 @keyframes blink-caret {
+
     from,
     to {
         border-color: transparent;
     }
+
     50% {
         border-color: black;
     }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 768px) {
     .typewriter {
         font-size: 1.2em;
-        animation: typing 6s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
         white-space: normal;
+        animation: typing 4s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
     }
 
-    .typewriter::after {
-        content: ' ';
-        display: block;
-    }
-    
-    .typewriter::after {
-        content: '\A';
-        white-space: pre;
+    .typewriter br {
+        display: inline;
     }
 }
