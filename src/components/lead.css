@@ -58,12 +58,12 @@
 }
 
 .typewriter-line1::after {
-    content: '';
+    /* content: ''; */
     animation: none;
 }
 
 .typewriter-line2::after {
-    content: '|';
+    /* content: '|'; */
     animation: blink-caret 0.75s step-end infinite;
     position: relative;
     top: 0;
