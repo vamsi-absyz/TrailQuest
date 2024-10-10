@@ -64,9 +64,9 @@
     content: '';
     animation: blink-caret 0.75s step-end infinite;
     animation-fill-mode: forwards;
+    border-right: none;
 }
 
 .typewriter-line2 {
     border-right: none;
 }
-
