@@ -9,10 +9,10 @@ import Dog from "../assets/images/Dog.png"
 
 const images = [
   { id: 1, pos: "right", img: Astro },
-  { id: 2, pos: "right", img: Einstien },
+  { id: 2, pos: "left", img: Einstien },
   { id: 3, pos: "right", img: Elephant },
-  { id: 4, pos: "right", img: Dog },
-  { id: 5, pos: "left", img: Bobcat },
+  { id: 4, pos: "left", img: Dog },
+  { id: 5, pos: "right", img: Bobcat },
 ];
 
 const Slider = ({ isModalOpen }) => {
