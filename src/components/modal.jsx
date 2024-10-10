@@ -227,15 +227,18 @@ export const Modal = ({ isModalOpen, handleCloseModal, selectedTag }) => {
         </AnimatePresence>
       ) : modalData && loading === false ? (
         <div className="fixed inset-0 flex justify-center items-center">
-          <div className="absolute inset-0 bg-[#f2f3f3] opacity-70 backdrop-blur-md z-20"></div>
-          <div className="relative !h-full z-50 top-[20rem]">
-            <CircularProgress
-              className="absolute loader"
-              sx={{ color: "red" }}
-              size={60}
-            />
-          </div>
-        </div>
+  {/* Blurred Background */}
+  <div className="absolute inset-0 bg-[#f2f3f3] opacity-70 backdrop-blur-md z-20"></div>
+  
+  {/* Spinner */}
+  <div className="relative z-50 flex justify-center items-center h-full w-full">
+    <CircularProgress
+      className="loader"
+      sx={{ color: "red" }}
+      size={60}
+    />
+  </div>
+</div>
       ) : null}
     </>
   );
