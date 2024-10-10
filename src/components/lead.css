@@ -25,7 +25,7 @@
     }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) {
     .typewriter {
         font-size: 1.2em;
         animation: typing 6s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
