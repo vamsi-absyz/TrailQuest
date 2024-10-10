@@ -30,7 +30,15 @@
         font-size: 1.2em;
         animation: typing 6s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
         white-space: normal;
-        width: 100%;
-        word-break: break-word;
+    }
+
+    .typewriter::after {
+        content: ' ';
+        display: block;
+    }
+    
+    .typewriter::after {
+        content: '\A';
+        white-space: pre;
     }
 }
