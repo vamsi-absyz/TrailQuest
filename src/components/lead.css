@@ -1,5 +1,4 @@
-/* First line typing effect */
-.typewriter-line1 {
+/* .typewriter-line1 {
     white-space: nowrap;
     overflow: hidden;
     border-right: 3px solid black;
@@ -7,10 +6,8 @@
     width: 0;
     animation: typing-line1 4s steps(40, end) forwards;
     animation-fill-mode: forwards;
-    /* Keep text visible after typing */
 }
 
-/* Second line typing effect */
 .typewriter-line2 {
     white-space: nowrap;
     overflow: hidden;
@@ -19,9 +16,78 @@
     width: 0;
     animation: typing-line2 2s steps(10, end) forwards;
     animation-delay: 4s;
-    /* Starts after the first line finishes */
     animation-fill-mode: forwards;
-    /* Keep text visible after typing */
+}
+
+@keyframes typing-line1 {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes typing-line2 {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: black;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    .typewriter-line1,
+    .typewriter-line2 {
+        font-size: 1.2em;
+    }
+}
+
+.typewriter-line1::after,
+.typewriter-line2::after {
+    content: '';
+    animation: blink-caret 0.75s step-end infinite;
+    animation-fill-mode: forwards;
+}
+
+.typewriter-line2 {
+    border-right: none;
+} */
+
+/* First line typing effect */
+.typewriter-line1 {
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid black;
+    display: inline-block;
+    animation: typing-line1 4s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
+}
+
+/* Second line typing effect */
+.typewriter-line2 {
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid black;
+    display: inline-block;
+    animation: typing-line2 2s steps(10, end) forwards, blink-caret 0.75s step-end infinite;
+    animation-delay: 4s;
+    /* Starts after the first line finishes */
 }
 
 /* Typing effect for first line */
@@ -32,6 +98,7 @@
 
     to {
         width: 100%;
+        /* Adjusted to ensure full first line is typed */
     }
 }
 
@@ -43,6 +110,7 @@
 
     to {
         width: 100%;
+        /* Full width for 'Character' */
     }
 }
 
@@ -59,6 +127,14 @@
     }
 }
 
+/* Hide the caret after the second line finishes typing */
+.typewriter-line2 {
+    animation-fill-mode: forwards;
+    /* Keep text visible after typing */
+    border-right: none;
+    /* Remove blinking caret after typing completes */
+}
+
 /* Media query for tablet devices */
 @media only screen and (max-width: 768px) {
 
@@ -66,19 +142,4 @@
     .typewriter-line2 {
         font-size: 1.2em;
     }
-}
-
-/* Hide the caret after typing */
-.typewriter-line1::after,
-.typewriter-line2::after {
-    content: '';
-    animation: blink-caret 0.75s step-end infinite;
-    animation-fill-mode: forwards;
-    /* Stop caret blinking after typing */
-}
-
-/* Stop caret blinking after both lines complete */
-.typewriter-line2 {
-    border-right: none;
-    /* Remove the caret after the text finishes */
 }
