@@ -116,7 +116,7 @@ export const Home = () => {
             style={{ gap: "10px" }}
           >
             <div className="mb-[8px]">
-              <span className="font-medium text-[22px] text-[#17233A] sm:!text-[26px] md:max-w-[80%]">
+              <span className="font-medium text-[22px] text-[#17233A] sm:!text-[26px] max-w-[80%]">
                 Select 6 Characteristics That Best Describe You
               </span>
             </div>
