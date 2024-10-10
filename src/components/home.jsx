@@ -116,13 +116,13 @@ export const Home = () => {
             style={{ gap: "10px" }}
           >
             <div className="mb-[8px]">
-              <span className="font-medium text-[22px] text-[#17233A] sm:!text-[26px]">
+              <span className="font-medium text-[22px] text-[#17233A] sm:!text-[26px] md:max-w-[90%]">
                 Select 6 Characteristics That Best Describe You
               </span>
             </div>
             <Chip.Group className="" multiple> 
               <Group
-                className="flex justify-center items-center p-0 pt-0 md:pr-[20px] pb-[40px] md:pt-[20px] sm:p-0 md:max-w-[105%]"
+                className="flex justify-center items-center p-0 pt-0 md:pr-[20px] pb-[40px] md:pt-[20px] sm:p-0 md:max-w-[90%]"
                 gap={10}
               >
                 <div
