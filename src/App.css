@@ -124,6 +124,10 @@ input[type="number"] {
   color: #30335C;
 }
 
+.middle-container {
+  margin-top: -3rem !important;
+}
+
 @media (min-width: 768px) {
   .landing-bg-img {
     background-attachment: scroll;
