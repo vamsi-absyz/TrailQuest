@@ -242,12 +242,18 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
       const minutes = currentDate.getMinutes();
       const seconds = currentDate.getSeconds();
 
+      // Get day, month, and year
+      const day = currentDate.getDate().toString().padStart(2, "0");
+      const month = (currentDate.getMonth() + 1).toString().padStart(2, "0"); // Months are 0-based
+      const year = currentDate.getFullYear();
+
       // Format the time as HH:MM:SS
       const currentTime = `${hours.toString().padStart(2, "0")}:${minutes
         .toString()
         .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 
-
+      // Format the date as DDMMYYYY
+      const formattedDate = `${day}/${month}/${year}`;
       // Add a new document with a generated ID
       const docRef = await addDoc(collection(db, "users"), {
         name: data.get("name"),
@@ -255,6 +261,7 @@ export default function SignInForm({ title = "Sign In", onSubmit, fields }) {
         phone: data.get("number"),
         company: data.get("company"),
         isSalesforce: data.get("confirm"),
+        date: formattedDate,
         timestamp: currentTime
       });
     } catch (error) {
