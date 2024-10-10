@@ -1,4 +1,4 @@
-/* .typewriter-line1 {
+.typewriter-line1 {
     white-space: nowrap;
     overflow: hidden;
     border-right: 3px solid black;
@@ -68,78 +68,5 @@
 
 .typewriter-line2 {
     border-right: none;
-} */
-
-/* First line typing effect */
-.typewriter-line1 {
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 3px solid black;
-    display: inline-block;
-    animation: typing-line1 4s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
 }
 
-/* Second line typing effect */
-.typewriter-line2 {
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 3px solid black;
-    display: inline-block;
-    animation: typing-line2 2s steps(10, end) forwards, blink-caret 0.75s step-end infinite;
-    animation-delay: 4s;
-    /* Starts after the first line finishes */
-}
-
-/* Typing effect for first line */
-@keyframes typing-line1 {
-    from {
-        width: 0;
-    }
-
-    to {
-        width: 100%;
-        /* Adjusted to ensure full first line is typed */
-    }
-}
-
-/* Typing effect for second line */
-@keyframes typing-line2 {
-    from {
-        width: 0;
-    }
-
-    to {
-        width: 100%;
-        /* Full width for 'Character' */
-    }
-}
-
-/* Blinking caret animation */
-@keyframes blink-caret {
-
-    from,
-    to {
-        border-color: transparent;
-    }
-
-    50% {
-        border-color: black;
-    }
-}
-
-/* Hide the caret after the second line finishes typing */
-.typewriter-line2 {
-    animation-fill-mode: forwards;
-    /* Keep text visible after typing */
-    border-right: none;
-    /* Remove blinking caret after typing completes */
-}
-
-/* Media query for tablet devices */
-@media only screen and (max-width: 768px) {
-
-    .typewriter-line1,
-    .typewriter-line2 {
-        font-size: 1.2em;
-    }
-}
