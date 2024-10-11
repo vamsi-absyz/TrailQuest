@@ -128,6 +128,7 @@ input[type="number"] {
   .landing-bg-img {
     background-attachment: scroll;
     background-size: cover;
+    background-position: left;
     height: 100vh;
   }
 }
