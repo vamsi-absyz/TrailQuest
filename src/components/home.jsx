@@ -170,7 +170,7 @@ export const Home = () => {
             <div className="justify-center items-center w-full pt-[20px] hidden lg:flex">
               <img src={Logo} alt="logo" className="w-[110px] " />
             </div>
-            <div className="carousel_img flex-1 flex !md:justify-start items-start w-full">
+            <div className="carousel_img">
               {/* <Carousels /> */}
               <Slider isModalOpen={isModalOpen} />
             </div>

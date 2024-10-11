@@ -10,7 +10,7 @@
     width: 0;
     animation: typing-line1 0.5s steps(20, end) forwards;
     animation-fill-mode: forwards;
-    margin-top: 17rem;
+    margin-top: 20rem;
 }
 
 .typewriter-line2 {
