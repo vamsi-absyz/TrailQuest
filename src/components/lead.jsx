@@ -109,7 +109,7 @@ export const Lead = () => {
                 backgroundColor: "#0470EF",
                 borderRadius: "20px",
                 color: "white",
-                fontSize: "1.6rem",
+                fontSize: "1.8rem",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
