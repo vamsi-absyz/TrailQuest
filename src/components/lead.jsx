@@ -113,7 +113,7 @@ export const Lead = () => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                padding: "0.9rem 3.2rem",
+                padding: "0.8rem 3.6rem",
                 marginRight: "8px",
                 marginTop: "3rem",
                 transition: "transform 0.1s ease, box-shadow 0.1s ease",
