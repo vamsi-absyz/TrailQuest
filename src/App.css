@@ -111,8 +111,9 @@ input[type="number"] {
 
 .landing-bg-img {
   /* background-image: url("../src/assets/images/SFImage4352.jpg"); */
-  background-image: url("../src/assets/images/BGImage.png");
-  background-position: right;
+  /* background-image: url("../src/assets/images/BGImage.png"); */
+  background-image: url("../src/assets/images/SFImage.png");
+  background-position: left;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 550px;
