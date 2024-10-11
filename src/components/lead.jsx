@@ -94,7 +94,7 @@ export const Lead = () => {
     <>
       <Fade in={checked}>
         {isLandingPage ? (
-          <Box className="landing-bg-img flex flex-col justify-center items-center w-full h-full">
+          <Box className="landing-bg-img flex flex-col items-center w-full h-full">
             <h1 className="font-bold font-medium text-center !text-[24px] text-[#ffffff] sm:!text-[2.8rem] md:!text-[2.8rem] lg:!text-[32px] ">
               <span className="typewriter-line1">
                 Lets Play
@@ -114,7 +114,7 @@ export const Lead = () => {
                 alignItems: "center",
                 padding: "0.8rem 3rem",
                 marginRight: "8px",
-                marginTop: "10rem",
+                marginTop: "8.5rem",
                 transition: "transform 0.1s ease, box-shadow 0.1s ease",
                 boxShadow: "2px 6px 10px rgba(0, 0, 0, 0.2)",
                 fontWeight: "bold",
