@@ -100,7 +100,7 @@ export const Lead = () => {
                 Lets Play
               </span>
               <br />
-              <span className="typewriter-line2">Know Your Salesforce Character!</span>
+              <span className="typewriter-line2">Know Your ABSYZ Character!</span>
             </h1>
             <Button
               onClick={onStartClick}
