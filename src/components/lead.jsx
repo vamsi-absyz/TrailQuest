@@ -114,7 +114,7 @@ export const Lead = () => {
                 alignItems: "center",
                 padding: "0.8rem 3rem",
                 marginRight: "8px",
-                marginTop: "10rem",
+                marginTop: "7rem",
                 transition: "transform 0.1s ease, box-shadow 0.1s ease",
                 boxShadow: "2px 6px 10px rgba(0, 0, 0, 0.2)",
                 fontWeight: "bold",
