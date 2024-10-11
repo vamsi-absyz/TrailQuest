@@ -23,7 +23,7 @@
     animation: typing-line2 2s steps(40, end) forwards;
     animation-delay: 0.5s;
     animation-fill-mode: forwards;
-    margin-top: 2rem;
+    margin-top: 0.5rem;
 }
 
 @keyframes typing-line1 {
