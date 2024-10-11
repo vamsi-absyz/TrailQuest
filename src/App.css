@@ -111,11 +111,10 @@ input[type="number"] {
 
 .landing-bg-img {
   background-image: url("../src/assets/images/SFImage4352.jpg");
-  /* background-image: url("../src/assets/images/BGImage.png"); */
   background-position: left;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: 150px;
+  background-size: 200px;
   width: 90%;
   /* height: 100vh; */
   min-height: 100vh;
