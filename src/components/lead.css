@@ -14,10 +14,11 @@
 
 .landing-heading-1 {
     font-weight: bold;
-    font-size: 3.5rem;
+    font-size: 4rem;
     color: #30335C;
     margin-top: -3rem;
     display: inline-block;
+    margin-top: 20rem;
 }
 
 .landing-heading-2 {
