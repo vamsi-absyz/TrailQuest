@@ -4,29 +4,43 @@
     font-size: 3rem;
     color: #30335C;;
     white-space: nowrap;
-    overflow: hidden;
-    border-right: 3px solid black;
+    /* overflow: hidden; */
+    /* border-right: 3px solid black; */
     display: inline-block;
     width: 0;
-    animation: typing-line1 0.5s steps(20, end) forwards;
-    animation-fill-mode: forwards;
+    /* animation: typing-line1 0.5s steps(20, end) forwards;
+    animation-fill-mode: forwards; */
+}
+
+.landing-heading-1 {
+    font-weight: bold;
+    font-size: 3rem;
+    color: #30335C;
     margin-top: 25rem;
+    display: inline-block;
+}
+
+.landing-heading-2 {
+    display: inline-block;
+    font-size: 1rem;
+    color: #30335C;
 }
 
 .typewriter-line2 {
-    font-size: 1.5rem;
+    margin: 0 !important;
+    font-size: 1rem;
     color: #30335C;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 3px solid black;
+    white-space: nowrap;    
+    /* overflow: hidden; */
+    /* border-right: 3px solid black; */
     display: inline-block;
     width: 0;
-    animation: typing-line2 2s steps(40, end) forwards;
-    animation-delay: 0.5s;
-    animation-fill-mode: forwards;
+    /* animation: typing-line2 2s steps(40, end) forwards; */
+    /* animation-delay: 0.5s; */
+    /* animation-fill-mode: forwards; */
 }
 
-@keyframes typing-line1 {
+/* @keyframes typing-line1 {
     from {
         width: 0;
     }
@@ -65,16 +79,16 @@
         color: #30335C;
         font-size: 2.3rem;
     }
-}
+} */
 
-.typewriter-line1::after,
+/* .typewriter-line1::after,
 .typewriter-line2::after {
     content: '';
     animation: blink-caret 0.75s step-end infinite;
     animation-fill-mode: forwards;
-}
+} */
 
-.typewriter-line1,
+/* .typewriter-line1,
 .typewriter-line2 {
     border-right: none;
-}
+} */

@@ -92,16 +92,17 @@ export const Lead = () => {
 
   return (
     <>
-      <Fade in={checked}>
+      {/* <Fade in={checked}> */}
         {isLandingPage ? (
-          <Box className="landing-bg-img flex flex-col items-center w-full h-full">
-            <h1 className="font-bold font-medium text-center !text-[24px] text-[#ffffff] sm:!text-[2.8rem] md:!text-[2.8rem] lg:!text-[32px] ">
-              <span className="typewriter-line1">
+          <Box className="landing-bg-img flex flex-col items-center justify-center w-full h-full">
+            <div className="flex flex-col justify-center items-center">
+            <div className="  font-bold font-medium text-center !text-[24px] text-[#ffffff] sm:!text-[2.8rem] md:!text-[2.8rem] lg:!text-[32px] ">
+              <h1 className="landing-heading-1">
                 Lets Play
-              </span>
+              </h1>
               <br />
-              <small className="typewriter-line2">Know Your ABSYZ Character!</small>
-            </h1>
+              <small className="landing-heading-2">Know Your ABSYZ Character!</small>
+            </div>
             <Button
               onClick={onStartClick}
               style={{
@@ -152,6 +153,7 @@ export const Lead = () => {
             >
               Start
             </Button>
+            </div>
           </Box>
         ) : (
           <Box
@@ -231,7 +233,7 @@ export const Lead = () => {
             </div>
           </Box>
         )}
-      </Fade>
+      {/* </Fade> */}
     </>
   );
 };
