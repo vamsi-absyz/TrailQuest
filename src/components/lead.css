@@ -14,7 +14,7 @@
 
 .landing-heading-1 {
     font-weight: bold;
-    font-size: 2.3rem;
+    font-size: 3rem;
     color: #30335C;
     /* margin-top: 0rem; */
     display: inline-block;
@@ -22,11 +22,11 @@
 
 .landing-heading-2 {
     display: inline-block;
-    font-size: 1rem;
+    font-size: 2rem;
     color: #30335C;
 }
 .content{
-    line-height: 0.5;
+    line-height: 1;
 }
 
 .typewriter-line2 {
