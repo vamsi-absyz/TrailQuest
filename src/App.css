@@ -127,7 +127,7 @@ input[type="number"] {
 @media (min-width: 768px) {
   .landing-bg-img {
     background-attachment: scroll;
-    background-size: 1650px;
+    background-size: cover;
     background-position: left;
     min-height: 100vh;
   }
