@@ -96,7 +96,7 @@ export const Lead = () => {
         {isLandingPage ? (
           <Box className="landing-bg-img flex flex-col items-center justify-center w-full h-full">
             <div className="flex flex-col justify-center items-center">
-            <div className="  font-bold font-medium text-center !text-[24px] text-[#ffffff] sm:!text-[2.8rem] md:!text-[2.8rem] lg:!text-[32px] ">
+            <div className=" content font-bold font-medium text-center !text-[24px] text-[#ffffff] sm:!text-[2.8rem] md:!text-[2.8rem] lg:!text-[32px] ">
               <h1 className="landing-heading-1">
                 Lets Play
               </h1>
