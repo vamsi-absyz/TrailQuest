@@ -1,7 +1,7 @@
 .typewriter-line1 {
     font-family: sans-serif !important;
     font-weight: bold;
-    font-size: 4rem;
+    font-size: 3rem;
     color: #30335C;;
     white-space: nowrap;
     overflow: hidden;
@@ -10,12 +10,11 @@
     width: 0;
     animation: typing-line1 0.5s steps(20, end) forwards;
     animation-fill-mode: forwards;
-    margin-top: 20rem;
+    margin-top: 17rem;
 }
 
 .typewriter-line2 {
     color: #30335C;
-    font-size: 3rem;
     white-space: nowrap;
     overflow: hidden;
     border-right: 3px solid black;

@@ -100,7 +100,7 @@ export const Lead = () => {
                 Lets Play
               </span>
               <br />
-              <span className="typewriter-line2">Know Your ABSYZ Character!</span>
+              <small className="typewriter-line2">Know Your ABSYZ Character!</small>
             </h1>
             <Button
               onClick={onStartClick}
