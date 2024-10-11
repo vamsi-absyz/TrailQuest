@@ -165,12 +165,12 @@ export const Home = () => {
             xs={8}
             sm={6}
             md={3}
-            className="flex justify-start !flex-col items-center h-[100vh] md:h-[100vh] !ml-[6rem] lg:!ml-0 xl:!ml-0 2xl:!ml-0 !mt-4"
+            className="flex justify-start !flex-col  h-[100vh] md:h-[100vh] !ml-[2.5rem] lg:!ml-0 xl:!ml-0 2xl:!ml-0 !mt-4"
           >
             <div className="justify-center items-center w-full pt-[20px] hidden lg:flex">
               <img src={Logo} alt="logo" className="w-[110px] " />
             </div>
-            <div className="carousel_img">
+            <div className="carousel_img flex-1 flex !md:justify-start items-start w-full">
               {/* <Carousels /> */}
               <Slider isModalOpen={isModalOpen} />
             </div>
